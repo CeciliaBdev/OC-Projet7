@@ -1,5 +1,5 @@
 // constructor de la carte
-class CardRecipes {
+export class CardRecipes {
   constructor(recipe) {
     this.id = recipe.id
     this.name = recipe.name
@@ -12,8 +12,10 @@ class CardRecipes {
   }
 
   createCard() {
-    const cardRecipe = `<div>${this.name}</div>
-                        <div>${this.time} min</div>`
+    const cardRecipe = `<img src="./assets/recettes/recettes.jpg" alt="image de la recette" />
+                        <div>${this.name}</div>
+                        <div>${this.time} min</div>
+                        `
     console.log(cardRecipe)
     return cardRecipe
   }
