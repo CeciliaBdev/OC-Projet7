@@ -15,10 +15,17 @@ export class MainApp {
     tab.forEach((element) => {
       //pour chaque element de mon tableau //Erreur : le appendChild ne passe pas (si je remplace par innerHtml: j'ai le dernier element de mon tableau qui s'affiche)
       const template = new CardRecipes(element)
-      this.articleCardContainer.appendChild(
-        //j'ajoute une nouvelle carte
-        template.createCard()
-      )
+      console.log('Template :', typeof template)
+
+      console.log('CreateCard :', typeof template.createCard())
+
+      console.log('articlecardcontainer :', typeof this.articleCardContainer)
+
+      const card = document.createElement('article')
+      card.classList.add('d-inline-block', 'col-4', 'mt-5')
+      card.innerHTML = template.createCard()
+
+      this.articleCardContainer.appendChild(card)
     })
   }
 

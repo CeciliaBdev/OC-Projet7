@@ -5,3 +5,10 @@ header img {
 .infos_recette {
   height: 200px;
 }
+.container_card_recipes article {
+  border: 1px solid #333;
+}
+article img {
+  object-fit: cover;
+  width: 100%;
+}

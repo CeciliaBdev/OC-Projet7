@@ -12,11 +12,12 @@ export class CardRecipes {
   }
 
   createCard() {
-    const cardRecipe = `<img src="./assets/recettes/recettes.jpg" alt="image de la recette" />
+    const cardRecipe = `
+                        <img src="./assets/recettes/recettes.jpg" height="150px" alt="image de la recette" />
                         <div>${this.name}</div>
                         <div>${this.time} min</div>
                         `
-    console.log(cardRecipe)
+    // console.log(cardRecipe)
     return cardRecipe
   }
 }
