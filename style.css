@@ -12,3 +12,6 @@ article img {
   object-fit: cover;
   width: 100%;
 }
+.container i {
+  cursor: pointer;
+}
