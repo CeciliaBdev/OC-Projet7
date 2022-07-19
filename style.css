@@ -3,7 +3,7 @@ header img {
 }
 
 .infos_recette {
-  height: 200px;
+  height: 150px;
 }
 .container_card_recipes article {
   border: 1px solid #333;
@@ -13,9 +13,9 @@ article img {
   width: 100%;
 }
 .col-12 article {
-  background: lightgray;
-  margin: 20px;
-  width: 25%;
+  background: #e7e7e7;
+  margin: 10px;
+  width: 30%;
 }
 .container i {
   cursor: pointer;

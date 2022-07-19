@@ -14,11 +14,22 @@ export class CardRecipes {
   createCard() {
     const cardRecipe = `
                         <img src="./assets/recettes/fond-gris.jpeg" height="150px" alt="image de la recette" />
-                        <div>${this.name}</div>
-                        <div>${this.time} min</div>
+                        <div class="infos_recette d-flex justify-content-evenly" >
+                          <div>${this.name}</div>
+                          <div><i class="bi bi-clock"></i> ${this.time} min</div>
+                        </div>
+                        <div class="description_recette d-flex justify-content-evenly align-items-center">
+                          <div class="ingredients"></div>
+                          <div class="description"></div>
+                        </div>
+
                         `
     // console.log(cardRecipe)
-    //ingredients => objet ! comment afficher le contenu ?
+
     return cardRecipe
   }
 }
+// questions
+// ingredients => objet ! comment afficher le contenu ?
+// description qui depasse du cadre
+// taille des deux blocs ?
