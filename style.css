@@ -12,6 +12,11 @@ article img {
   object-fit: cover;
   width: 100%;
 }
+.col-12 article {
+  background: lightgray;
+  margin: 20px;
+  width: 25%;
+}
 .container i {
   cursor: pointer;
 }

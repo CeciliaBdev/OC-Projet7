@@ -22,7 +22,7 @@ inputSearch.addEventListener('keyup', () => {
       //   if (el.name.includes('Salade')) {
       //     return el
       //   }
-      if (el.name.toLocaleLowerCase().includes(String(resultat))) {
+      if (el.name.toLowerCase().includes(String(resultat))) {
         placeRecipe.innerHTML = ''
         return el
       }
@@ -60,3 +60,7 @@ inputSearch.addEventListener('keyup', () => {
     app.init()
   }
 })
+
+// a rajouter : regex pour les accents sur les lettres => a = a à â ...
+
+//quand je reviens en arrière, revenir sur l'affichage de toutes les recettes
