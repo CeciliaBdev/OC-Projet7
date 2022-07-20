@@ -64,3 +64,5 @@ inputSearch.addEventListener('keyup', () => {
 // a rajouter : regex pour les accents sur les lettres => a = a à â ...
 
 //quand je reviens en arrière, revenir sur l'affichage de toutes les recettes
+
+// apparition des tags ?

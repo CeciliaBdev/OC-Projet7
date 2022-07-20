@@ -6,11 +6,13 @@ header img {
   height: 150px;
 }
 .container_card_recipes article {
-  border: 1px solid #333;
+  /* border: 1px solid #333; */
+  border-radius: 5px;
 }
 article img {
   object-fit: cover;
   width: 100%;
+  border-radius: 5px 5px 0 0;
 }
 .col-12 article {
   background: #e7e7e7;

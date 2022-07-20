@@ -12,21 +12,33 @@ export class CardRecipes {
   }
 
   createCard() {
-    const cardRecipe = `
+    for (const props in this.ingredients) {
+      const baseObject = this.ingredients[props]
+      console.log(baseObject)
+      // ingredient dans "ingredients"
+      // const ingredient = baseObject.ingredient
+      // console.log(ingredient)
+
+      const cardRecipe = `
                         <img src="./assets/recettes/fond-gris.jpeg" height="150px" alt="image de la recette" />
                         <div class="infos_recette d-flex justify-content-evenly" >
                           <div>${this.name}</div>
                           <div><i class="bi bi-clock"></i> ${this.time} min</div>
                         </div>
                         <div class="description_recette d-flex justify-content-evenly align-items-center">
-                          <div class="ingredients"></div>
+                          <div class="ingredients">${baseObject}</div>
                           <div class="description"></div>
                         </div>
 
                         `
-    // console.log(cardRecipe)
+      // console.log(cardRecipe)
+      // afficher le name - id
+      // console.log(`${this.name}`, `${this.id}`, `${this.ingredients}`)
 
-    return cardRecipe
+      // afficher les ingredients
+
+      return cardRecipe
+    }
   }
 }
 // questions
