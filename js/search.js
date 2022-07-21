@@ -1,14 +1,7 @@
-import { recipesData } from '../data/recipes.js'
-import { CardRecipes } from '../js/RecipesCard.js'
-
-// selectionne l'input
-const inputSearch = document.querySelector('.container input')
-const placeRecipe = document.querySelector('#card_container')
-
-// console.log(recipesData)
-
-// evenement : recupere en temps réel le champ input (tapé au clavier)
-inputSearch.addEventListener('keyup', () => {
+// ma function de recherche dans l'input
+export function filterInput(recipesData) {
+  const inputSearch = document.querySelector('.container input')
+  const placeRecipe = document.querySelector('#card_container')
   const resultat = inputSearch.value
   //console.log('resultat ,', resultat)
   const nbCaractere = resultat.length
@@ -31,40 +24,16 @@ inputSearch.addEventListener('keyup', () => {
     })
     // tableau filtré
     console.log(tabFilter)
-
-    // affichage recette
-    class MainApp {
-      constructor() {
-        this.articleCardContainer = document.querySelector('#card_container')
-        this.Recipes = tabFilter
-        //console.log(recipesData) //mon tableau de recette
-      }
-
-      displayCardRecipes() {
-        const tabFilter = this.Recipes
-        tabFilter.forEach((element) => {
-          const template = new CardRecipes(element)
-
-          const card = document.createElement('article')
-          card.classList.add('d-inline-block', 'col-4', 'mt-5')
-          card.innerHTML = template.createCard()
-
-          this.articleCardContainer.appendChild(card)
-        })
-      }
-
-      init() {
-        this.displayCardRecipes()
-      }
-    }
-
-    const app = new MainApp()
-    app.init()
+    return tabFilter
+  } else {
+    return []
   }
-})
+}
 
 // a rajouter : regex pour les accents sur les lettres => a = a à â ...
 
 //quand je reviens en arrière, revenir sur l'affichage de toutes les recettes
+
+// filtre sur name (ligne 20), doit on faire sur un autre filtre ? (ingredients ?)
 
 // apparition des tags ?
