@@ -14,7 +14,7 @@ export class CardRecipes {
   createCard() {
     for (const props in this.ingredients) {
       const baseObject = this.ingredients[props]
-      console.log(baseObject)
+      // console.log(baseObject)
       // ingredient dans "ingredients"
       // const ingredient = baseObject.ingredient
       // console.log(ingredient)

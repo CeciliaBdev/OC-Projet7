@@ -5,7 +5,7 @@ import { CardRecipes } from '../js/RecipesCard.js'
 const inputSearch = document.querySelector('.container input')
 const placeRecipe = document.querySelector('#card_container')
 
-console.log(recipesData)
+// console.log(recipesData)
 
 // evenement : recupere en temps réel le champ input (tapé au clavier)
 inputSearch.addEventListener('keyup', () => {
@@ -17,8 +17,10 @@ inputSearch.addEventListener('keyup', () => {
   // si le mot tapé fait 3 caractère ou plus
   if (nbCaractere >= '3') {
     // mon tableau de recette
-    const tabrecipes = recipesData
-    let tabFilter = tabrecipes.filter(function (el) {
+    // const tabrecipes = recipesData
+    console.log('recipe :', recipesData)
+
+    let tabFilter = recipesData.filter(function (el) {
       //   if (el.name.includes('Salade')) {
       //     return el
       //   }

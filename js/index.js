@@ -7,13 +7,12 @@ export class MainApp {
   constructor() {
     this.articleCardContainer = document.querySelector('#card_container')
     this.Recipes = recipesData
-    //console.log(recipesData) //mon tableau de recette
+    console.log(this.Recipes) //mon tableau de recette
   }
 
   displayCardRecipes() {
     const tabRecipes = this.Recipes
     tabRecipes.forEach((element) => {
-      //pour chaque element de mon tableau //Erreur : le appendChild ne passe pas (si je remplace par innerHtml: j'ai le dernier element de mon tableau qui s'affiche)
       const template = new CardRecipes(element)
       // console.log('Template :', typeof template)
 
