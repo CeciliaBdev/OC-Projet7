@@ -20,7 +20,7 @@ export const recipesData = [
       },
       {
         ingredient: 'Sucre',
-        quantite: 30,
+        quantity: 30,
         unit: 'grammes',
       },
       {
@@ -53,7 +53,7 @@ export const recipesData = [
       },
       {
         ingredient: 'Carotte',
-        quantite: 1,
+        quantity: 1,
       },
       {
         ingredient: 'Citron Vert',
@@ -220,7 +220,7 @@ export const recipesData = [
       {
         ingredient: 'Sucre vanillé',
         quantity: 1,
-        unit: 'sachets',
+        unit: 'sachet',
       },
     ],
     time: 50,
