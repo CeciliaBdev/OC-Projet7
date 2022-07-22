@@ -1,4 +1,3 @@
-// objet recipe
 export class CardRecipes {
   constructor(recipe) {
     this.id = recipe.id
@@ -54,22 +53,6 @@ export class CardRecipes {
   }
 }
 
-// function ingredients(ingredient, quantity, unit) {
-//   this.ingredient = ingredient
-//   this.quantity = quantity
-//   this.unit = unit
-// }
-
-//objet ingrédients
-// class Ingredients {
-//   constructor(ingredients) {
-//     this.ingredient = ingredients.ingredient
-//     this.quantity = ingredients.quantity
-//     this.unit = ingredients.unit
-//   }
-// }
-
-// questions
-// ingredients => objet ! comment afficher le contenu ?
 // description qui depasse du cadre
 // taille des deux blocs ?
+// taille des cards ? outil bootsrtap card

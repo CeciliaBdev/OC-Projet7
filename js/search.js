@@ -14,23 +14,26 @@ export function filterInput(recipesData) {
     console.log('recipe :', recipesData)
 
     let tabFilter = recipesData.filter(function (el) {
-      //   if (el.name.includes('Salade')) {
-      //     return el
-      //   }
-      if (el.name.toLowerCase().includes(String(resultat))) {
+      // je filtre mes recettes suivant le resultat compris dans le titre (name), la description, ou l'ingrédient
+      if (
+        el.name.toLowerCase().includes(String(resultat)) || // titre
+        el.description.toLowerCase().includes(String(resultat)) || // description
+        el.ingredients.filter((ingred) =>
+          ingred.ingredient.toLowerCase().includes(String(resultat))
+        ).length >= 1 //filtre sur ingredient dans ingredients (non vide)
+      ) {
         placeRecipe.innerHTML = ''
         return el
       }
     })
-    // tableau filtré
-    console.log(tabFilter)
+
     return tabFilter
-  } else {
-    return []
   }
+  return recipesData
 }
 
 // a rajouter : regex pour les accents sur les lettres => a = a à â ...
+// a rajouter : condition : sans accent, espaces, ...
 
 //quand je reviens en arrière, revenir sur l'affichage de toutes les recettes
 

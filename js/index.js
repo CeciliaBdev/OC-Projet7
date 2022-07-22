@@ -9,6 +9,7 @@ export class MainApp {
   constructor() {
     this.articleCardContainer = document.querySelector('#card_container')
     this.Recipes = recipesData
+    console.log(recipesData)
   }
   // affichage des cartes
   displayCardRecipes(list) {
@@ -31,8 +32,10 @@ export class MainApp {
   inputSearch() {
     const inputSearch = document.querySelector('.container input')
     // evenement : recupere en temps réel le champ input (tapé au clavier)
+
     inputSearch.addEventListener('keyup', () => {
-      // j'appelle ma fonction filterInput du fichier search.js
+      // j'appelle ma fonction filterInput du fichier search.
+      // this.Recipes = filterInput(this.Recipes) = a revoir
       let tabfiltered = filterInput(recipesData)
       // affichage des cartes filtrées
       // displayCardRecipes mais avec tabFilter
