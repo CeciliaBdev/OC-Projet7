@@ -52,15 +52,15 @@ export class MainApp {
       this.Recipes.forEach((recipe) => {
         recipe.ingredients.map((element) => {
           tabIngredients.push(element.ingredient)
-          console.log('liste Ingredients: ', tabIngredients)
+          // console.log('liste Ingredients: ', tabIngredients)
         })
 
         tabAppliance.push(recipe.appliance)
-        console.log('liste Appareils: ', tabAppliance)
+        // console.log('liste Appareils: ', tabAppliance)
 
         recipe.ustensils.map((element) => {
           tabUstensils.push(element)
-          console.log('liste Ustensils: ', tabUstensils)
+          // console.log('liste Ustensils: ', tabUstensils)
         })
       })
 

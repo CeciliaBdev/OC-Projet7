@@ -32,7 +32,7 @@ export class CardRecipes {
         name + this.ingredients[i].quantity + this.ingredients[i].unit + ' '
 
       listIngredients.push(blocIngredients)
-      console.log(listIngredients)
+      // console.log(listIngredients)
     }
 
     return listIngredients
