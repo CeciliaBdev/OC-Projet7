@@ -9,7 +9,7 @@ export class MainApp {
   constructor() {
     this.articleCardContainer = document.querySelector('#card_container')
     this.Recipes = recipesData
-    console.log(recipesData)
+    // console.log(recipesData)
   }
   // affichage des cartes
   displayCardRecipes(list) {
@@ -22,8 +22,11 @@ export class MainApp {
       const card = document.createElement('article')
       card.classList.add('d-inline-block', 'col-4', 'mt-5')
       card.innerHTML = template.createCard()
-      console.log(template.listNomIngredients())
       this.articleCardContainer.appendChild(card)
+
+      // console.log('liste ingredients:  ', template.listNomIngredients()) // liste de tous les ingredients
+      // console.log('appareil: ', template.appliance) // liste de tous les appareils
+      // console.log('ustensils: ', template.ustensils) // liste de tous les utensiles
     })
   }
 
@@ -35,12 +38,31 @@ export class MainApp {
 
     inputSearch.addEventListener('keyup', () => {
       // j'appelle ma fonction filterInput du fichier search.
-      // this.Recipes = filterInput(this.Recipes) = a revoir
-      let tabfiltered = filterInput(recipesData)
+      this.Recipes = filterInput(this.Recipes)
+      //let tabfiltered = filterInput(recipesData)
       // affichage des cartes filtrées
-      // displayCardRecipes mais avec tabFilter
-      this.displayCardRecipes(tabfiltered)
+      this.displayCardRecipes(this.Recipes)
       // emploi de this car j'utilise une méthode defini dans la class (ici Main App)
+      console.log(this.Recipes)
+
+      // tableau d'appareils - ingredient - ustensils triés
+      let tabAppliance = [] // tableau appareil vide
+      let tabIngredients = [] //  tableau d'ingredients vide
+      let tabUstensils = [] // tableau ustensils vide
+      this.Recipes.forEach((recipe) => {
+        recipe.ingredients.map((element) => {
+          tabIngredients.push(element.ingredient)
+          console.log('liste Ingredients: ', tabIngredients)
+        })
+
+        tabAppliance.push(recipe.appliance)
+        console.log('liste Appareils: ', tabAppliance)
+
+        recipe.ustensils.map((element) => {
+          tabUstensils.push(element)
+          console.log('liste Ustensils: ', tabUstensils)
+        })
+      })
     })
   }
 
@@ -53,3 +75,7 @@ export class MainApp {
 // initialisation
 const app = new MainApp()
 app.init()
+
+// // j'ajoute mon tab filtré dans la div test dans 1 1er temps
+// // const test = document.querySelector('.test')
+// // test.innerHTML = tabFiltered

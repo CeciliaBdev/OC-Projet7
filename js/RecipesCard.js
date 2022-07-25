@@ -49,6 +49,7 @@ export class CardRecipes {
                           <div class="ingredients">${listeIngredients}</div>
                           <div class="description"></div>
                         </div>`
+
     return cardRecipe
   }
 }

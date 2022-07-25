@@ -11,7 +11,7 @@ export function filterInput(recipesData) {
   if (nbCaractere >= '3') {
     // mon tableau de recette
     // const tabrecipes = recipesData
-    console.log('recipe :', recipesData)
+    // console.log('recipe :', recipesData)
 
     let tabFilter = recipesData.filter(function (el) {
       // je filtre mes recettes suivant le resultat compris dans le titre (name), la description, ou l'ingrédient
