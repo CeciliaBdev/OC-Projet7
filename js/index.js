@@ -58,9 +58,16 @@ export class MainApp {
 
     btnMenuAppareil.addEventListener('click', () => {
       let tabAppliance = listButtons(this.Recipes).tabAppliance
-      console.log(tabAppliance)
+
       if (dropdown.classList.contains('hidden')) {
-        dropdown.textContent = tabAppliance
+        // je mets sous forme de liste mon tableau
+        dropdown.innerHTML = `${tabAppliance
+          .map(
+            (element) => `
+        <li class="ingredients-list">${element}</li>`
+          )
+          .join(' ')}`
+        //dropdown.innerHTML = `<li>${tabAppliance}s</li>`
         dropdown.classList.remove('hidden')
       } else {
         dropdown.classList.add('hidden')
@@ -70,7 +77,12 @@ export class MainApp {
     btnMenuIngredients.addEventListener('click', () => {
       let tabIngredients = listButtons(this.Recipes).tabIngredients
       if (dropdown.classList.contains('hidden')) {
-        dropdown.textContent = tabIngredients
+        dropdown.innerHTML = `${tabIngredients
+          .map(
+            (element) => `
+        <li class="ingredients-list">${element}</li>`
+          )
+          .join(' ')}`
         dropdown.classList.remove('hidden')
       } else {
         dropdown.classList.add('hidden')
@@ -80,7 +92,12 @@ export class MainApp {
     btnMenuUstensils.addEventListener('click', () => {
       let tabUstensils = listButtons(this.Recipes).tabUstensils
       if (dropdown.classList.contains('hidden')) {
-        dropdown.textContent = tabUstensils
+        dropdown.innerHTML = `${tabUstensils
+          .map(
+            (element) => `
+        <li class="ingredients-list">${element}</li>`
+          )
+          .join(' ')}`
         dropdown.classList.remove('hidden')
       } else {
         dropdown.classList.add('hidden')
