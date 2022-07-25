@@ -37,6 +37,4 @@ export function filterInput(recipesData) {
 
 //quand je reviens en arrière, revenir sur l'affichage de toutes les recettes
 
-// filtre sur name (ligne 20), doit on faire sur un autre filtre ? (ingredients ?)
-
 // apparition des tags ?

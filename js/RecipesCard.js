@@ -32,22 +32,25 @@ export class CardRecipes {
         name + this.ingredients[i].quantity + this.ingredients[i].unit + ' '
 
       listIngredients.push(blocIngredients)
+      console.log(listIngredients)
     }
+
     return listIngredients
   }
 
   createCard() {
     const listeIngredients = this.listNomIngredients()
 
-    const cardRecipe = `
-                        <img src="./assets/recettes/fond-gris.jpeg" height="150px" alt="image de la recette" />
-                        <div class="infos_recette d-flex justify-content-evenly" >
+    const cardRecipe = `<div class="rounded-lg shadow-lg bg-white max-w-sm">
+                        <img src="./assets/recettes/fond-gris.jpeg" alt="image de la recette" />
+                        <div class="infos_recette " >
                           <div>${this.name}</div>
-                          <div><i class="bi bi-clock"></i> ${this.time} min</div>
+                          <div><i class="fab fa-adn"></i>${this.time} min</div>
                         </div>
-                        <div class="description_recette d-flex justify-content-evenly align-items-center">
+                        <div class="description_recette ">
                           <div class="ingredients">${listeIngredients}</div>
                           <div class="description"></div>
+                        </div>
                         </div>`
 
     return cardRecipe
@@ -56,4 +59,14 @@ export class CardRecipes {
 
 // description qui depasse du cadre
 // taille des deux blocs ?
-// taille des cards ? outil bootsrtap card
+
+//retour en arriere recherche ne fonctionne pas
+
+// for (let i = 0; i < this.ingredients.length; i++) {
+//   let name = this.ingredients[i].ingredient + ': '
+
+//   // si pas de quantité existante =>
+//   if (this.ingredients[i].quantity === undefined) {
+//     this.ingredients[i].quantity = ''
+//     name = this.ingredients[i].ingredient
+//   }

@@ -20,7 +20,7 @@ export class MainApp {
       // console.log(typeof element)
       const template = new CardRecipes(element)
       const card = document.createElement('article')
-      card.classList.add('d-inline-block', 'col-4', 'mt-5')
+      card.classList.add('inline-block', 'm-2')
       card.innerHTML = template.createCard()
       this.articleCardContainer.appendChild(card)
 
@@ -34,8 +34,8 @@ export class MainApp {
   // selectionne l'input
   inputSearch() {
     const inputSearch = document.querySelector('.container input')
-    // evenement : recupere en temps réel le champ input (tapé au clavier)
 
+    // evenement : recupere en temps réel le champ input (tapé au clavier)
     inputSearch.addEventListener('keyup', () => {
       // j'appelle ma fonction filterInput du fichier search.
       this.Recipes = filterInput(this.Recipes)
@@ -63,6 +63,14 @@ export class MainApp {
           console.log('liste Ustensils: ', tabUstensils)
         })
       })
+
+      //une fois filtré - la liste est a jour mais qu'àpres la recherche
+      const btnMenuAppareil = document.querySelector('#btnMenuAppareil')
+      const dropdown = document.querySelector('.dropdown')
+
+      btnMenuAppareil.addEventListener('click', () => {
+        dropdown.textContent = tabAppliance
+      })
     })
   }
 
@@ -76,6 +84,12 @@ export class MainApp {
 const app = new MainApp()
 app.init()
 
-// // j'ajoute mon tab filtré dans la div test dans 1 1er temps
-// // const test = document.querySelector('.test')
-// // test.innerHTML = tabFiltered
+// prendre en charge les doublons dans mes tableaux ingredients, ustensils et appareils
+
+// if (dropdown.classList.contains('hidden')) {
+//   dropdown.classList.remove('hidden')
+//   dropdown.classList.add('flex')
+// } else {
+//   dropdown.classList.remove('flex')
+//   dropdown.classList.add('hidden')
+// }

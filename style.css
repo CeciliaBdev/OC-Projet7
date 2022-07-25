@@ -22,3 +22,6 @@ article img {
 .container i {
   cursor: pointer;
 }
+.container {
+  margin: 50px 100px;
+}
