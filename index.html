@@ -89,12 +89,19 @@
       </div>
 
       <div class="buttons mt-8 mb-8 flex">
-        <button
-          type="button"
-          class="bg-blue-500 text-white font-bold py-4 px-8 rounded mr-4"
-        >
-          Ingredients
-        </button>
+        <div>
+          <button
+            type="button"
+            class="bg-blue-500 text-white font-bold py-4 px-8 rounded mr-4"
+            id="btnMenuIngredients"
+          >
+            Ingredients
+          </button>
+          <div class="flex dropdown">
+            <a href="#" class="hidden"></a>
+          </div>
+        </div>
+
         <div>
           <button
             type="button"
@@ -104,15 +111,21 @@
             Appareils
           </button>
           <div class="flex dropdown">
-            <a href="#"></a>
+            <a href="#" class="hidden"></a>
           </div>
         </div>
-        <button
-          type="button"
-          class="bg-red-500 text-white font-bold py-4 px-8 rounded"
-        >
-          Ustensiles
-        </button>
+        <div>
+          <button
+            type="button"
+            class="bg-red-500 text-white font-bold py-4 px-8 rounded"
+            id="btnMenuUstensils"
+          >
+            Ustensiles
+          </button>
+          <div class="flex dropdown">
+            <a href="#" class="hidden"></a>
+          </div>
+        </div>
       </div>
       <div class="container_card_recipes">
         <div class="grid-cols-3">

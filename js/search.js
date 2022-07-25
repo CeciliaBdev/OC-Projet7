@@ -39,6 +39,7 @@ export function filterInput(recipesData) {
 
 // apparition des tags ?
 
+// ------
 // 2e algo avec un for pour le filtre
 // export function filterInput(recipesData) {
 //   const inputSearch = document.querySelector('.container input')

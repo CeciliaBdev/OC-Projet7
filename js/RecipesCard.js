@@ -15,6 +15,7 @@ export class CardRecipes {
     // avant le parcous, vide
     let listIngredients = []
     // parcours de mon tableau
+    // ici avec un for - le faire avec un foreach egalement
     for (let i = 0; i < this.ingredients.length; i++) {
       let name = this.ingredients[i].ingredient + ': '
 
@@ -61,12 +62,3 @@ export class CardRecipes {
 // taille des deux blocs ?
 
 //retour en arriere recherche ne fonctionne pas
-
-// for (let i = 0; i < this.ingredients.length; i++) {
-//   let name = this.ingredients[i].ingredient + ': '
-
-//   // si pas de quantité existante =>
-//   if (this.ingredients[i].quantity === undefined) {
-//     this.ingredients[i].quantity = ''
-//     name = this.ingredients[i].ingredient
-//   }

@@ -44,39 +44,72 @@ export class MainApp {
       this.displayCardRecipes(this.Recipes)
       // emploi de this car j'utilise une méthode defini dans la class (ici Main App)
       console.log(this.Recipes)
+    })
+  }
 
-      // tableau d'appareils - ingredient - ustensils triés
-      let tabAppliance = [] // tableau appareil vide
-      let tabIngredients = [] //  tableau d'ingredients vide
-      let tabUstensils = [] // tableau ustensils vide
-      this.Recipes.forEach((recipe) => {
-        recipe.ingredients.map((element) => {
-          tabIngredients.push(element.ingredient)
-          // console.log('liste Ingredients: ', tabIngredients)
-        })
-
-        tabAppliance.push(recipe.appliance)
-        // console.log('liste Appareils: ', tabAppliance)
-
-        recipe.ustensils.map((element) => {
-          tabUstensils.push(element)
-          // console.log('liste Ustensils: ', tabUstensils)
-        })
+  listButtons() {
+    // tableau d'appareils - ingredient - ustensils triés
+    let tabAppliance = [] // tableau appareil vide
+    let tabIngredients = [] //  tableau d'ingredients vide
+    let tabUstensils = [] // tableau ustensils vide
+    this.Recipes.forEach((recipe) => {
+      recipe.ingredients.map((element) => {
+        tabIngredients.push(element.ingredient)
+        tabIngredients = [...new Set(tabIngredients)]
+        // console.log('liste Ingredients: ', tabIngredients)
       })
 
-      //une fois filtré - la liste est a jour mais qu'àpres la recherche
-      const btnMenuAppareil = document.querySelector('#btnMenuAppareil')
-      const dropdown = document.querySelector('.dropdown')
+      tabAppliance.push(recipe.appliance)
+      // j'édite un nouveau tableau sans les doublons
+      tabAppliance = [...new Set(tabAppliance)]
+      // console.log('liste Appareils: ', tabAppliance)
 
-      btnMenuAppareil.addEventListener('click', () => {
+      recipe.ustensils.map((element) => {
+        tabUstensils.push(element)
+        tabUstensils = [...new Set(tabUstensils)]
+        // console.log('liste Ustensils: ', tabUstensils)
+      })
+    })
+
+    //une fois filtré - la liste est a jour mais qu'àpres la recherche
+    const btnMenuAppareil = document.querySelector('#btnMenuAppareil')
+    const btnMenuIngredients = document.querySelector('#btnMenuIngredients')
+    const btnMenuUstensils = document.querySelector('#btnMenuUstensils')
+    const dropdown = document.querySelector('.dropdown')
+
+    btnMenuAppareil.addEventListener('click', () => {
+      if (dropdown.classList.contains('hidden')) {
         dropdown.textContent = tabAppliance
-      })
+        dropdown.classList.remove('hidden')
+      } else {
+        dropdown.classList.add('hidden')
+        dropdown.textContent = ''
+      }
+    })
+    btnMenuIngredients.addEventListener('click', () => {
+      if (dropdown.classList.contains('hidden')) {
+        dropdown.textContent = tabIngredients
+        dropdown.classList.remove('hidden')
+      } else {
+        dropdown.classList.add('hidden')
+        dropdown.textContent = ''
+      }
+    })
+    btnMenuUstensils.addEventListener('click', () => {
+      if (dropdown.classList.contains('hidden')) {
+        dropdown.textContent = tabUstensils
+        dropdown.classList.remove('hidden')
+      } else {
+        dropdown.classList.add('hidden')
+        dropdown.textContent = ''
+      }
     })
   }
 
   init() {
     this.displayCardRecipes(this.Recipes)
     this.inputSearch()
+    this.listButtons()
   }
 }
 
@@ -84,12 +117,12 @@ export class MainApp {
 const app = new MainApp()
 app.init()
 
-// prendre en charge les doublons dans mes tableaux ingredients, ustensils et appareils
+// a faire
+// mise en page des list :
+// sans le ',' et en colonne ?
+//flex wrap ?
 
-// if (dropdown.classList.contains('hidden')) {
-//   dropdown.classList.remove('hidden')
-//   dropdown.classList.add('flex')
-// } else {
-//   dropdown.classList.remove('flex')
-//   dropdown.classList.add('hidden')
-// }
+//enlever dans les liste
+// les majuscules
+//ponctuation
+//chiffres
