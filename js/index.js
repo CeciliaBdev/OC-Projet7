@@ -2,6 +2,7 @@
 import { recipesData } from '../data/recipes.js'
 import { CardRecipes } from '../js/RecipesCard.js'
 import { filterInput } from '../js/search.js'
+import { listButtons } from './list.js'
 
 // info données recette
 
@@ -43,34 +44,12 @@ export class MainApp {
       // affichage des cartes filtrées
       this.displayCardRecipes(this.Recipes)
       // emploi de this car j'utilise une méthode defini dans la class (ici Main App)
-      console.log(this.Recipes)
+      // this.listButtons()
+      // console.log(this.Recipes)
     })
   }
 
-  listButtons() {
-    // tableau d'appareils - ingredient - ustensils triés
-    let tabAppliance = [] // tableau appareil vide
-    let tabIngredients = [] //  tableau d'ingredients vide
-    let tabUstensils = [] // tableau ustensils vide
-    this.Recipes.forEach((recipe) => {
-      recipe.ingredients.map((element) => {
-        tabIngredients.push(element.ingredient)
-        tabIngredients = [...new Set(tabIngredients)]
-        // console.log('liste Ingredients: ', tabIngredients)
-      })
-
-      tabAppliance.push(recipe.appliance)
-      // j'édite un nouveau tableau sans les doublons
-      tabAppliance = [...new Set(tabAppliance)]
-      // console.log('liste Appareils: ', tabAppliance)
-
-      recipe.ustensils.map((element) => {
-        tabUstensils.push(element)
-        tabUstensils = [...new Set(tabUstensils)]
-        // console.log('liste Ustensils: ', tabUstensils)
-      })
-    })
-
+  listFiltered() {
     //une fois filtré - la liste est a jour mais qu'àpres la recherche
     const btnMenuAppareil = document.querySelector('#btnMenuAppareil')
     const btnMenuIngredients = document.querySelector('#btnMenuIngredients')
@@ -78,6 +57,8 @@ export class MainApp {
     const dropdown = document.querySelector('.dropdown')
 
     btnMenuAppareil.addEventListener('click', () => {
+      let tabAppliance = listButtons(this.Recipes).tabAppliance
+      console.log(tabAppliance)
       if (dropdown.classList.contains('hidden')) {
         dropdown.textContent = tabAppliance
         dropdown.classList.remove('hidden')
@@ -87,6 +68,7 @@ export class MainApp {
       }
     })
     btnMenuIngredients.addEventListener('click', () => {
+      let tabIngredients = listButtons(this.Recipes).tabIngredients
       if (dropdown.classList.contains('hidden')) {
         dropdown.textContent = tabIngredients
         dropdown.classList.remove('hidden')
@@ -96,6 +78,7 @@ export class MainApp {
       }
     })
     btnMenuUstensils.addEventListener('click', () => {
+      let tabUstensils = listButtons(this.Recipes).tabUstensils
       if (dropdown.classList.contains('hidden')) {
         dropdown.textContent = tabUstensils
         dropdown.classList.remove('hidden')
@@ -109,7 +92,7 @@ export class MainApp {
   init() {
     this.displayCardRecipes(this.Recipes)
     this.inputSearch()
-    this.listButtons()
+    this.listFiltered()
   }
 }
 

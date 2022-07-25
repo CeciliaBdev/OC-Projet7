@@ -43,8 +43,8 @@ export class CardRecipes {
     const listeIngredients = this.listNomIngredients()
 
     const cardRecipe = `<div class="rounded-lg shadow-lg bg-white max-w-sm">
-                        <img src="./assets/recettes/fond-gris.jpeg" alt="image de la recette" />
-                        <div class="infos_recette " >
+                        <img src="./assets/recettes/fond-gris.jpeg"  alt="image de la recette" />
+                        <div class="infos_recette flex" >
                           <div>${this.name}</div>
                           <div><i class="fab fa-adn"></i>${this.time} min</div>
                         </div>
