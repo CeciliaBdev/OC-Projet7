@@ -225,7 +225,7 @@ export const recipesData = [
     ],
     time: 50,
     description:
-      "Commencez par mélanger les oeufs le sucre et le sucre vanillé dans un saladier, découper les pommes en tranches, ajouter la crème fraiche aux oeufs. Une fois que tout est pret, étalez la tarte dans le moule. N'oubliez pas de piquer le fond avec une fourchette avant depositionner les pommes sur la tarte. Finalement verser la préparation à base d'oeufs et de crême fraiche. Laisser cuire au four pendant 30 minutes",
+      "Commencez par mélanger les oeufs le sucre et le sucre vanillé dans un saladier, découper les pommes en tranches, ajouter la crème fraiche aux oeufs. Une fois que tout est pret, étalez la tarte dans le moule. N'oubliez pas de piquer le fond avec une fourchette avant depositionner les pommes sur la tarte. Finalement verser la préparation à base d'oeufs et de crème fraiche. Laisser cuire au four pendant 30 minutes",
     appliance: 'Four',
     ustensils: ['moule à tarte', 'saladier', 'fourchette'],
   },
@@ -260,7 +260,7 @@ export const recipesData = [
     ],
     time: 50,
     description:
-      "Etaler la pate dans les moules à tartelette. Faire cuire la pate 30 minutes. Découper le chocolat en morceau et le faire chauffer, y ajouter la crême liquide, ajouter le beurre et remuer jusqu'à avoir une pâte homogène. Verser la pate sur les tartelettes. Couper les fraises en 2 et les positionner sur ",
+      "Etaler la pate dans les moules à tartelette. Faire cuire la pate 30 minutes. Découper le chocolat en morceau et le faire chauffer, y ajouter la crème liquide, ajouter le beurre et remuer jusqu'à avoir une pâte homogène. Verser la pate sur les tartelettes. Couper les fraises en 2 et les positionner sur ",
     appliance: 'Four',
     ustensils: ['moule à tartelettes (6)', 'casserole'],
   },
@@ -470,7 +470,7 @@ export const recipesData = [
         unit: 'cuillère à soupe',
       },
       {
-        ingredient: "huile d'olive",
+        ingredient: "Huile d'olive",
         quantity: 2,
         unit: 'cuillère à soupe',
       },
@@ -586,7 +586,7 @@ export const recipesData = [
         unit: 'tiges',
       },
       {
-        ingredient: "huile d'olives",
+        ingredient: "Huile d'olive",
         quantity: 2,
         unit: 'cuillère à soupe',
       },
@@ -716,14 +716,14 @@ export const recipesData = [
         unit: 'grammes',
       },
       {
-        ingredient: "huile d'olive",
+        ingredient: "Huile d'olive",
         quantity: 1,
         unit: 'cuillères à soupe',
       },
     ],
     time: 30,
     description:
-      "Faire cuire les pates comme indiqué sur le paquet. Dorer les lardons dans une sauteuse avec l'huile d'olive. Ajouter la crême fraiche et baisser le feu au minimum. Quand les Tagliatelles sont prêtes les mettre dans la sauteuse et bien mélanger le tout en ajoutant le jaune d'oeuf. Servir et ajouter le parmesan râpé.",
+      "Faire cuire les pates comme indiqué sur le paquet. Dorer les lardons dans une sauteuse avec l'huile d'olive. Ajouter la crème fraiche et baisser le feu au minimum. Quand les Tagliatelles sont prêtes les mettre dans la sauteuse et bien mélanger le tout en ajoutant le jaune d'oeuf. Servir et ajouter le parmesan râpé.",
     appliance: 'Sauteuse',
     ustensils: ['râpe à fromage', 'cuillère en bois'],
   },
@@ -757,7 +757,7 @@ export const recipesData = [
         unit: 'cl',
       },
       {
-        ingredient: 'Crème Fraiche',
+        ingredient: 'Crème fraiche',
         quantity: 1,
         unit: 'cuillères à soupe',
       },
@@ -765,7 +765,7 @@ export const recipesData = [
     time: 30,
     description:
       'Cuisiner la viande hachée dans une poelle à frire. Dans une autre faire cuire les oignons découpés en fins dés avec un peu de beurre. Ajouter du vin rouge. Mélanger les oigons avec la viande hachée. Faire cuire les pates le temps indiqué sur le paquet. Ajouter le coulis de tomates à la viande hachée. Une fois que les pates sont cuites, ajouter la crème fraiche à la viande hachée. Serivir.',
-    appliance: 'Casserole.',
+    appliance: 'Casserole',
     ustensils: ['Cuillère en bois', 'louche', 'couteau'],
   },
   {
@@ -800,7 +800,7 @@ export const recipesData = [
     ],
     time: 30,
     description:
-      "Faire fondre le chocolat et le beurre au bain marie. Dans un saladier battre les oeufs avec le sucre jusqu'à obtenir une texture de type mousse. Ajouter la farine ainsi que le mélange de beurre et chocolat fondu. Beurrez le moule à gateaux. Mettre au four préchauffé à 200° puis faites chauffer pendant 15 minutes. C'est prêt. Servir avec une boule de glace ou une crême dessert.",
+      "Faire fondre le chocolat et le beurre au bain marie. Dans un saladier battre les oeufs avec le sucre jusqu'à obtenir une texture de type mousse. Ajouter la farine ainsi que le mélange de beurre et chocolat fondu. Beurrez le moule à gateaux. Mettre au four préchauffé à 200° puis faites chauffer pendant 15 minutes. C'est prêt. Servir avec une boule de glace ou une crème dessert.",
     appliance: 'Four',
     ustensils: ['moule à gateaux', 'fouet', 'casserole'],
   },
@@ -829,7 +829,7 @@ export const recipesData = [
         quantity: 3,
       },
       {
-        ingredient: 'Crème Fraîche',
+        ingredient: 'Crème fraiche',
         quantity: 20,
         unit: 'cl',
       },
@@ -935,7 +935,7 @@ export const recipesData = [
         quantity: 1,
       },
       {
-        ingredient: "Huile d'olives",
+        ingredient: "Huile d'olive",
       },
       {
         ingredient: 'Oignon',
@@ -967,7 +967,7 @@ export const recipesData = [
         quantity: 1,
       },
       {
-        ingredient: 'Crème fraîche',
+        ingredient: 'Crème fraiche',
         quantity: 4,
         unit: 'cuillère à soupe',
       },
@@ -984,7 +984,7 @@ export const recipesData = [
     ],
     time: 15,
     description:
-      "Faire fondre l'oseille avec du beurre demi sel, ajouter un litre d'eau. Ajouter les vermicelles. Laisser cuire. une foit prêt, sortir du feu et après 5 minutes ajouter le jaune d'oeuf et la crême fraîche",
+      "Faire fondre l'oseille avec du beurre demi sel, ajouter un litre d'eau. Ajouter les vermicelles. Laisser cuire. une foit prêt, sortir du feu et après 5 minutes ajouter le jaune d'oeuf et la crème fraîche",
     appliance: 'Casserole',
     ustensils: ['couteau', 'cuillère en bois'],
   },
@@ -1013,7 +1013,7 @@ export const recipesData = [
         unit: 'grammes',
       },
       {
-        ingredient: 'Crême fraîche',
+        ingredient: 'Crème fraiche',
         quantity: 10,
         unit: 'cl',
       },
@@ -1101,7 +1101,7 @@ export const recipesData = [
         unit: 'grammes',
       },
       {
-        ingredient: 'Petits poids',
+        ingredient: 'Petits pois',
         quantity: 100,
         unit: 'grammes',
       },
@@ -1206,7 +1206,7 @@ export const recipesData = [
         unit: 'grammes',
       },
       {
-        ingredient: 'Crème fraîche',
+        ingredient: 'Crème fraiche',
         quantity: 20,
         unit: 'cl',
       },
@@ -1243,7 +1243,7 @@ export const recipesData = [
         unit: 'grammes',
       },
       {
-        ingredient: 'Crème fraîche',
+        ingredient: 'Crème fraiche',
         quantity: 2,
         unit: 'cuillères à soupe',
       },
@@ -1319,7 +1319,7 @@ export const recipesData = [
         unit: 'grammes',
       },
       {
-        ingredient: "Huile d'olives",
+        ingredient: "Huile d'olive",
         quantity: 25,
         unit: 'cl',
       },
@@ -1657,7 +1657,7 @@ export const recipesData = [
         unit: 'grammes',
       },
       {
-        ingredient: 'Crème Fraîche',
+        ingredient: 'Crème fraiche',
         quantity: 20,
         unit: 'cl',
       },

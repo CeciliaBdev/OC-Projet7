@@ -57,7 +57,7 @@ export class MainApp {
     const dropdown = document.querySelector('.dropdown')
 
     btnMenuAppareil.addEventListener('click', () => {
-      let tabAppliance = listButtons(this.Recipes).tabAppliance
+      let tabAppliance = listButtons(this.Recipes).tabAppliance.sort()
 
       if (dropdown.classList.contains('hidden')) {
         // je mets sous forme de liste mon tableau
@@ -75,7 +75,7 @@ export class MainApp {
       }
     })
     btnMenuIngredients.addEventListener('click', () => {
-      let tabIngredients = listButtons(this.Recipes).tabIngredients
+      let tabIngredients = listButtons(this.Recipes).tabIngredients.sort()
       if (dropdown.classList.contains('hidden')) {
         dropdown.innerHTML = `${tabIngredients
           .map(
@@ -90,7 +90,8 @@ export class MainApp {
       }
     })
     btnMenuUstensils.addEventListener('click', () => {
-      let tabUstensils = listButtons(this.Recipes).tabUstensils
+      let tabUstensils = listButtons(this.Recipes).tabUstensils.sort()
+
       if (dropdown.classList.contains('hidden')) {
         dropdown.innerHTML = `${tabUstensils
           .map(
@@ -118,9 +119,6 @@ const app = new MainApp()
 app.init()
 
 // a faire
-// mise en page des list :
-// sans le ',' et en colonne ?
-//flex wrap ?
 
 //enlever dans les liste
 // les majuscules

@@ -44,13 +44,13 @@ export class CardRecipes {
 
     const cardRecipe = `<div class="rounded-lg shadow-lg bg-white max-w-sm">
                         <img src="./assets/recettes/fond-gris.jpeg"  alt="image de la recette" />
-                        <div class="infos_recette flex" >
+                        <div class="infos_recette flex justify-around" >
                           <div>${this.name}</div>
                           <div><i class="fab fa-adn"></i>${this.time} min</div>
                         </div>
-                        <div class="description_recette ">
+                        <div class="description_recette flex justify-around ">
                           <div class="ingredients">${listeIngredients}</div>
-                          <div class="description"></div>
+                          <div class="description">Ici se trouvera la description de la recette</div>
                         </div>
                         </div>`
 
@@ -62,3 +62,5 @@ export class CardRecipes {
 // taille des deux blocs ?
 
 //retour en arriere recherche ne fonctionne pas
+
+// liste ingredients en colonne
