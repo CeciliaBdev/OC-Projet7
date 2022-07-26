@@ -32,9 +32,6 @@ export function filterInput(recipesData) {
   return recipesData
 }
 
-// a rajouter : regex pour les accents sur les lettres => a = a à â ...
-// a rajouter : condition : sans accent, espaces, ...
-
 //quand je reviens en arrière, revenir sur l'affichage de toutes les recettes
 
 // apparition des tags ?

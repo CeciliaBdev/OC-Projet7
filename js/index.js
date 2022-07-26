@@ -64,7 +64,7 @@ export class MainApp {
         dropdownAppareils.innerHTML = `${tabAppliance
           .map(
             (element) => `
-        <li class="ingredients-list hover:bg-green-700 p-1">${element}</li>`
+        <li class="ingredients-list hover:bg-green-700 p-1 list-none cursor-pointer"">${element}</li>`
           )
           .join(' ')}`
         //dropdown.innerHTML = `<li>${tabAppliance}s</li>`
@@ -81,7 +81,7 @@ export class MainApp {
         dropdownIngredients.innerHTML = `${tabIngredients
           .map(
             (element) => `
-        <li class="ingredients-list hover:bg-blue-700 p-1">${element}</li>`
+        <li class="ingredients-list hover:bg-blue-700 p-1 list-none cursor-pointer"">${element}</li>`
           )
           .join(' ')}`
         dropdownIngredients.classList.remove('hidden')
@@ -97,7 +97,7 @@ export class MainApp {
         dropdownUstensils.innerHTML = `${tabUstensils
           .map(
             (element) => `
-        <li class="ingredients-list hover:bg-red-700 p-1">${element}</li>`
+        <li class="ingredients-list hover:bg-red-700 p-1 list-none cursor-pointer"">${element}</li>`
           )
           .join(' ')}`
         dropdownUstensils.classList.remove('hidden')
@@ -118,10 +118,3 @@ export class MainApp {
 // initialisation
 const app = new MainApp()
 app.init()
-
-// a faire
-
-//enlever dans les liste
-// les majuscules
-//ponctuation
-//chiffres

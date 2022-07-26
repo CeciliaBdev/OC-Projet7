@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Les petits plats</title>
@@ -34,21 +37,16 @@
                 min-w-0
                 block
                 w-full
-                px-3
-                py-3
+                p-4
                 font-normal
-                bg-clip-padding
-                border border-solid border-gray-300
+                bg-gray-100 bg-clip-padding
                 rounded
                 transition
                 ease-in-out
                 m-0
-                focus:text-gray-700
-                focus:bg-white
-                focus:border-blue-600
-                focus:outline-none
+                focus:text-gray-700 focus:border-blue-600 focus:outline-none
               "
-              placeholder="Search"
+              placeholder="Rechercher une recette"
               aria-label="Search"
               aria-describedby="button-addon2"
             />
@@ -58,11 +56,13 @@
                 flex
                 px-3
                 py-1.5
-                text-base
                 font-normal
                 text-gray-700 text-center
                 whitespace-nowrap
                 rounded
+                absolute
+                right-2.5
+                bottom-2.5
               "
               id="basic-addon2"
             >
@@ -88,13 +88,24 @@
 
       <div class="buttons mt-8 mb-8 flex">
         <div>
-          <button
+          <ul
             type="button"
-            class="bg-blue-500 text-white font-bold py-4 px-8 rounded mr-4"
-            id="btnMenuIngredients"
+            class="
+              bg-blue-500
+              text-white
+              font-bold
+              py-4
+              px-8
+              rounded
+              mr-4
+              flex
+              gap-7
+              items-center
+            "
           >
             Ingredients
-          </button>
+            <i class="fas fa-chevron-down" id="btnMenuIngredients"></i>
+          </ul>
           <div
             class="
               dropdownIngredients
@@ -144,8 +155,8 @@
         </div>
       </div>
       <div class="container_card_recipes">
-        <div class="grid-cols-3">
-          <div class="" id="card_container"></div>
+        <div class="grid-cols-3 content-center">
+          <div id="card_container"></div>
         </div>
       </div>
     </div>
