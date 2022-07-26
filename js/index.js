@@ -50,59 +50,60 @@ export class MainApp {
   }
 
   listFiltered() {
-    //une fois filtré - la liste est a jour mais qu'àpres la recherche
     const btnMenuAppareil = document.querySelector('#btnMenuAppareil')
     const btnMenuIngredients = document.querySelector('#btnMenuIngredients')
     const btnMenuUstensils = document.querySelector('#btnMenuUstensils')
-    const dropdown = document.querySelector('.dropdown')
+    const dropdownIngredients = document.querySelector('.dropdownIngredients')
+    const dropdownAppareils = document.querySelector('.dropdownAppareils')
+    const dropdownUstensils = document.querySelector('.dropdownUstensils')
 
     btnMenuAppareil.addEventListener('click', () => {
       let tabAppliance = listButtons(this.Recipes).tabAppliance.sort()
-
-      if (dropdown.classList.contains('hidden')) {
+      if (dropdownAppareils.classList.contains('hidden')) {
         // je mets sous forme de liste mon tableau
-        dropdown.innerHTML = `${tabAppliance
+        dropdownAppareils.innerHTML = `${tabAppliance
           .map(
             (element) => `
-        <li class="ingredients-list">${element}</li>`
+        <li class="ingredients-list hover:bg-green-700 p-1">${element}</li>`
           )
           .join(' ')}`
         //dropdown.innerHTML = `<li>${tabAppliance}s</li>`
-        dropdown.classList.remove('hidden')
+        dropdownAppareils.classList.remove('hidden')
       } else {
-        dropdown.classList.add('hidden')
-        dropdown.textContent = ''
+        dropdownAppareils.classList.add('hidden')
+        dropdownAppareils.textContent = ''
       }
     })
+
     btnMenuIngredients.addEventListener('click', () => {
       let tabIngredients = listButtons(this.Recipes).tabIngredients.sort()
-      if (dropdown.classList.contains('hidden')) {
-        dropdown.innerHTML = `${tabIngredients
+      if (dropdownIngredients.classList.contains('hidden')) {
+        dropdownIngredients.innerHTML = `${tabIngredients
           .map(
             (element) => `
-        <li class="ingredients-list">${element}</li>`
+        <li class="ingredients-list hover:bg-blue-700 p-1">${element}</li>`
           )
           .join(' ')}`
-        dropdown.classList.remove('hidden')
+        dropdownIngredients.classList.remove('hidden')
       } else {
-        dropdown.classList.add('hidden')
-        dropdown.textContent = ''
+        dropdownIngredients.classList.add('hidden')
+        dropdownIngredients.textContent = ''
       }
     })
+
     btnMenuUstensils.addEventListener('click', () => {
       let tabUstensils = listButtons(this.Recipes).tabUstensils.sort()
-
-      if (dropdown.classList.contains('hidden')) {
-        dropdown.innerHTML = `${tabUstensils
+      if (dropdownUstensils.classList.contains('hidden')) {
+        dropdownUstensils.innerHTML = `${tabUstensils
           .map(
             (element) => `
-        <li class="ingredients-list">${element}</li>`
+        <li class="ingredients-list hover:bg-red-700 p-1">${element}</li>`
           )
           .join(' ')}`
-        dropdown.classList.remove('hidden')
+        dropdownUstensils.classList.remove('hidden')
       } else {
-        dropdown.classList.add('hidden')
-        dropdown.textContent = ''
+        dropdownUstensils.classList.add('hidden')
+        dropdownUstensils.textContent = ''
       }
     })
   }
