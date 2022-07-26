@@ -86,25 +86,16 @@
         </div>
       </div>
 
-      <div class="buttons mt-8 mb-8 flex">
+      <div class="buttons mt-8 mb-8 flex gap-4">
         <div>
           <ul
             type="button"
-            class="
-              bg-blue-500
-              text-white
-              font-bold
-              py-4
-              px-8
-              rounded
-              mr-4
-              flex
-              gap-7
-              items-center
-            "
+            class="bg-blue-500 text-white font-bold py-4 px-6 rounded"
           >
-            Ingredients
-            <i class="fas fa-chevron-down" id="btnMenuIngredients"></i>
+            <li class="flex gap-7 ingredientText items-center">
+              Ingredients
+              <i class="fas fa-chevron-down" id="btnMenuIngredients"></i>
+            </li>
           </ul>
           <div
             class="
@@ -112,7 +103,7 @@
               bg-blue-500
               grid grid-cols-3
               text-sm text-white
-              rounded
+              rounded-b
             "
           >
             <ul class="hidden"></ul>
@@ -120,34 +111,38 @@
         </div>
 
         <div>
-          <button
+          <ul
             type="button"
-            class="bg-green-500 text-white font-bold py-4 px-8 rounded mr-4"
-            id="btnMenuAppareil"
+            class="bg-green-500 text-white font-bold py-4 px-6 rounded"
           >
-            Appareils
-          </button>
+            <li class="flex gap-7 items-center">
+              Appareils
+              <i class="fas fa-chevron-down" id="btnMenuAppareil"></i>
+            </li>
+          </ul>
           <div
-            class="dropdownAppareils bg-green-500 text-sm text-white rounded"
+            class="dropdownAppareils bg-green-500 text-sm text-white rounded-b"
           >
             <ul class="hidden"></ul>
           </div>
         </div>
         <div>
-          <button
+          <ul
             type="button"
-            class="bg-red-500 text-white font-bold py-4 px-8 rounded"
-            id="btnMenuUstensils"
+            class="bg-red-500 text-white font-bold py-4 px-6 rounded"
           >
-            Ustensiles
-          </button>
+            <li class="flex gap-7 ustensilText items-center">
+              Ustensils
+              <i class="fas fa-chevron-down" id="btnMenuUstensils"></i>
+            </li>
+          </ul>
           <div
             class="
               dropdownUstensils
               bg-red-500
               text-sm text-white
               grid grid-cols-2
-              rounded
+              rounded-b
             "
           >
             <ul class="hidden"></ul>

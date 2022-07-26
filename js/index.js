@@ -49,6 +49,7 @@ export class MainApp {
     })
   }
 
+  // affichage des listes buttons
   listFiltered() {
     const btnMenuAppareil = document.querySelector('#btnMenuAppareil')
     const btnMenuIngredients = document.querySelector('#btnMenuIngredients')
@@ -73,6 +74,8 @@ export class MainApp {
         dropdownAppareils.classList.add('hidden')
         dropdownAppareils.textContent = ''
       }
+      // const buttonAppareil = document.querySelector('li.ingredientText')
+      // buttonIngredient.classList.add('justify-between')
     })
 
     btnMenuIngredients.addEventListener('click', () => {
@@ -89,6 +92,9 @@ export class MainApp {
         dropdownIngredients.classList.add('hidden')
         dropdownIngredients.textContent = ''
       }
+      // li ingredientText
+      const buttonIngredient = document.querySelector('li.ingredientText')
+      buttonIngredient.classList.add('justify-between')
     })
 
     btnMenuUstensils.addEventListener('click', () => {
@@ -105,13 +111,32 @@ export class MainApp {
         dropdownUstensils.classList.add('hidden')
         dropdownUstensils.textContent = ''
       }
+      // li ustensilText
+      const buttonUstensil = document.querySelector('li.ustensilText')
+      buttonUstensil.classList.add('justify-between')
     })
+
+    const containerButtons = document.querySelector('.buttons')
+    const chevrons = containerButtons.querySelectorAll('.fas')
+    console.log(chevrons)
+
+    //rotation chevron ok -  mais bug 1er click
+    // chevrons.forEach((chevron) => {
+    //   chevron.addEventListener('click', () => {
+    //     console.log('test')
+    //     chevron.classList.toggle('rotate-180')
+    //   })
+    // })
   }
+
+  // recherche par tag
+  searchTag() {}
 
   init() {
     this.displayCardRecipes(this.Recipes)
     this.inputSearch()
     this.listFiltered()
+    this.searchTag()
   }
 }
 

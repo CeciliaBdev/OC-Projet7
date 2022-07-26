@@ -2,18 +2,14 @@ header img {
   width: 300px;
 }
 
-.infos_recette {
-  height: 100px;
-}
+/* .infos_recette {
+  height: 60px;
+} */
 .container_card_recipes article {
   /* border: 1px solid #333; */
   border-radius: 5px;
 }
-article img {
-  object-fit: cover;
-  width: 100%;
-  border-radius: 5px 5px 0 0;
-}
+
 .col-12 article {
   background: #e7e7e7;
   margin: 10px;
@@ -25,8 +21,10 @@ article img {
 .container {
   margin: 50px 100px;
 }
-
-/* liste a puces button */
-.buttons li {
-  list-style: none;
+.cardRecipe {
+  height: 450px;
+  background-color: #e7e7e7;
+}
+.bgImg {
+  background-color: #c7bebe;
 }
