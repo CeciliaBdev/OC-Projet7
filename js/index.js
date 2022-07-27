@@ -1,7 +1,7 @@
 // Fichier principal qui importent les données et fonctions des autres fichiers
 import { recipesData } from '../data/recipes.js'
 import { CardRecipes } from '../js/RecipesCard.js'
-import { filterInput } from '../js/search.js'
+import { filterInput } from './searchInput.js'
 import { listButtons } from './list.js'
 
 // info données recette
@@ -116,11 +116,9 @@ export class MainApp {
       buttonUstensil.classList.add('justify-between')
     })
 
-    const containerButtons = document.querySelector('.buttons')
-    const chevrons = containerButtons.querySelectorAll('.fas')
-    console.log(chevrons)
-
     //rotation chevron ok -  mais bug 1er click
+    // const containerButtons = document.querySelector('.buttons')
+    // const chevrons = containerButtons.querySelectorAll('.fas')
     // chevrons.forEach((chevron) => {
     //   chevron.addEventListener('click', () => {
     //     console.log('test')
@@ -130,7 +128,32 @@ export class MainApp {
   }
 
   // recherche par tag
-  searchTag() {}
+  searchTag() {
+    // changement placeholder
+    const searchIngredient = document.querySelector('.searchInputButton')
+    searchIngredient.addEventListener('click', () => {
+      searchIngredient.placeholder = 'Rechercher un ingredient'
+      searchIngredient.classList.add('font-light', 'w-48')
+    })
+
+    // à la recherche au clavier => fonction recherche/tri
+    tagIngredient(listButtons(this.Recipes).tabIngredients)
+
+    function tagIngredient(tab) {
+      const inputSearch = document.querySelector('.ingredientText input')
+      inputSearch.addEventListener('keyup', () => {
+        const resultat = inputSearch.value
+        console.log('resultat ,', resultat)
+        let tagIngredient = tab.filter(function (item) {
+          return item.includes(String(resultat))
+        })
+        console.log(tagIngredient)
+        return tagIngredient
+      })
+    }
+
+    // au click sur un element de la liste
+  }
 
   init() {
     this.displayCardRecipes(this.Recipes)

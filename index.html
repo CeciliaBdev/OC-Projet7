@@ -88,12 +88,19 @@
 
       <div class="buttons mt-8 mb-8 flex gap-4">
         <div>
-          <ul
-            type="button"
-            class="bg-blue-500 text-white font-bold py-4 px-6 rounded"
-          >
-            <li class="flex gap-7 ingredientText items-center">
-              Ingredients
+          <ul class="bg-blue-500 text-white font-bold py-4 px-6 rounded">
+            <li class="flex ingredientText items-center">
+              <input
+                type="text"
+                class="
+                  searchInputButton
+                  font-bold
+                  bg-blue-500
+                  focus:text-white focus:border-blue-600 focus:outline-none
+                  placeholder-white
+                "
+                placeholder="Ingredients"
+              />
               <i class="fas fa-chevron-down" id="btnMenuIngredients"></i>
             </li>
           </ul>
@@ -111,10 +118,7 @@
         </div>
 
         <div>
-          <ul
-            type="button"
-            class="bg-green-500 text-white font-bold py-4 px-6 rounded"
-          >
+          <ul class="bg-green-500 text-white font-bold py-4 px-6 rounded">
             <li class="flex gap-7 items-center">
               Appareils
               <i class="fas fa-chevron-down" id="btnMenuAppareil"></i>
@@ -127,10 +131,7 @@
           </div>
         </div>
         <div>
-          <ul
-            type="button"
-            class="bg-red-500 text-white font-bold py-4 px-6 rounded"
-          >
+          <ul class="bg-red-500 text-white font-bold py-4 px-6 rounded">
             <li class="flex gap-7 ustensilText items-center">
               Ustensils
               <i class="fas fa-chevron-down" id="btnMenuUstensils"></i>

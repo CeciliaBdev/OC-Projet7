@@ -3,7 +3,7 @@ export function filterInput(recipesData) {
   const inputSearch = document.querySelector('.container input')
   const placeRecipe = document.querySelector('#card_container')
   const resultat = inputSearch.value
-  //console.log('resultat ,', resultat)
+  console.log('resultat ,', resultat)
   const nbCaractere = resultat.length
   // console.log('nb , ', nbCaractere)
 
