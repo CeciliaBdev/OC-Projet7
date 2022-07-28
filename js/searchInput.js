@@ -1,9 +1,10 @@
 // ma function de recherche dans l'input avec un filter
-export function filterInput(recipesData) {
-  const inputSearch = document.querySelector('.container input')
+export function filterInput(recipesData, inputElement) {
+  // const inputSearch = document.querySelector('.container input')
+  // const inputSearch = document.querySelector('#searchIngredients')
   const placeRecipe = document.querySelector('#card_container')
-  const resultat = inputSearch.value
-  console.log('resultat ,', resultat)
+  const resultat = inputElement.value
+  // console.log('resultat ,', resultat)
   const nbCaractere = resultat.length
   // console.log('nb , ', nbCaractere)
 

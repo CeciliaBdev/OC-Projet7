@@ -32,14 +32,15 @@ export class MainApp {
   }
 
   // Recherche
-  // selectionne l'input
+  // selectionne l'input barre de recherche
   inputSearch() {
     const inputSearch = document.querySelector('.container input')
 
     // evenement : recupere en temps réel le champ input (tapé au clavier)
     inputSearch.addEventListener('keyup', () => {
+      this.Recipes = recipesData
       // j'appelle ma fonction filterInput du fichier search.
-      this.Recipes = filterInput(this.Recipes)
+      this.Recipes = filterInput(this.Recipes, inputSearch)
       //let tabfiltered = filterInput(recipesData)
       // affichage des cartes filtrées
       this.displayCardRecipes(this.Recipes)
@@ -59,13 +60,14 @@ export class MainApp {
     const dropdownUstensils = document.querySelector('.dropdownUstensils')
 
     btnMenuAppareil.addEventListener('click', () => {
+      // je liste les ingredients suivant ma recherche filterInput sur this.Recipes
       let tabAppliance = listButtons(this.Recipes).tabAppliance.sort()
       if (dropdownAppareils.classList.contains('hidden')) {
         // je mets sous forme de liste mon tableau
         dropdownAppareils.innerHTML = `${tabAppliance
           .map(
             (element) => `
-        <li class="ingredients-list hover:bg-green-700 p-1 list-none cursor-pointer"">${element}</li>`
+        <li class="appareils-list hover:bg-green-700 p-1 list-none cursor-pointer">${element}</li>`
           )
           .join(' ')}`
         //dropdown.innerHTML = `<li>${tabAppliance}s</li>`
@@ -84,7 +86,7 @@ export class MainApp {
         dropdownIngredients.innerHTML = `${tabIngredients
           .map(
             (element) => `
-        <li class="ingredients-list hover:bg-blue-700 p-1 list-none cursor-pointer"">${element}</li>`
+        <li class="ingredients-list hover:bg-blue-700 p-1 list-none cursor-pointer">${element}</li>`
           )
           .join(' ')}`
         dropdownIngredients.classList.remove('hidden')
@@ -95,6 +97,9 @@ export class MainApp {
       // li ingredientText
       const buttonIngredient = document.querySelector('li.ingredientText')
       buttonIngredient.classList.add('justify-between')
+
+      // appelle de la fct pour créer les tag
+      this.displayTag()
     })
 
     btnMenuUstensils.addEventListener('click', () => {
@@ -103,7 +108,7 @@ export class MainApp {
         dropdownUstensils.innerHTML = `${tabUstensils
           .map(
             (element) => `
-        <li class="ingredients-list hover:bg-red-700 p-1 list-none cursor-pointer"">${element}</li>`
+        <li class="ustensils-list hover:bg-red-700 p-1 list-none cursor-pointer">${element}</li>`
           )
           .join(' ')}`
         dropdownUstensils.classList.remove('hidden')
@@ -116,19 +121,19 @@ export class MainApp {
       buttonUstensil.classList.add('justify-between')
     })
 
-    //rotation chevron ok -  mais bug 1er click
-    // const containerButtons = document.querySelector('.buttons')
-    // const chevrons = containerButtons.querySelectorAll('.fas')
-    // chevrons.forEach((chevron) => {
-    //   chevron.addEventListener('click', () => {
-    //     console.log('test')
-    //     chevron.classList.toggle('rotate-180')
-    //   })
-    // })
+    // rotation chevron au click
+    const containerButtons = document.querySelector('.buttons')
+    const chevrons = containerButtons.querySelectorAll('.fas')
+    chevrons.forEach((chevron) => {
+      chevron.addEventListener('click', () => {
+        //console.log('test')
+        chevron.classList.toggle('rotate-180')
+      })
+    })
   }
 
-  // recherche par tag
-  searchTag() {
+  // recherche dans l'input bouton Ingredient
+  inputSearchIngredients() {
     // changement placeholder
     const searchIngredient = document.querySelector('.searchInputButton')
     searchIngredient.addEventListener('click', () => {
@@ -136,33 +141,68 @@ export class MainApp {
       searchIngredient.classList.add('font-light', 'w-48')
     })
 
-    // à la recherche au clavier => fonction recherche/tri
-    tagIngredient(listButtons(this.Recipes).tabIngredients)
+    const inputSearchIngredients = document.querySelector('#searchIngredients')
 
-    function tagIngredient(tab) {
-      const inputSearch = document.querySelector('.ingredientText input')
-      inputSearch.addEventListener('keyup', () => {
-        const resultat = inputSearch.value
-        console.log('resultat ,', resultat)
-        let tagIngredient = tab.filter(function (item) {
-          return item.includes(String(resultat))
-        })
-        console.log(tagIngredient)
-        return tagIngredient
+    // evenement : recupere en temps réel le champ input (tapé au clavier)
+    inputSearchIngredients.addEventListener('keyup', () => {
+      this.Recipes = recipesData
+      // j'appelle ma fonction filterInput du fichier search.
+      this.Recipes = filterInput(this.Recipes, inputSearchIngredients)
+      //let tabfiltered = filterInput(recipesData)
+      // affichage des cartes filtrées
+      this.displayCardRecipes(this.Recipes)
+    })
+  }
+
+  // au click sur un element de la liste
+  displayTag() {
+    // Click ingredients, selectionne son text value, pour cela :
+    // Liste des <li> ingredients
+    // Faire un foreach pour avoir chaque <li>
+    // Pour chaque <li> faire un addeventlistener click
+    // l'addeventlistener récupérer le textvalue du <li>
+
+    const allLi = document.querySelectorAll('.ingredients-list')
+    const zoneTag = document.querySelector('.zoneTag')
+    // console.log('All li : ', allLi)
+    allLi.forEach((li) => {
+      // console.log(li)
+      li.addEventListener('click', () => {
+        let tag = li.textContent
+        console.log(tag)
+        zoneTag.innerHTML += tag
       })
-    }
+    })
 
-    // au click sur un element de la liste
+    // personnalisation des tag à faire
   }
 
   init() {
     this.displayCardRecipes(this.Recipes)
     this.inputSearch()
+    this.inputSearchIngredients()
     this.listFiltered()
-    this.searchTag()
   }
 }
 
 // initialisation
 const app = new MainApp()
 app.init()
+
+// Fait
+// recherche dans l'inout barre de recherche ok - affichage carte ok - liste ingredients ok
+// recherche input button ingredients ok - affichage carte ok
+
+// a faire
+// recherche sur les Boutons Appareils et Ustensils à variabiliser
+// Personnalisation des tags
+// A jout des tag avec Enter
+// Suppression des tags
+// creéation des listes - à variabiliser ??
+// position de la barre de recherche (depasse)
+//taille du bouton ingrédients trop grande ( à cause de l'inout à l'intérieur)
+// espacement entre icone et time dans la carte impossible à faire
+// réduire les titres des cartes quans ils sont trop long ? ou les mettres sur deux lignes ?
+//tailles des cartes qui depassent
+//centrage des cartes
+// dans la barre de recherche : recette ou n'importe quel mot ?

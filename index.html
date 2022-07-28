@@ -85,6 +85,8 @@
           </div>
         </div>
       </div>
+      <!-- emplacement des tags -->
+      <div class="zoneTag"></div>
 
       <div class="buttons mt-8 mb-8 flex gap-4">
         <div>
@@ -99,6 +101,7 @@
                   focus:text-white focus:border-blue-600 focus:outline-none
                   placeholder-white
                 "
+                id="searchIngredients"
                 placeholder="Ingredients"
               />
               <i class="fas fa-chevron-down" id="btnMenuIngredients"></i>
@@ -111,10 +114,9 @@
               grid grid-cols-3
               text-sm text-white
               rounded-b
+              hidden
             "
-          >
-            <ul class="hidden"></ul>
-          </div>
+          ></div>
         </div>
 
         <div>
@@ -125,10 +127,14 @@
             </li>
           </ul>
           <div
-            class="dropdownAppareils bg-green-500 text-sm text-white rounded-b"
-          >
-            <ul class="hidden"></ul>
-          </div>
+            class="
+              dropdownAppareils
+              bg-green-500
+              text-sm text-white
+              rounded-b
+              hidden
+            "
+          ></div>
         </div>
         <div>
           <ul class="bg-red-500 text-white font-bold py-4 px-6 rounded">
@@ -144,12 +150,12 @@
               text-sm text-white
               grid grid-cols-2
               rounded-b
+              hidden
             "
-          >
-            <ul class="hidden"></ul>
-          </div>
+          ></div>
         </div>
       </div>
+
       <div class="container_card_recipes">
         <div class="grid-cols-3 content-center">
           <div id="card_container"></div>

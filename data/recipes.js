@@ -60,7 +60,7 @@ export const recipesData = [
         quantity: 5,
       },
       {
-        ingredient: 'Lait de Coco',
+        ingredient: 'Lait de coco',
         quantity: 100,
         unit: 'ml',
       },
@@ -174,7 +174,7 @@ export const recipesData = [
         unit: 'cuillères à soupe',
       },
       {
-        ingredient: 'gruyère râpé',
+        ingredient: 'Gruyère râpé',
         quantity: 100,
         unit: 'grammes',
       },
@@ -200,7 +200,7 @@ export const recipesData = [
         quantity: 1,
       },
       {
-        ingredient: 'Pomme',
+        ingredient: 'Pommes',
         quantity: 3,
       },
       {
@@ -213,7 +213,7 @@ export const recipesData = [
         unit: 'cl',
       },
       {
-        ingredient: 'Sucre en Poudre',
+        ingredient: 'Sucre en poudre',
         quantity: 100,
         unit: 'grammes',
       },
@@ -289,12 +289,12 @@ export const recipesData = [
         quantity: 2,
       },
       {
-        ingredient: 'Sucre en Poudre',
+        ingredient: 'Sucre en poudre',
         quantity: '110',
         unit: 'grammes',
       },
       {
-        ingredient: 'farine',
+        ingredient: 'Farine',
         quantity: 90,
         unit: 'grammes',
       },
@@ -461,7 +461,7 @@ export const recipesData = [
         unit: 'grammes',
       },
       {
-        ingredient: 'Échalote',
+        ingredient: 'Echalote',
         quantity: 2,
       },
       {
@@ -747,7 +747,7 @@ export const recipesData = [
         unit: 'grammes',
       },
       {
-        ingredient: 'Viande hachée 1% de matière grasse',
+        ingredient: 'Viande hachée 1% de mg',
         quantity: 400,
         unit: 'grammes',
       },
@@ -1328,7 +1328,7 @@ export const recipesData = [
         quantity: 1,
       },
       {
-        ingredient: 'Coulis de tomates',
+        ingredient: 'Coulis de tomate',
         quantity: 20,
         unit: 'cl',
       },
@@ -1381,7 +1381,7 @@ export const recipesData = [
     servings: 40,
     ingredients: [
       {
-        ingredient: 'Pomme',
+        ingredient: 'Pommes',
         quantity: 2,
       },
       {
@@ -1553,7 +1553,7 @@ export const recipesData = [
         unit: 'grammes',
       },
       {
-        ingredient: 'farine',
+        ingredient: 'Farine',
         quantity: 40,
         unit: 'grammes',
       },
@@ -1710,11 +1710,11 @@ export const recipesData = [
     servings: 4,
     ingredients: [
       {
-        ingredient: 'Bananes',
+        ingredient: 'Banane',
         quantity: 2,
       },
       {
-        ingredient: 'Kiwis',
+        ingredient: 'Kiwi',
         quantity: 3,
       },
       {
