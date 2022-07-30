@@ -58,26 +58,26 @@ export class MainApp {
     const dropdownAppareils = document.querySelector('.dropdownAppareils')
     const dropdownUstensils = document.querySelector('.dropdownUstensils')
 
-    btnMenuAppareil.addEventListener('click', () => {
-      // je liste les ingredients suivant ma recherche filterInput sur this.Recipes
-      let tabAppliance = listButtons(this.Recipes).tabAppliance.sort()
-      if (dropdownAppareils.classList.contains('hidden')) {
-        // je mets sous forme de liste mon tableau
-        dropdownAppareils.innerHTML = `${tabAppliance
-          .map(
-            (element) => `
-        <li class="appareils-list hover:bg-green-700 p-1 list-none cursor-pointer" data-type="appareil">${element}</li>`
-          )
-          .join(' ')}`
-        //dropdown.innerHTML = `<li>${tabAppliance}s</li>`
-        dropdownAppareils.classList.remove('hidden')
-      } else {
-        dropdownAppareils.classList.add('hidden')
-        dropdownAppareils.textContent = ''
-      }
-      // const buttonAppareil = document.querySelector('li.ingredientText')
-      // buttonIngredient.classList.add('justify-between')
-    })
+    // btnMenuAppareil.addEventListener('click', () => {
+    //   // je liste les ingredients suivant ma recherche filterInput sur this.Recipes
+    //   let tabAppliance = listButtons(this.Recipes).tabAppliance.sort()
+    //   if (dropdownAppareils.classList.contains('hidden')) {
+    //     // je mets sous forme de liste mon tableau
+    //     dropdownAppareils.innerHTML = `${tabAppliance
+    //       .map(
+    //         (element) => `
+    //     <li class="appareils-list hover:bg-green-700 p-1 list-none cursor-pointer" data-type="appareil">${element}</li>`
+    //       )
+    //       .join(' ')}`
+    //     //dropdown.innerHTML = `<li>${tabAppliance}s</li>`
+    //     dropdownAppareils.classList.remove('hidden')
+    //   } else {
+    //     dropdownAppareils.classList.add('hidden')
+    //     dropdownAppareils.textContent = ''
+    //   }
+    //   // const buttonAppareil = document.querySelector('li.ingredientText')
+    //   // buttonIngredient.classList.add('justify-between')
+    // })
 
     // btnMenuIngredients.addEventListener('click', () => {
     //   let tabIngredients = listButtons(this.Recipes).tabIngredients.sort()
@@ -183,6 +183,58 @@ export class MainApp {
       this.displayTag()
     })
   }
+
+  // recherche dans l'input bouton Appareil
+  inputSearchAppareils() {
+    // changement placeholder
+    const searchAppareil = document.querySelector('.searchInputButtonAppareil')
+    searchAppareil.addEventListener('click', () => {
+      const buttonAppareil = document.querySelector('li.appareilText')
+      buttonAppareil.classList.add('justify-between')
+
+      searchAppareil.placeholder = 'Rechercher un appareil'
+      searchAppareil.classList.add('font-light', 'w-48')
+
+      const dropdownAppareils = document.querySelector('.dropdownAppareils')
+
+      let tabAppliance = listButtons(this.Recipes).tabAppliance.sort()
+      if (dropdownAppareils.classList.contains('hidden')) {
+        dropdownAppareils.innerHTML = `${tabAppliance
+          .map(
+            (element) => `
+        <li class="ingredients-list hover:bg-green-700 p-1 list-none cursor-pointer" data-type="appareil">${element}</li>`
+          )
+          .join(' ')}`
+        dropdownAppareils.classList.remove('hidden')
+      } else {
+        dropdownAppareils.classList.add('hidden')
+        dropdownAppareils.textContent = ''
+      }
+
+      const inputSearchAppareils = document.querySelector('#searchAppareils')
+      // recherche dans le tableau ingredient
+      inputSearchAppareils.addEventListener('keyup', () => {
+        let search = inputSearchAppareils.value
+
+        search = tabAppliance.filter(function (element) {
+          // je filtre mes recettes suivant le resultat compris dans le tableau d'ingredient
+          if (element.toLowerCase().includes(String(search))) {
+            return element
+          }
+        })
+        //mise en page du resultat sous forme de liste
+        dropdownAppareils.innerHTML = `${search
+          .map(
+            (element) => `
+        <li class="ingredients-list hover:bg-green-700 p-1 list-none cursor-pointer">${element}</li>`
+          )
+          .join(' ')}`
+        //console.log('search: ', search)
+        this.displayTag()
+      })
+      this.displayTag()
+    })
+  }
   // au click sur un element de la liste
   displayTag() {
     // Click ingredients, selectionne son text value, pour cela :
@@ -202,9 +254,14 @@ export class MainApp {
         zoneTag.innerHTML += tag
 
         // repère des tags suivant leur datatype
+        //couleur par style nok
+        //revoir les conditions
         if (li.dataset.type === 'ingredient') {
-          zoneTag.classList.add('text-blue-600')
+          //zoneTag.classList.add('text-blue-600')
           console.log('ingredient')
+        } else if (li.dataset.type === 'appareil') {
+          //zoneTag.classList.add('text-green-600')
+          console.log('appareil')
         }
       })
     })
@@ -216,6 +273,7 @@ export class MainApp {
     this.displayCardRecipes(this.Recipes)
     this.inputSearch()
     this.inputSearchIngredients()
+    this.inputSearchAppareils()
     this.listFiltered()
   }
 }
