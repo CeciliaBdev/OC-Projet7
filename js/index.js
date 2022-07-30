@@ -45,7 +45,6 @@ export class MainApp {
       // affichage des cartes filtrées
       this.displayCardRecipes(this.Recipes)
       // emploi de this car j'utilise une méthode defini dans la class (ici Main App)
-      // this.listButtons()
       // console.log(this.Recipes)
     })
   }
@@ -67,7 +66,7 @@ export class MainApp {
         dropdownAppareils.innerHTML = `${tabAppliance
           .map(
             (element) => `
-        <li class="appareils-list hover:bg-green-700 p-1 list-none cursor-pointer">${element}</li>`
+        <li class="appareils-list hover:bg-green-700 p-1 list-none cursor-pointer" data-type="appareil">${element}</li>`
           )
           .join(' ')}`
         //dropdown.innerHTML = `<li>${tabAppliance}s</li>`
@@ -80,27 +79,27 @@ export class MainApp {
       // buttonIngredient.classList.add('justify-between')
     })
 
-    btnMenuIngredients.addEventListener('click', () => {
-      let tabIngredients = listButtons(this.Recipes).tabIngredients.sort()
-      if (dropdownIngredients.classList.contains('hidden')) {
-        dropdownIngredients.innerHTML = `${tabIngredients
-          .map(
-            (element) => `
-        <li class="ingredients-list hover:bg-blue-700 p-1 list-none cursor-pointer">${element}</li>`
-          )
-          .join(' ')}`
-        dropdownIngredients.classList.remove('hidden')
-      } else {
-        dropdownIngredients.classList.add('hidden')
-        dropdownIngredients.textContent = ''
-      }
-      // li ingredientText
-      const buttonIngredient = document.querySelector('li.ingredientText')
-      buttonIngredient.classList.add('justify-between')
+    // btnMenuIngredients.addEventListener('click', () => {
+    //   let tabIngredients = listButtons(this.Recipes).tabIngredients.sort()
+    //   if (dropdownIngredients.classList.contains('hidden')) {
+    //     dropdownIngredients.innerHTML = `${tabIngredients
+    //       .map(
+    //         (element) => `
+    //     <li class="ingredients-list hover:bg-blue-700 p-1 list-none cursor-pointer">${element}</li>`
+    //       )
+    //       .join(' ')}`
+    //     dropdownIngredients.classList.remove('hidden')
+    //   } else {
+    //     dropdownIngredients.classList.add('hidden')
+    //     dropdownIngredients.textContent = ''
+    //   }
+    //   // li ingredientText
+    //   const buttonIngredient = document.querySelector('li.ingredientText')
+    //   buttonIngredient.classList.add('justify-between')
 
-      // appelle de la fct pour créer les tag
-      this.displayTag()
-    })
+    //   // appelle de la fct pour créer les tag
+    //   this.displayTag()
+    // })
 
     btnMenuUstensils.addEventListener('click', () => {
       let tabUstensils = listButtons(this.Recipes).tabUstensils.sort()
@@ -137,23 +136,53 @@ export class MainApp {
     // changement placeholder
     const searchIngredient = document.querySelector('.searchInputButton')
     searchIngredient.addEventListener('click', () => {
+      const buttonIngredient = document.querySelector('li.ingredientText')
+      buttonIngredient.classList.add('justify-between')
+
       searchIngredient.placeholder = 'Rechercher un ingredient'
       searchIngredient.classList.add('font-light', 'w-48')
-    })
 
-    const inputSearchIngredients = document.querySelector('#searchIngredients')
+      const dropdownIngredients = document.querySelector('.dropdownIngredients')
 
-    // evenement : recupere en temps réel le champ input (tapé au clavier)
-    inputSearchIngredients.addEventListener('keyup', () => {
-      this.Recipes = recipesData
-      // j'appelle ma fonction filterInput du fichier search.
-      this.Recipes = filterInput(this.Recipes, inputSearchIngredients)
-      //let tabfiltered = filterInput(recipesData)
-      // affichage des cartes filtrées
-      this.displayCardRecipes(this.Recipes)
+      let tabIngredients = listButtons(this.Recipes).tabIngredients.sort()
+      if (dropdownIngredients.classList.contains('hidden')) {
+        dropdownIngredients.innerHTML = `${tabIngredients
+          .map(
+            (element) => `
+        <li class="ingredients-list hover:bg-blue-700 p-1 list-none cursor-pointer" data-type="ingredient">${element}</li>`
+          )
+          .join(' ')}`
+        dropdownIngredients.classList.remove('hidden')
+      } else {
+        dropdownIngredients.classList.add('hidden')
+        dropdownIngredients.textContent = ''
+      }
+
+      const inputSearchIngredients =
+        document.querySelector('#searchIngredients')
+      // recherche dans le tableau ingredient
+      inputSearchIngredients.addEventListener('keyup', () => {
+        let search = inputSearchIngredients.value
+
+        search = tabIngredients.filter(function (element) {
+          // je filtre mes recettes suivant le resultat compris dans le tableau d'ingredient
+          if (element.toLowerCase().includes(String(search))) {
+            return element
+          }
+        })
+        //mise en page du resultat sous forme de liste
+        dropdownIngredients.innerHTML = `${search
+          .map(
+            (element) => `
+        <li class="ingredients-list hover:bg-blue-700 p-1 list-none cursor-pointer">${element}</li>`
+          )
+          .join(' ')}`
+        //console.log('search: ', search)
+        this.displayTag()
+      })
+      this.displayTag()
     })
   }
-
   // au click sur un element de la liste
   displayTag() {
     // Click ingredients, selectionne son text value, pour cela :
@@ -169,8 +198,14 @@ export class MainApp {
       // console.log(li)
       li.addEventListener('click', () => {
         let tag = li.textContent
-        console.log(tag)
+
         zoneTag.innerHTML += tag
+
+        // repère des tags suivant leur datatype
+        if (li.dataset.type === 'ingredient') {
+          zoneTag.classList.add('text-blue-600')
+          console.log('ingredient')
+        }
       })
     })
 
@@ -194,15 +229,14 @@ app.init()
 // recherche input button ingredients ok - affichage carte ok
 
 // a faire
+
+//recherche sur bouton Ingredient: update de la liste et non des  cartes
 // recherche sur les Boutons Appareils et Ustensils à variabiliser
 // Personnalisation des tags
-// A jout des tag avec Enter
-// Suppression des tags
-// creéation des listes - à variabiliser ??
-// position de la barre de recherche (depasse)
+// Ajout des tag au click (ajout du bon data type)
+// Suppression des tags (retour dans la bonne catégorie )
+// création des listes - à variabiliser ??
 //taille du bouton ingrédients trop grande ( à cause de l'inout à l'intérieur)
-// espacement entre icone et time dans la carte impossible à faire
-// réduire les titres des cartes quans ils sont trop long ? ou les mettres sur deux lignes ?
-//tailles des cartes qui depassent
-//centrage des cartes
-// dans la barre de recherche : recette ou n'importe quel mot ?
+// dans la barre de recherche : recette ou n'importe quel mot ? titre, ingredient, description
+// retour en arriere sur l'input des bouton ? update de la liste ?
+//install tailwind et non avec un cdn
