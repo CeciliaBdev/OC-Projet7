@@ -235,6 +235,58 @@ export class MainApp {
       this.displayTag()
     })
   }
+
+  // recherche dans l'input bouton Ustensils
+  inputSearchUstensils() {
+    // changement placeholder
+    const searchUstensils = document.querySelector('.searchInputButtonUstensil')
+    searchUstensils.addEventListener('click', () => {
+      const buttonUstensil = document.querySelector('li.ustensilText')
+      buttonUstensil.classList.add('justify-between')
+
+      searchUstensils.placeholder = 'Rechercher un ustensile'
+      searchUstensils.classList.add('font-light', 'w-48')
+
+      const dropdownUstensils = document.querySelector('.dropdownUstensils')
+
+      let tabUstensils = listButtons(this.Recipes).tabUstensils.sort()
+      if (dropdownUstensils.classList.contains('hidden')) {
+        dropdownUstensils.innerHTML = `${tabUstensils
+          .map(
+            (element) => `
+        <li class="ingredients-list hover:bg-red-700 p-1 list-none cursor-pointer" data-type="ustensil">${element}</li>`
+          )
+          .join(' ')}`
+        dropdownUstensils.classList.remove('hidden')
+      } else {
+        dropdownUstensils.classList.add('hidden')
+        dropdownUstensils.textContent = ''
+      }
+
+      const inputSearchUstensils = document.querySelector('#searchUstensils')
+      // recherche dans le tableau ingredient
+      inputSearchUstensils.addEventListener('keyup', () => {
+        let search = inputSearchUstensils.value
+
+        search = tabUstensils.filter(function (element) {
+          // je filtre mes recettes suivant le resultat compris dans le tableau d'ingredient
+          if (element.toLowerCase().includes(String(search))) {
+            return element
+          }
+        })
+        //mise en page du resultat sous forme de liste
+        dropdownUstensils.innerHTML = `${search
+          .map(
+            (element) => `
+        <li class="ingredients-list hover:bg-red-700 p-1 list-none cursor-pointer">${element}</li>`
+          )
+          .join(' ')}`
+        //console.log('search: ', search)
+        this.displayTag()
+      })
+      this.displayTag()
+    })
+  }
   // au click sur un element de la liste
   displayTag() {
     // Click ingredients, selectionne son text value, pour cela :
@@ -262,6 +314,8 @@ export class MainApp {
         } else if (li.dataset.type === 'appareil') {
           //zoneTag.classList.add('text-green-600')
           console.log('appareil')
+        } else if (li.dataset.type === 'ustensil') {
+          console.log('ustensile')
         }
       })
     })
@@ -274,6 +328,7 @@ export class MainApp {
     this.inputSearch()
     this.inputSearchIngredients()
     this.inputSearchAppareils()
+    this.inputSearchUstensils()
     this.listFiltered()
   }
 }
