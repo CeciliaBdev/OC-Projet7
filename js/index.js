@@ -261,7 +261,7 @@ export class MainApp {
         zoneTag.innerHTML += `<div class="flex gap-3 items-center">${tag} <i class="far fa-times-circle" id="cross"></i></div>`
 
         // repère des tags suivant leur datatype
-        //couleur par style nok
+        //couleur par style ok mais pas si changement de catégorie
         //revoir les conditions
         let divTag = document.querySelectorAll('.zoneTag div')
         divTag.forEach((tag) => {
@@ -269,7 +269,8 @@ export class MainApp {
             tag.classList.add(
               'inline-block',
               'bg-blue-500',
-              'p-5',
+              'px-5',
+              'py-2',
               'text-white',
               'rounded',
               'mr-2'
@@ -280,7 +281,8 @@ export class MainApp {
             tag.classList.add(
               'inline-block',
               'bg-green-500',
-              'p-5',
+              'px-5',
+              'py-2',
               'text-white',
               'rounded',
               'mr-2'
@@ -291,7 +293,8 @@ export class MainApp {
             tag.classList.add(
               'inline-block',
               'bg-red-500',
-              'p-5',
+              'px-5',
+              'py-2',
               'text-white',
               'rounded',
               'mr-2'

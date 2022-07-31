@@ -12,7 +12,7 @@ export class CardRecipes {
   // creation de la carte recette
 
   createCard() {
-    const cardRecipe = `<div class="rounded-lg shadow-lg bg-white  cardRecipe text-sm">
+    const cardRecipe = `<div class="rounded-lg shadow-lg bg-white  cardRecipe text-sm cursor-pointer">
                           <div class="bgImg h-48 rounded-t-lg "></div>
                           <div class="infos_recette flex justify-between p-5 pb-0 h-14" >
                             <div>${this.name}</div>

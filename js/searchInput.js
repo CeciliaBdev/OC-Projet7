@@ -27,7 +27,7 @@ export function filterInput(recipesData, inputElement) {
         return el
       }
     })
-
+    // console.log(tabFilter)
     return tabFilter
   }
   return recipesData
