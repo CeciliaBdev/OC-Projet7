@@ -104,7 +104,7 @@ export class MainApp {
         dropdownIngredients.innerHTML = `${search
           .map(
             (element) => `
-        <li class="ingredients-list hover:bg-blue-700 p-1 list-none cursor-pointer">${element}</li>`
+        <li class="ingredients-list hover:bg-blue-700 p-1 list-none cursor-pointer " data-type="ingredient">${element}</li>`
           )
           .join(' ')}`
         //console.log('search: ', search)
@@ -168,7 +168,7 @@ export class MainApp {
         dropdownAppareils.innerHTML = `${search
           .map(
             (element) => `
-        <li class="ingredients-list hover:bg-green-700 p-1 list-none cursor-pointer">${element}</li>`
+        <li class="ingredients-list hover:bg-green-700 p-1 list-none cursor-pointer" data-type="appareil">${element}</li>`
           )
           .join(' ')}`
         //console.log('search: ', search)
@@ -232,7 +232,7 @@ export class MainApp {
         dropdownUstensils.innerHTML = `${search
           .map(
             (element) => `
-        <li class="ingredients-list hover:bg-red-700 p-1 list-none cursor-pointer">${element}</li>`
+        <li class="ingredients-list hover:bg-red-700 p-1 list-none cursor-pointer" data-type="ustensil">${element}</li>`
           )
           .join(' ')}`
         //console.log('search: ', search)
@@ -258,7 +258,7 @@ export class MainApp {
       li.addEventListener('click', () => {
         let tag = li.textContent
 
-        zoneTag.innerHTML += `<div class="flex gap-3 items-center">${tag} <i class="far fa-times-circle"></i></div>`
+        zoneTag.innerHTML += `<div class="flex gap-3 items-center">${tag} <i class="far fa-times-circle" id="cross"></i></div>`
 
         // repère des tags suivant leur datatype
         //couleur par style nok
@@ -299,6 +299,16 @@ export class MainApp {
             console.log('ustensile')
           }
         })
+
+        // remove tag
+        let tagClose = document.querySelectorAll('#cross')
+        tagClose.forEach((tag) =>
+          tag.addEventListener('click', () => {
+            console.log('click')
+            //je supprime le parent (et non pas que la croix)
+            tag.parentNode.remove()
+          })
+        )
       })
     })
 
@@ -325,7 +335,7 @@ app.init()
 // a faire
 
 // Personnalisation des tags
-// Ajout des tag au click (ajout du bon data type)
+// Ajout des tag au click ok mais pas la bonne couleur (ajout du bon data type)
 // Suppression des tags (retour dans la bonne catégorie )
 
 // dans la barre de recherche : recette ou n'importe quel mot ? titre, ingredient, description
