@@ -254,10 +254,9 @@ export class MainApp {
 
     // console.log('All li : ', allLi)
     allLi.forEach((li) => {
-      // console.log(li)
       li.addEventListener('click', () => {
         let tag = li.textContent
-
+        console.log(li)
         zoneTag.innerHTML += `<div class="flex gap-3 items-center">${tag} <i class="far fa-times-circle" id="cross"></i></div>`
 
         // repère des tags suivant leur datatype
@@ -301,20 +300,21 @@ export class MainApp {
             )
             console.log('ustensile')
           }
-        })
+          console.log(tag)
+          //})
 
-        // remove tag
-        let tagClose = document.querySelectorAll('#cross')
-        tagClose.forEach((tag) =>
-          tag.addEventListener('click', () => {
-            console.log('click')
-            //je supprime le parent (et non pas que la croix)
-            tag.parentNode.remove()
-          })
-        )
+          // remove tag
+          let tagClose = document.querySelectorAll('#cross')
+          tagClose.forEach((tag) =>
+            tag.addEventListener('click', () => {
+              console.log('click')
+              //je supprime le parent (et non pas que la croix)
+              tag.parentNode.remove()
+            })
+          )
+        })
       })
     })
-
     // personnalisation des tag à faire
   }
 
@@ -331,16 +331,8 @@ export class MainApp {
 const app = new MainApp()
 app.init()
 
-// Fait
-// recherche dans l'inout barre de recherche ok - affichage carte ok - liste ingredients ok
-// recherche input button ingredients ok - affichage carte ok
-
 // a faire
 
-// Personnalisation des tags
 // Ajout des tag au click ok mais pas la bonne couleur (ajout du bon data type)
-// Suppression des tags (retour dans la bonne catégorie )
-
-// dans la barre de recherche : recette ou n'importe quel mot ? titre, ingredient, description
 
 //install tailwind et non avec un cdn
