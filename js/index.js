@@ -101,34 +101,24 @@ export class MainApp {
     //   this.displayTag()
     // })
 
-    btnMenuUstensils.addEventListener('click', () => {
-      let tabUstensils = listButtons(this.Recipes).tabUstensils.sort()
-      if (dropdownUstensils.classList.contains('hidden')) {
-        dropdownUstensils.innerHTML = `${tabUstensils
-          .map(
-            (element) => `
-        <li class="ustensils-list hover:bg-red-700 p-1 list-none cursor-pointer">${element}</li>`
-          )
-          .join(' ')}`
-        dropdownUstensils.classList.remove('hidden')
-      } else {
-        dropdownUstensils.classList.add('hidden')
-        dropdownUstensils.textContent = ''
-      }
-      // li ustensilText
-      const buttonUstensil = document.querySelector('li.ustensilText')
-      buttonUstensil.classList.add('justify-between')
-    })
-
-    // rotation chevron au click
-    const containerButtons = document.querySelector('.buttons')
-    const chevrons = containerButtons.querySelectorAll('.fas')
-    chevrons.forEach((chevron) => {
-      chevron.addEventListener('click', () => {
-        //console.log('test')
-        chevron.classList.toggle('rotate-180')
-      })
-    })
+    // btnMenuUstensils.addEventListener('click', () => {
+    //   let tabUstensils = listButtons(this.Recipes).tabUstensils.sort()
+    //   if (dropdownUstensils.classList.contains('hidden')) {
+    //     dropdownUstensils.innerHTML = `${tabUstensils
+    //       .map(
+    //         (element) => `
+    //     <li class="ustensils-list hover:bg-red-700 p-1 list-none cursor-pointer">${element}</li>`
+    //       )
+    //       .join(' ')}`
+    //     dropdownUstensils.classList.remove('hidden')
+    //   } else {
+    //     dropdownUstensils.classList.add('hidden')
+    //     dropdownUstensils.textContent = ''
+    //   }
+    //   // li ustensilText
+    //   const buttonUstensil = document.querySelector('li.ustensilText')
+    //   buttonUstensil.classList.add('justify-between')
+    // })
   }
 
   // recherche dans l'input bouton Ingredient
@@ -139,8 +129,20 @@ export class MainApp {
       const buttonIngredient = document.querySelector('li.ingredientText')
       buttonIngredient.classList.add('justify-between')
 
-      searchIngredient.placeholder = 'Rechercher un ingredient'
-      searchIngredient.classList.add('font-light', 'w-48')
+      if (searchIngredient.classList.contains('placeholder')) {
+        searchIngredient.placeholder = 'Ingredients'
+        searchIngredient.classList.remove('font-light', 'w-48', 'placeholder')
+        searchIngredient.classList.add('w-24', 'font-bold')
+      } else {
+        searchIngredient.classList.add('font-light', 'w-48', 'placeholder')
+        searchIngredient.placeholder = 'Rechercher un ingredient'
+      }
+      // rotation chevron au click
+      const containerButtons = document.querySelector('.buttons')
+      const chevrons = containerButtons.querySelectorAll('.fas')
+      chevrons.forEach((chevron) => {
+        chevron.classList.toggle('rotate-180')
+      })
 
       const dropdownIngredients = document.querySelector('.dropdownIngredients')
 
@@ -192,8 +194,20 @@ export class MainApp {
       const buttonAppareil = document.querySelector('li.appareilText')
       buttonAppareil.classList.add('justify-between')
 
-      searchAppareil.placeholder = 'Rechercher un appareil'
-      searchAppareil.classList.add('font-light', 'w-48')
+      if (searchAppareil.classList.contains('placeholder')) {
+        searchAppareil.placeholder = 'Appareils'
+        searchAppareil.classList.remove('font-light', 'w-48', 'placeholder')
+        searchAppareil.classList.add('w-24', 'font-bold')
+      } else {
+        searchAppareil.classList.add('font-light', 'w-48', 'placeholder')
+        searchAppareil.placeholder = 'Rechercher un appareil'
+      }
+      // rotation chevron au click
+      const containerButtons = document.querySelector('.buttons')
+      const chevrons = containerButtons.querySelectorAll('.fas')
+      chevrons.forEach((chevron) => {
+        chevron.classList.toggle('rotate-180')
+      })
 
       const dropdownAppareils = document.querySelector('.dropdownAppareils')
 
@@ -244,8 +258,20 @@ export class MainApp {
       const buttonUstensil = document.querySelector('li.ustensilText')
       buttonUstensil.classList.add('justify-between')
 
-      searchUstensils.placeholder = 'Rechercher un ustensile'
-      searchUstensils.classList.add('font-light', 'w-48')
+      if (searchUstensils.classList.contains('placeholder')) {
+        searchUstensils.placeholder = 'Ustensiles'
+        searchUstensils.classList.remove('font-light', 'w-48', 'placeholder')
+        searchUstensils.classList.add('w-24', 'font-bold')
+      } else {
+        searchUstensils.classList.add('font-light', 'w-48', 'placeholder')
+        searchUstensils.placeholder = 'Rechercher un ustensile'
+      }
+      // rotation chevron au click
+      const containerButtons = document.querySelector('.buttons')
+      const chevrons = containerButtons.querySelectorAll('.fas')
+      chevrons.forEach((chevron) => {
+        chevron.classList.toggle('rotate-180')
+      })
 
       const dropdownUstensils = document.querySelector('.dropdownUstensils')
 
@@ -343,13 +369,11 @@ app.init()
 
 // a faire
 
-//recherche sur bouton Ingredient: update de la liste et non des  cartes
-// recherche sur les Boutons Appareils et Ustensils à variabiliser
 // Personnalisation des tags
 // Ajout des tag au click (ajout du bon data type)
 // Suppression des tags (retour dans la bonne catégorie )
-// création des listes - à variabiliser ??
-//taille du bouton ingrédients trop grande ( à cause de l'inout à l'intérieur)
+// rotation chevron
+
 // dans la barre de recherche : recette ou n'importe quel mot ? titre, ingredient, description
-// retour en arriere sur l'input des bouton ? update de la liste ?
+
 //install tailwind et non avec un cdn
