@@ -49,78 +49,6 @@ export class MainApp {
     })
   }
 
-  // affichage des listes buttons
-  listFiltered() {
-    const btnMenuAppareil = document.querySelector('#btnMenuAppareil')
-    const btnMenuIngredients = document.querySelector('#btnMenuIngredients')
-    const btnMenuUstensils = document.querySelector('#btnMenuUstensils')
-    const dropdownIngredients = document.querySelector('.dropdownIngredients')
-    const dropdownAppareils = document.querySelector('.dropdownAppareils')
-    const dropdownUstensils = document.querySelector('.dropdownUstensils')
-
-    // btnMenuAppareil.addEventListener('click', () => {
-    //   // je liste les ingredients suivant ma recherche filterInput sur this.Recipes
-    //   let tabAppliance = listButtons(this.Recipes).tabAppliance.sort()
-    //   if (dropdownAppareils.classList.contains('hidden')) {
-    //     // je mets sous forme de liste mon tableau
-    //     dropdownAppareils.innerHTML = `${tabAppliance
-    //       .map(
-    //         (element) => `
-    //     <li class="appareils-list hover:bg-green-700 p-1 list-none cursor-pointer" data-type="appareil">${element}</li>`
-    //       )
-    //       .join(' ')}`
-    //     //dropdown.innerHTML = `<li>${tabAppliance}s</li>`
-    //     dropdownAppareils.classList.remove('hidden')
-    //   } else {
-    //     dropdownAppareils.classList.add('hidden')
-    //     dropdownAppareils.textContent = ''
-    //   }
-    //   // const buttonAppareil = document.querySelector('li.ingredientText')
-    //   // buttonIngredient.classList.add('justify-between')
-    // })
-
-    // btnMenuIngredients.addEventListener('click', () => {
-    //   let tabIngredients = listButtons(this.Recipes).tabIngredients.sort()
-    //   if (dropdownIngredients.classList.contains('hidden')) {
-    //     dropdownIngredients.innerHTML = `${tabIngredients
-    //       .map(
-    //         (element) => `
-    //     <li class="ingredients-list hover:bg-blue-700 p-1 list-none cursor-pointer">${element}</li>`
-    //       )
-    //       .join(' ')}`
-    //     dropdownIngredients.classList.remove('hidden')
-    //   } else {
-    //     dropdownIngredients.classList.add('hidden')
-    //     dropdownIngredients.textContent = ''
-    //   }
-    //   // li ingredientText
-    //   const buttonIngredient = document.querySelector('li.ingredientText')
-    //   buttonIngredient.classList.add('justify-between')
-
-    //   // appelle de la fct pour créer les tag
-    //   this.displayTag()
-    // })
-
-    // btnMenuUstensils.addEventListener('click', () => {
-    //   let tabUstensils = listButtons(this.Recipes).tabUstensils.sort()
-    //   if (dropdownUstensils.classList.contains('hidden')) {
-    //     dropdownUstensils.innerHTML = `${tabUstensils
-    //       .map(
-    //         (element) => `
-    //     <li class="ustensils-list hover:bg-red-700 p-1 list-none cursor-pointer">${element}</li>`
-    //       )
-    //       .join(' ')}`
-    //     dropdownUstensils.classList.remove('hidden')
-    //   } else {
-    //     dropdownUstensils.classList.add('hidden')
-    //     dropdownUstensils.textContent = ''
-    //   }
-    //   // li ustensilText
-    //   const buttonUstensil = document.querySelector('li.ustensilText')
-    //   buttonUstensil.classList.add('justify-between')
-    // })
-  }
-
   // recherche dans l'input bouton Ingredient
   inputSearchIngredients() {
     // changement placeholder
@@ -323,26 +251,54 @@ export class MainApp {
 
     const allLi = document.querySelectorAll('.ingredients-list')
     const zoneTag = document.querySelector('.zoneTag')
+
     // console.log('All li : ', allLi)
     allLi.forEach((li) => {
       // console.log(li)
       li.addEventListener('click', () => {
         let tag = li.textContent
 
-        zoneTag.innerHTML += tag
+        zoneTag.innerHTML += `<div class="flex gap-3 items-center">${tag} <i class="far fa-times-circle"></i></div>`
 
         // repère des tags suivant leur datatype
         //couleur par style nok
         //revoir les conditions
-        if (li.dataset.type === 'ingredient') {
-          //zoneTag.classList.add('text-blue-600')
-          console.log('ingredient')
-        } else if (li.dataset.type === 'appareil') {
-          //zoneTag.classList.add('text-green-600')
-          console.log('appareil')
-        } else if (li.dataset.type === 'ustensil') {
-          console.log('ustensile')
-        }
+        let divTag = document.querySelectorAll('.zoneTag div')
+        divTag.forEach((tag) => {
+          if (li.dataset.type === 'ingredient') {
+            tag.classList.add(
+              'inline-block',
+              'bg-blue-500',
+              'p-5',
+              'text-white',
+              'rounded',
+              'mr-2'
+            )
+            console.log('ingredient')
+          }
+          if (li.dataset.type === 'appareil') {
+            tag.classList.add(
+              'inline-block',
+              'bg-green-500',
+              'p-5',
+              'text-white',
+              'rounded',
+              'mr-2'
+            )
+            console.log('appareil')
+          }
+          if (li.dataset.type === 'ustensil') {
+            tag.classList.add(
+              'inline-block',
+              'bg-red-500',
+              'p-5',
+              'text-white',
+              'rounded',
+              'mr-2'
+            )
+            console.log('ustensile')
+          }
+        })
       })
     })
 
@@ -355,7 +311,6 @@ export class MainApp {
     this.inputSearchIngredients()
     this.inputSearchAppareils()
     this.inputSearchUstensils()
-    this.listFiltered()
   }
 }
 
@@ -372,7 +327,6 @@ app.init()
 // Personnalisation des tags
 // Ajout des tag au click (ajout du bon data type)
 // Suppression des tags (retour dans la bonne catégorie )
-// rotation chevron
 
 // dans la barre de recherche : recette ou n'importe quel mot ? titre, ingredient, description
 
