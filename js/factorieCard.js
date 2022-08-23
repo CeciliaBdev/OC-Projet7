@@ -62,7 +62,18 @@ export function displayRecipes(allRecipes) {
   sectionRecipe.innerHTML = ''
 
   if (allRecipes.length === 0) {
-    sectionRecipe.innerText = 'hello'
+    sectionRecipe.classList.remove('grid', 'grid-cols-3')
+    sectionRecipe.innerHTML = `Aucune recette ne correspond à votre critère… Vous pouvez
+    chercher « tarte aux pommes », « poisson », etc ...`
+    sectionRecipe.classList.add(
+      'flex',
+      'justify-center',
+      'h-80',
+      'items-center',
+      'text-lg'
+    )
+  } else {
+    sectionRecipe.classList.add('grid', 'grid-cols-3')
   }
 
   allRecipes.forEach((recette) => {
