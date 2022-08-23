@@ -50,7 +50,7 @@ function factorieCard(recette) {
       elUnit = ''
     }
 
-    const liste = `<li>${elIngredient} : ${elQuantinty} ${elUnit} </li>`
+    const liste = `<li><strong>${elIngredient}</strong> : ${elQuantinty} ${elUnit} </li>`
 
     // j'integre mtn ma variable liste dans listIngredient
     listIngredients.insertAdjacentHTML('beforeend', liste)
