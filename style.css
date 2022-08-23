@@ -1,0 +1,28 @@
+header img {
+  width: 300px;
+}
+
+/* .infos_recette {
+  height: 60px;
+} */
+/* .container_card_recipes article {
+  
+  border-radius: 5px;
+} */
+
+/* .col-12 article {
+  background: #e7e7e7;
+  margin: 10px;
+  width: 30%;
+} */
+
+/* .container {
+  margin: 50px 100px;
+} */
+.cardRecipe {
+  height: 450px;
+  background-color: white;
+}
+.bgImg {
+  background-color: #c7bebe;
+}
