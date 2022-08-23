@@ -24,13 +24,13 @@ export class TableauRecettes {
           // je filtre mes recettes suivant le resultat compris dans le titre (name), la description, ou l'ingrédient
           // si existantes
           if (
-            el.name.toLowerCase().includes(resultatSearchBar) // titre
-            //   el.description.toLowerCase().includes(resultatSearchBar) || // description
-            //   el.ingredients.filter((ingred) => {
-            //     return ingred.ingredient.toLowerCase().includes(resultatSearchBar)
-            //   }) != undefined
+            el.name.toLowerCase().includes(resultatSearchBar) || // titre
+            el.description.toLowerCase().includes(resultatSearchBar) || // description
+            el.ingredients.filter((ingred) =>
+              ingred.ingredient.toLowerCase().includes(resultatSearchBar)
+            ).length >= 1 //filtre sur ingredient dans ingredients (non vide)
           ) {
-            console.log('name trouvé')
+            console.log('ingredient trouvé')
             return el
           }
         })
