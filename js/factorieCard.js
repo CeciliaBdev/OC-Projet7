@@ -96,66 +96,66 @@ export function displayDropDown(tabThings, elementCategory, color, type) {
   }
 }
 
-export function createTag() {
-  // 1. je selectionne un element dans la liste du dropdown
-  // 2. je crée le tag en css (suivant le data type)
+// export function createTag() {
+//   // 1. je selectionne un element dans la liste du dropdown
+//   // 2. je crée le tag en css (suivant le data type)
 
-  const allLi = document.querySelectorAll('.list')
-  const zoneTag = document.querySelector('.zoneTag')
+//   const allLi = document.querySelectorAll('.list')
+//   const zoneTag = document.querySelector('.zoneTag')
 
-  allLi.forEach((li) => {
-    li.addEventListener('click', () => {
-      // console.log('click')
-      const tag = document.createElement('div')
-      // au click sur un li je crée un tag avec les propriétés suivantes
-      tag.classList.add(
-        'flex',
-        'gap-3',
-        'items-center',
-        'tagCreated',
-        'inline-block',
-        'px-5',
-        'py-2',
-        'text-white',
-        'rounded',
-        'mr-2'
-      )
-      tag.textContent = li.textContent
-      tag.innerHTML += '<i class="far fa-times-circle" id="cross"></i>'
-      console.log(li.textContent)
-      // différences de tag suivant le data-type
-      if (li.dataset.type === 'ingredient') {
-        tag.classList.add('bg-blue-500')
-        tag.setAttribute('data-type', 'ingredient')
-        // console.log('ingredient')
-        //li.classList.add('text-slate-400', 'italic')
-      } else if (li.dataset.type === 'appareil') {
-        tag.classList.add('bg-green-500')
-        tag.setAttribute('data-type', 'appareil')
-        //li.classList.add('text-slate-400', 'italic')
-        //  console.log('appareil')
-      } else if (li.dataset.type === 'ustensil') {
-        tag.classList.add('bg-red-500')
-        tag.setAttribute('data-type', 'ustensil')
-        //li.classList.add('text-slate-400', 'italic')
-        // console.log('ustensile')
-      }
-      // j'ajoute mon tag dans ma zoneTag
-      zoneTag.appendChild(tag)
-    })
-  })
-}
+//   allLi.forEach((li) => {
+//     li.addEventListener('click', () => {
+//       // console.log('click')
+//       const tag = document.createElement('div')
+//       // au click sur un li je crée un tag avec les propriétés suivantes
+//       tag.classList.add(
+//         'flex',
+//         'gap-3',
+//         'items-center',
+//         'tagCreated',
+//         'inline-block',
+//         'px-5',
+//         'py-2',
+//         'text-white',
+//         'rounded',
+//         'mr-2'
+//       )
+//       tag.textContent = li.textContent
+//       tag.innerHTML += '<i class="far fa-times-circle" id="cross"></i>'
+//       console.log(li.textContent)
+//       // différences de tag suivant le data-type
+//       if (li.dataset.type === 'ingredient') {
+//         tag.classList.add('bg-blue-500')
+//         tag.setAttribute('data-type', 'ingredient')
+//         // console.log('ingredient')
+//         //li.classList.add('text-slate-400', 'italic')
+//       } else if (li.dataset.type === 'appareil') {
+//         tag.classList.add('bg-green-500')
+//         tag.setAttribute('data-type', 'appareil')
+//         //li.classList.add('text-slate-400', 'italic')
+//         //  console.log('appareil')
+//       } else if (li.dataset.type === 'ustensil') {
+//         tag.classList.add('bg-red-500')
+//         tag.setAttribute('data-type', 'ustensil')
+//         //li.classList.add('text-slate-400', 'italic')
+//         // console.log('ustensile')
+//       }
+//       // j'ajoute mon tag dans ma zoneTag
+//       zoneTag.appendChild(tag)
+//     })
+//   })
+// }
 
-export function removeTag() {
-  let tagClose = document.querySelectorAll('#cross')
+// export function removeTag() {
+//   let tagClose = document.querySelectorAll('#cross')
 
-  tagClose.forEach((tag) =>
-    // au clic de la croix sur un tag
-    tag.addEventListener('click', () => {
-      let resultat = tag.parentNode.textContent
-      console.log('resultat:', resultat)
-      tag.parentNode.remove()
-      tag.classList.remove('tagCreated')
-    })
-  )
-}
+//   tagClose.forEach((tag) =>
+//     // au clic de la croix sur un tag
+//     tag.addEventListener('click', () => {
+//       let resultat = tag.parentNode.textContent
+//       console.log('resultat:', resultat)
+//       tag.parentNode.remove()
+//       tag.classList.remove('tagCreated')
+//     })
+//   )
+// }

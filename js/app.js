@@ -1,10 +1,5 @@
 import { recipesData } from '../data/recipes.js'
-import {
-  displayRecipes,
-  displayDropDown,
-  createTag,
-  removeTag,
-} from './factorieCard.js'
+import { displayRecipes, displayDropDown } from './factorieCard.js'
 
 export class TableauRecettes {
   constructor() {
@@ -107,8 +102,8 @@ export class TableauRecettes {
           // this.filterByUstensil('louche')
         }
 
-        createTag()
-        removeTag()
+        this.createTag()
+        this.removeTag()
       })
     })
   }
@@ -180,6 +175,86 @@ export class TableauRecettes {
         return el
       }
     })
+  }
+
+  createTag() {
+    // 1. je selectionne un element dans la liste du dropdown
+    // 2. je crée le tag en css (suivant le data type)
+
+    const allLi = document.querySelectorAll('.list')
+    const zoneTag = document.querySelector('.zoneTag')
+
+    allLi.forEach((li) => {
+      li.addEventListener('click', () => {
+        // console.log('click')
+        const tag = document.createElement('div')
+        // au click sur un li je crée un tag avec les propriétés suivantes
+        tag.classList.add(
+          'flex',
+          'gap-3',
+          'items-center',
+          'tagCreated',
+          'inline-block',
+          'px-5',
+          'py-2',
+          'text-white',
+          'rounded',
+          'mr-2'
+        )
+        tag.textContent = li.textContent
+        tag.innerHTML += '<i class="far fa-times-circle" id="cross"></i>'
+        console.log(li.textContent)
+        // différences de tag suivant le data-type
+        if (li.dataset.type === 'ingredient') {
+          tag.classList.add('bg-blue-500')
+          tag.setAttribute('data-type', 'ingredient')
+          // console.log('ingredient')
+          //li.classList.add('text-slate-400', 'italic')
+        } else if (li.dataset.type === 'appareil') {
+          tag.classList.add('bg-green-500')
+          tag.setAttribute('data-type', 'appareil')
+          //li.classList.add('text-slate-400', 'italic')
+          //  console.log('appareil')
+        } else if (li.dataset.type === 'ustensil') {
+          tag.classList.add('bg-red-500')
+          tag.setAttribute('data-type', 'ustensil')
+          //li.classList.add('text-slate-400', 'italic')
+          // console.log('ustensile')
+        }
+        // j'ajoute mon tag dans ma zoneTag
+        zoneTag.appendChild(tag)
+
+        this.filterByTag()
+      })
+    })
+  }
+
+  removeTag() {
+    let tagClose = document.querySelectorAll('#cross')
+
+    tagClose.forEach((tag) =>
+      // au clic de la croix sur un tag
+      tag.addEventListener('click', () => {
+        let resultat = tag.parentNode.textContent
+        console.log('resultat:', resultat)
+        tag.parentNode.remove()
+        tag.classList.remove('tagCreated')
+
+        this.filterByTag()
+      })
+    )
+  }
+
+  filterByTag() {
+    //1. j'analyse la div contenant les tag
+    //2. je recupère les content
+    //3. je trouve les recettes associés à ces content
+    //4. je filtre les recettes communes (si plusieurs tags)
+    //5. au final = j'ai un tableau de recettes filtrées via les tag
+
+    // a la création de tag => class tagCreated
+    let tagHtmlCollection = document.getElementsByClassName('tagCreated')
+    console.log('current Tags', tagHtmlCollection)
   }
 }
 
