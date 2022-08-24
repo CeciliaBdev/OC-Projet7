@@ -19,12 +19,20 @@ export class TableauRecettes {
     const inputSearch = document.querySelector('.container input')
 
     inputSearch.addEventListener('keyup', () => {
+      let tagHtmlCollection = document.getElementsByClassName('tagCreated')
+
+      // si pas de tag
+      if (tagHtmlCollection.length === 0) {
+        console.log('pas de tag encore')
+      }
+      // j'inclus ma recherhce dedans ?
       // contenu de la recherche en minuscule
       const resultatSearchBar = inputSearch.value.toLowerCase()
       console.log(resultatSearchBar)
 
       // contenu renvoi recherche filtrée si 3 caractères sinon renvoi toutes les recettes
       if (resultatSearchBar.length >= '3') {
+        this.filterByTag()
         this.currentRecipes = this.currentRecipes.filter((el) => {
           // je filtre mes recettes suivant le resultat compris dans le titre (name), la description, ou l'ingrédient
           // si existantes
@@ -35,15 +43,25 @@ export class TableauRecettes {
               ingred.ingredient.toLowerCase().includes(resultatSearchBar)
             ).length >= 1 //filtre sur ingredient dans ingredients (non vide)
           ) {
-            console.log('ingredient trouvé')
+            // console.log('ingredient trouvé')
             return el
           }
         })
         console.log(this.currentRecipes)
       } else {
         this.currentRecipes = recipesData
+        this.filterByTag()
       }
       displayRecipes(this.currentRecipes)
+
+      // si un tag déja présent
+      // que faire du contenu de la recherche avec le tableau de tag
+      if (tagHtmlCollection.length !== 0) {
+        console.log('tag déja présents')
+        for (let i = 0; i < tagHtmlCollection.length; i++) {
+          console.log(tagHtmlCollection[i].textContent)
+        }
+      }
     })
   }
 
@@ -70,6 +88,12 @@ export class TableauRecettes {
     let allArrow = document.querySelectorAll('.arrow')
     let liButton = document.querySelectorAll('.button')
 
+    // bouton Ingredient
+    let button = document.querySelector('.filter')
+
+    // filtre input
+    let filterInput = document.querySelectorAll('.inputFilter')
+
     allArrow.forEach((arrow) => {
       arrow.addEventListener('click', () => {
         // j'ajoute style css sur le bouton
@@ -79,6 +103,8 @@ export class TableauRecettes {
         })
 
         if (arrow.id === 'btnMenuIngredients') {
+          dropdownIngredients.style.display = 'grid'
+          dropdownIngredients.classList.add('grid', 'grid-cols-3')
           tabIngredients = this.getIngredients()
           displayDropDown(
             tabIngredients,
@@ -101,9 +127,44 @@ export class TableauRecettes {
           // console.log(this.getUstensils())
           // this.filterByUstensil('Bol')
         }
-
         this.createTag()
         this.removeTag()
+
+        filterInput.forEach((input) => {
+          let resultatInput = []
+          input.addEventListener('input', () => {
+            // this.filterList()
+            // mon resultat de l'input dans la recherche
+            resultatInput.push(input.value)
+            console.log(resultatInput)
+            // resultatInput = tabIngredients.filter(function (element) {
+            //   // je filtre mes recettes suivant le resultat compris dans le tableau d'ingredient
+            //   // avec mon filtre barre de recherche
+            //   if (element.toLowerCase().includes(String(resultatInput))) {
+            //     return element
+            //   }
+            // })
+            // dropdownIngredients.innerHTML = `${resultatInput
+            //   .map(
+            //     (element) => `
+            //   <li class="list hover:bg-blue-700 p-1 list-none cursor-pointer " data-type="ingredient">${element}</li>`
+            //   )
+            //   .join(' ')}`
+
+            // this.createTag()
+            // this.removeTag()
+          })
+        })
+
+        // window.addEventListener('click', function (e) {
+        //   if (document.querySelector('.buttons').contains(e.target)) {
+        //     console.log('dans le button')
+        //   } else {
+        //     console.log('en dehors du bouton')
+        //     dropdownIngredients.style.display = 'none'
+        //     // arrow.classList.toggle('rotate-180')
+        //   }
+        // })
       })
     })
   }
@@ -153,7 +214,7 @@ export class TableauRecettes {
           el2.ingredient.toLowerCase().includes(myIngredient)
         ).length >= 1
       ) {
-        console.log('filterByIngredient trouvé')
+        // console.log('filterByIngredient trouvé')
         return el
       } else {
         console.log('filterByIngredient rien trouvé')
@@ -163,17 +224,16 @@ export class TableauRecettes {
   filterByAppareil(myAppareil) {
     this.currentRecipes = this.currentRecipes.filter((el) => {
       if (el.appliance.toLowerCase().includes(myAppareil.toLowerCase())) {
-        console.log('filterByAppareil trouvé')
+        // console.log('filterByAppareil trouvé')
         return el
       }
     })
   }
 
-  // NOK
   filterByUstensil(myUstensil) {
     this.currentRecipes = this.currentRecipes.filter((el) => {
       if (el.ustensils.includes(myUstensil)) {
-        console.log('filterByUstensil trouvé')
+        // console.log('filterByUstensil trouvé')
         return el
       } else {
         console.log('filterByUstensil rien trouvé')
@@ -235,6 +295,7 @@ export class TableauRecettes {
 
   removeTag() {
     let tagClose = document.querySelectorAll('#cross')
+    let tagHtmlCollection = document.getElementsByClassName('tagCreated')
 
     tagClose.forEach((tag) =>
       // au clic de la croix sur un tag
@@ -243,9 +304,14 @@ export class TableauRecettes {
         // console.log('resultat:', resultat)
         tag.parentNode.remove()
         tag.classList.remove('tagCreated')
-
+        let tabRemove = []
+        for (let i = 0; i < tagHtmlCollection.length; i++) {
+          tabRemove.push(tagHtmlCollection[i].textContent)
+        }
+        // si recherche en cours à revoir ici
         this.currentRecipes = recipesData
         this.filterByTag()
+        // console.log('tabRemove:', tabRemove)
       })
     )
   }
@@ -260,7 +326,15 @@ export class TableauRecettes {
     // a la création de tag => class tagCreated
     let tagHtmlCollection = document.getElementsByClassName('tagCreated')
 
+    // input serachBar
+    const inputSearch = document.querySelector('.container input')
+    console.log('recherche input:', inputSearch.value)
+
+    // j'ajoute cette valeur à mon currentTagTab (quand je créé un tag, avec une recherche existante, j'ajoute l'input.value dans mon tableau)
     let currentTagTab = []
+    currentTagTab.push(inputSearch.value)
+    console.log(currentTagTab)
+
     for (let i = 0; i < tagHtmlCollection.length; i++) {
       // si data type de tagHtmlCollection est ingrédient
       if (tagHtmlCollection[i].dataset.type === 'ingredient') {
@@ -282,10 +356,34 @@ export class TableauRecettes {
         console.log(this.currentRecipes)
       }
     }
+
+    // Mise à jour search bar
+    this.currentRecipes = this.currentRecipes.filter((el) => {
+      // je filtre mes recettes suivant le resultat compris dans le titre (name), la description, ou l'ingrédient
+      // si existantes
+      if (
+        el.name.toLowerCase().includes(inputSearch.value) || // titre
+        el.description.toLowerCase().includes(inputSearch.value) || // description
+        el.ingredients.filter((ingred) =>
+          ingred.ingredient.toLowerCase().includes(inputSearch.value)
+        ).length >= 1 //filtre sur ingredient dans ingredients (non vide)
+      ) {
+        // console.log('ingredient trouvé')
+        return el
+      }
+    })
+
     console.log(currentTagTab)
+
     displayRecipes(this.currentRecipes)
   }
+
+  // filterList() {}
 }
 
 // questions
 // dropdown en absolute : le boutton ne s'aggrandit pas
+
+// reste a faire
+//1. recherche combiné input et tag
+//2;  recherche dans la liste drop
