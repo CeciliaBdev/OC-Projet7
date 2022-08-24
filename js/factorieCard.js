@@ -80,3 +80,18 @@ export function displayRecipes(allRecipes) {
     factorieCard(recette)
   })
 }
+
+export function displayDropDown(tabThings, elementCategory, color, type) {
+  if (elementCategory.classList.contains('hidden')) {
+    elementCategory.innerHTML = `${tabThings
+      .map(
+        (element) => `
+    <li class="list hover:bg-${color}-600 p-1 list-none cursor-pointer" data-type="${type}">${element}</li>`
+      )
+      .join(' ')}`
+    elementCategory.classList.remove('hidden')
+  } else {
+    elementCategory.classList.add('hidden')
+    elementCategory.textContent = ''
+  }
+}
