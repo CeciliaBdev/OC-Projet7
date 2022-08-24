@@ -86,8 +86,8 @@ export class TableauRecettes {
             'blue',
             'ingredient'
           )
-          // console.log(this.getIngredients())
-          // this.filterByIngredients('beurre')
+          //console.log(this.getIngredients())
+          //this.filterByIngredients('ail')
         }
         if (arrow.id === 'btnMenuAppareils') {
           tabAppareils = this.getAppareils()
@@ -99,7 +99,7 @@ export class TableauRecettes {
           tabUstensils = this.getUstensils()
           displayDropDown(tabUstensils, dropdownUstensils, 'red', 'ustensil')
           // console.log(this.getUstensils())
-          // this.filterByUstensil('louche')
+          // this.filterByUstensil('Bol')
         }
 
         this.createTag()
@@ -155,6 +155,8 @@ export class TableauRecettes {
       ) {
         console.log('filterByIngredient trouvé')
         return el
+      } else {
+        console.log('filterByIngredient rien trouvé')
       }
     })
   }
@@ -170,9 +172,11 @@ export class TableauRecettes {
   // NOK
   filterByUstensil(myUstensil) {
     this.currentRecipes = this.currentRecipes.filter((el) => {
-      if (el.ustensils.toLowerCase().includes(myUstensil.toLowerCase())) {
+      if (el.ustensils.includes(myUstensil)) {
         console.log('filterByUstensil trouvé')
         return el
+      } else {
+        console.log('filterByUstensil rien trouvé')
       }
     })
   }
@@ -203,7 +207,7 @@ export class TableauRecettes {
         )
         tag.textContent = li.textContent
         tag.innerHTML += '<i class="far fa-times-circle" id="cross"></i>'
-        console.log(li.textContent)
+        // console.log(li.textContent)
         // différences de tag suivant le data-type
         if (li.dataset.type === 'ingredient') {
           tag.classList.add('bg-blue-500')
@@ -236,10 +240,11 @@ export class TableauRecettes {
       // au clic de la croix sur un tag
       tag.addEventListener('click', () => {
         let resultat = tag.parentNode.textContent
-        console.log('resultat:', resultat)
+        // console.log('resultat:', resultat)
         tag.parentNode.remove()
         tag.classList.remove('tagCreated')
 
+        this.currentRecipes = recipesData
         this.filterByTag()
       })
     )
@@ -247,14 +252,38 @@ export class TableauRecettes {
 
   filterByTag() {
     //1. j'analyse la div contenant les tag
-    //2. je recupère les content
+    //2. je recupère les content dans un tableau
     //3. je trouve les recettes associés à ces content
     //4. je filtre les recettes communes (si plusieurs tags)
     //5. au final = j'ai un tableau de recettes filtrées via les tag
 
     // a la création de tag => class tagCreated
     let tagHtmlCollection = document.getElementsByClassName('tagCreated')
-    console.log('current Tags', tagHtmlCollection)
+
+    let currentTagTab = []
+    for (let i = 0; i < tagHtmlCollection.length; i++) {
+      // si data type de tagHtmlCollection est ingrédient
+      if (tagHtmlCollection[i].dataset.type === 'ingredient') {
+        // console.log('ingredient')
+        currentTagTab.push(tagHtmlCollection[i].textContent)
+        this.filterByIngredients(tagHtmlCollection[i].textContent.toLowerCase())
+        console.log(this.currentRecipes)
+      }
+      if (tagHtmlCollection[i].dataset.type === 'appareil') {
+        // console.log('appareil')
+        currentTagTab.push(tagHtmlCollection[i].textContent)
+        this.filterByAppareil(tagHtmlCollection[i].textContent.toLowerCase())
+        console.log(this.currentRecipes)
+      }
+      if (tagHtmlCollection[i].dataset.type === 'ustensil') {
+        // console.log('ustensil')
+        currentTagTab.push(tagHtmlCollection[i].textContent)
+        this.filterByUstensil(tagHtmlCollection[i].textContent)
+        console.log(this.currentRecipes)
+      }
+    }
+    console.log(currentTagTab)
+    displayRecipes(this.currentRecipes)
   }
 }
 
