@@ -1,5 +1,10 @@
 import { recipesData } from '../data/recipes.js'
-import { displayRecipes, displayDropDown, createTag } from './factorieCard.js'
+import {
+  displayRecipes,
+  displayDropDown,
+  createTag,
+  removeTag,
+} from './factorieCard.js'
 
 export class TableauRecettes {
   constructor() {
@@ -86,23 +91,24 @@ export class TableauRecettes {
             'blue',
             'ingredient'
           )
-          console.log(this.getIngredients())
-          //this.filterByIngredients('beurre')
+          // console.log(this.getIngredients())
+          // this.filterByIngredients('beurre')
         }
         if (arrow.id === 'btnMenuAppareils') {
           tabAppareils = this.getAppareils()
           displayDropDown(tabAppareils, dropdownAppareils, 'green', 'appareil')
-          console.log(this.getAppareils())
+          // console.log(this.getAppareils())
           // this.filterByAppareil('blender')
         }
         if (arrow.id === 'btnMenuUstensils') {
           tabUstensils = this.getUstensils()
           displayDropDown(tabUstensils, dropdownUstensils, 'red', 'ustensil')
-          console.log(this.getUstensils())
-          this.filterByUstensil('louche')
+          // console.log(this.getUstensils())
+          // this.filterByUstensil('louche')
         }
 
         createTag()
+        removeTag()
       })
     })
   }
