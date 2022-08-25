@@ -1,5 +1,9 @@
 import { recipesData } from '../data/recipes.js'
-import { displayRecipes, displayDropDown } from './factorieCard.js'
+import {
+  displayRecipes,
+  displayDropDown,
+  closeDropOutFilter,
+} from './factorieCard.js'
 
 export class TableauRecettes {
   constructor() {
@@ -96,7 +100,6 @@ export class TableauRecettes {
 
     allArrow.forEach((arrow) => {
       arrow.addEventListener('click', () => {
-        dropdownIngredients.style.visibility = 'visible'
         // j'ajoute style css sur le bouton
         liButton.forEach((button) => {
           button.classList.add('justify-between')
@@ -104,6 +107,7 @@ export class TableauRecettes {
         })
 
         if (arrow.id === 'btnMenuIngredients') {
+          dropdownIngredients.style.display = 'grid'
           tabIngredients = this.getIngredients()
           displayDropDown(
             tabIngredients,
@@ -160,17 +164,14 @@ export class TableauRecettes {
       })
     })
 
-    // window.addEventListener('click', function (e) {
+    // document.addEventListener('click', function (e) {
     //   if (
-    //     document.querySelector('.buttonFiltreIngredient').contains(e.target)
+    //     !document.querySelector('.buttonFiltreIngredient').contains(e.target)
     //   ) {
-    //     console.log('dans le button')
-    //   } else {
-    //     console.log('en dehors du bouton')
-    //     // visibility
-    //     dropdownIngredients.style.visibility = 'hidden'
+    //     closeDropOutFilter()
     //     // document.querySelector('#btnMenuIngredients').style.transform =
     //     //   'rotate(180deg)'
+    //     // visibility
     //   }
     // })
   }
@@ -295,6 +296,7 @@ export class TableauRecettes {
         zoneTag.appendChild(tag)
 
         this.filterByTag()
+        //this.closeDropAfterTag()
       })
     })
   }
@@ -347,19 +349,19 @@ export class TableauRecettes {
         // console.log('ingredient')
         currentTagTab.push(tagHtmlCollection[i].textContent)
         this.filterByIngredients(tagHtmlCollection[i].textContent.toLowerCase())
-        console.log(this.currentRecipes)
+        // console.log(this.currentRecipes)
       }
       if (tagHtmlCollection[i].dataset.type === 'appareil') {
         // console.log('appareil')
         currentTagTab.push(tagHtmlCollection[i].textContent)
         this.filterByAppareil(tagHtmlCollection[i].textContent.toLowerCase())
-        console.log(this.currentRecipes)
+        // console.log(this.currentRecipes)
       }
       if (tagHtmlCollection[i].dataset.type === 'ustensil') {
         // console.log('ustensil')
         currentTagTab.push(tagHtmlCollection[i].textContent)
         this.filterByUstensil(tagHtmlCollection[i].textContent)
-        console.log(this.currentRecipes)
+        // console.log(this.currentRecipes)
       }
     }
 
@@ -379,7 +381,7 @@ export class TableauRecettes {
       }
     })
 
-    console.log(currentTagTab)
+    // console.log(currentTagTab)
 
     displayRecipes(this.currentRecipes)
   }
@@ -408,6 +410,13 @@ export class TableauRecettes {
       this.removeTag()
     })
   }
+  // closeDropAfterTag() {
+  //   let dropdownIngredients = document.getElementById('dropdownIngredients')
+  //   dropdownIngredients.style.display = 'none'
+
+  //   // pour pouvoir fermer les tags (après la fermeture du drop)
+  //   this.removeTag()
+  // }
 }
 
 // questions

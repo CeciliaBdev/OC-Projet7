@@ -95,7 +95,13 @@ export function displayDropDown(tabThings, elementCategory, color, type) {
     elementCategory.textContent = ''
   }
 }
+export function closeDropOutFilter() {
+  let dropdownIngredients = document.getElementById('dropdownIngredients')
+  let arrowIngredients = document.getElementById('btnMenuIngredients')
 
+  dropdownIngredients.style.display = 'none'
+  arrowIngredients.classList.add('rotate-180')
+}
 // export function createTag() {
 //   // 1. je selectionne un element dans la liste du dropdown
 //   // 2. je crée le tag en css (suivant le data type)
