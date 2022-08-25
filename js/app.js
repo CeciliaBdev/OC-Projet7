@@ -1,9 +1,5 @@
 import { recipesData } from '../data/recipes.js'
-import {
-  displayRecipes,
-  displayDropDown,
-  closeDropOutFilter,
-} from './factorieCard.js'
+import { displayRecipes, displayDropDown } from './factorieCard.js'
 
 export class TableauRecettes {
   constructor() {
@@ -25,14 +21,7 @@ export class TableauRecettes {
     inputSearch.addEventListener('keyup', () => {
       let tagHtmlCollection = document.getElementsByClassName('tagCreated')
 
-      // si pas de tag
-      if (tagHtmlCollection.length === 0) {
-        console.log('pas de tag encore')
-      }
-      // j'inclus ma recherhce dedans ?
-      // contenu de la recherche en minuscule
       const resultatSearchBar = inputSearch.value.toLowerCase()
-      console.log(resultatSearchBar)
 
       // contenu renvoi recherche filtrée si 3 caractères sinon renvoi toutes les recettes
       if (resultatSearchBar.length >= '3') {
@@ -51,21 +40,11 @@ export class TableauRecettes {
             return el
           }
         })
-        console.log(this.currentRecipes)
       } else {
         this.currentRecipes = recipesData
         this.filterByTag()
       }
       displayRecipes(this.currentRecipes)
-
-      // si un tag déja présent
-      // que faire du contenu de la recherche avec le tableau de tag
-      if (tagHtmlCollection.length !== 0) {
-        console.log('tag déja présents')
-        for (let i = 0; i < tagHtmlCollection.length; i++) {
-          console.log(tagHtmlCollection[i].textContent)
-        }
-      }
     })
   }
 
@@ -75,105 +54,79 @@ export class TableauRecettes {
     let dropdownAppareils = document.getElementById('dropdownAppareils')
     let dropdownUstensils = document.getElementById('dropdownUstensils')
 
-    // les champ de recherche des filtres
-    let inputIngredients = document.getElementById('inputIngredients')
-    let inputAppareils = document.getElementById('inputAppareils')
-    let inputUstensils = document.getElementById('inputUstensils')
-
     //tableau des ingredients - appareils - ustensils - vide au début
     let tabIngredients = []
     let tabAppareils = []
     let tabUstensils = []
 
     // les icones des filtres
-    let arrowIngredients = document.getElementById('btnMenuIngredients')
-    let arrowAppareils = document.getElementById('btnMenuAppareils')
-    let arrowUstensils = document.getElementById('btnMenuUstensils')
-    let allArrow = document.querySelectorAll('.arrow')
-    let liButton = document.querySelectorAll('.button')
+    let arrowIngredientsUp = document.getElementById('btnMenuIngredientsUp')
+    let arrowIngredientsDown = document.getElementById('btnMenuIngredientsDown')
+    let arrowAppareilUp = document.getElementById('btnMenuAppareilUp')
+    let arrowAppareilDown = document.getElementById('btnMenuAppareilDown')
+    let arrowUstensilUp = document.getElementById('btnMenuUstensilUp')
+    let arrowUstensilDown = document.getElementById('btnMenuUstensilDown')
 
-    // bouton Ingredient
-    let button = document.querySelector('.filter')
+    let liButtonIng = document.querySelector('#liButtonIngredient')
+    let liButtonApp = document.querySelector('#liButtonAppareil')
+    let liButtonUst = document.querySelector('#liButtonUstensil')
 
-    // filtre input
-    let filterInput = document.querySelectorAll('.inputFilter')
+    // drop Ingredient
+    arrowIngredientsDown.addEventListener('click', () => {
+      liButtonIng.classList.add('justify-between')
+      arrowIngredientsDown.style.display = 'none'
+      arrowIngredientsUp.style.display = 'inline'
+      dropdownIngredients.classList.remove('hidden')
+      tabIngredients = this.getIngredients()
+      displayDropDown(tabIngredients, dropdownIngredients, 'blue', 'ingredient')
 
-    allArrow.forEach((arrow) => {
-      arrow.addEventListener('click', () => {
-        // j'ajoute style css sur le bouton
-        liButton.forEach((button) => {
-          button.classList.add('justify-between')
-          arrow.classList.toggle('rotate-180')
-        })
-
-        if (arrow.id === 'btnMenuIngredients') {
-          dropdownIngredients.style.display = 'grid'
-          tabIngredients = this.getIngredients()
-          displayDropDown(
-            tabIngredients,
-            dropdownIngredients,
-            'blue',
-            'ingredient'
-          )
-          //console.log(this.getIngredients())
-          //this.filterByIngredients('ail')
-
-          inputIngredients.addEventListener('click', () => {
-            this.listDropFilter(
-              inputIngredients,
-              tabIngredients,
-              dropdownIngredients,
-              'blue',
-              'ingredient'
-            )
-          })
-        }
-        if (arrow.id === 'btnMenuAppareils') {
-          tabAppareils = this.getAppareils()
-          displayDropDown(tabAppareils, dropdownAppareils, 'green', 'appareil')
-          // console.log(this.getAppareils())
-          // this.filterByAppareil('blender')
-
-          inputAppareils.addEventListener('keyup', () => {
-            this.listDropFilter(
-              inputAppareils,
-              tabAppareils,
-              dropdownAppareils,
-              'green',
-              'appareil'
-            )
-          })
-        }
-        if (arrow.id === 'btnMenuUstensils') {
-          tabUstensils = this.getUstensils()
-          displayDropDown(tabUstensils, dropdownUstensils, 'red', 'ustensil')
-          // console.log(this.getUstensils())
-          // this.filterByUstensil('Bol')
-          inputUstensils.addEventListener('keyup', () => {
-            this.listDropFilter(
-              inputUstensils,
-              tabUstensils,
-              dropdownUstensils,
-              'red',
-              'ustensil'
-            )
-          })
-        }
-        this.createTag()
-        this.removeTag()
-      })
+      // partie TAG
+      this.createTag()
+      this.removeTag()
+    })
+    arrowIngredientsUp.addEventListener('click', () => {
+      arrowIngredientsUp.style.display = 'none'
+      arrowIngredientsDown.style.display = 'inline'
+      dropdownIngredients.classList.add('hidden')
     })
 
-    // document.addEventListener('click', function (e) {
-    //   if (
-    //     !document.querySelector('.buttonFiltreIngredient').contains(e.target)
-    //   ) {
-    //     closeDropOutFilter()
-    //     // document.querySelector('#btnMenuIngredients').style.transform =
-    //     //   'rotate(180deg)'
-    //     // visibility
-    //   }
-    // })
+    // drop Appareil
+    arrowAppareilDown.addEventListener('click', () => {
+      liButtonApp.classList.add('justify-between')
+      arrowAppareilDown.style.display = 'none'
+      arrowAppareilUp.style.display = 'inline'
+      dropdownAppareils.classList.remove('hidden')
+      tabAppareils = this.getAppareils()
+      displayDropDown(tabAppareils, dropdownAppareils, 'green', 'appareil')
+
+      // partie TAG
+      this.createTag()
+      this.removeTag()
+    })
+    arrowAppareilUp.addEventListener('click', () => {
+      arrowAppareilUp.style.display = 'none'
+      arrowAppareilDown.style.display = 'inline'
+      dropdownAppareils.classList.add('hidden')
+    })
+
+    // drop ustensil
+    arrowUstensilDown.addEventListener('click', () => {
+      liButtonUst.classList.add('justify-between')
+      arrowUstensilDown.style.display = 'none'
+      arrowUstensilUp.style.display = 'inline'
+      dropdownUstensils.classList.remove('hidden')
+      tabUstensils = this.getUstensils()
+      displayDropDown(tabUstensils, dropdownUstensils, 'red', 'ustensil')
+
+      // partie TAG
+      this.createTag()
+      this.removeTag()
+    })
+    arrowUstensilUp.addEventListener('click', () => {
+      arrowUstensilUp.style.display = 'none'
+      arrowUstensilDown.style.display = 'inline'
+      dropdownUstensils.classList.add('hidden')
+    })
   }
 
   getIngredients() {
@@ -257,7 +210,6 @@ export class TableauRecettes {
 
     allLi.forEach((li) => {
       li.addEventListener('click', () => {
-        // console.log('click')
         const tag = document.createElement('div')
         // au click sur un li je crée un tag avec les propriétés suivantes
         tag.classList.add(
@@ -274,29 +226,62 @@ export class TableauRecettes {
         )
         tag.textContent = li.textContent
         tag.innerHTML += '<i class="far fa-times-circle" id="cross"></i>'
-        // console.log(li.textContent)
         // différences de tag suivant le data-type
         if (li.dataset.type === 'ingredient') {
           tag.classList.add('bg-blue-500')
           tag.setAttribute('data-type', 'ingredient')
-          // console.log('ingredient')
           //li.classList.add('text-slate-400', 'italic')
         } else if (li.dataset.type === 'appareil') {
           tag.classList.add('bg-green-500')
           tag.setAttribute('data-type', 'appareil')
           //li.classList.add('text-slate-400', 'italic')
-          //  console.log('appareil')
         } else if (li.dataset.type === 'ustensil') {
           tag.classList.add('bg-red-500')
           tag.setAttribute('data-type', 'ustensil')
           //li.classList.add('text-slate-400', 'italic')
-          // console.log('ustensile')
         }
         // j'ajoute mon tag dans ma zoneTag
         zoneTag.appendChild(tag)
 
         this.filterByTag()
-        //this.closeDropAfterTag()
+
+        // fermeture des drop
+        let dropdownIngredients = document.getElementById('dropdownIngredients')
+        let dropdownAppareils = document.getElementById('dropdownAppareils')
+        let dropdownUstensils = document.getElementById('dropdownUstensils')
+
+        let inputIngredients = document.getElementById('inputIngredients')
+        let inputAppareils = document.getElementById('inputAppareils')
+        let inputUstensils = document.getElementById('inputUstensils')
+
+        let arrowIngredientsUp = document.getElementById('btnMenuIngredientsUp')
+        let arrowIngredientsDown = document.getElementById(
+          'btnMenuIngredientsDown'
+        )
+
+        let arrowAppareilUp = document.getElementById('btnMenuAppareilUp')
+        let arrowAppareilDown = document.getElementById('btnMenuAppareilDown')
+
+        let arrowUstensilUp = document.getElementById('btnMenuUstensilUp')
+        let arrowUstensilDown = document.getElementById('btnMenuUstensilDown')
+        this.closeDropAfterTag(
+          dropdownIngredients,
+          inputIngredients,
+          arrowIngredientsUp,
+          arrowIngredientsDown
+        )
+        this.closeDropAfterTag(
+          dropdownAppareils,
+          inputAppareils,
+          arrowAppareilUp,
+          arrowAppareilDown
+        )
+        this.closeDropAfterTag(
+          dropdownUstensils,
+          inputUstensils,
+          arrowUstensilUp,
+          arrowUstensilDown
+        )
       })
     })
   }
@@ -308,8 +293,6 @@ export class TableauRecettes {
     tagClose.forEach((tag) =>
       // au clic de la croix sur un tag
       tag.addEventListener('click', () => {
-        let resultat = tag.parentNode.textContent
-        // console.log('resultat:', resultat)
         tag.parentNode.remove()
         tag.classList.remove('tagCreated')
         let tabRemove = []
@@ -319,7 +302,6 @@ export class TableauRecettes {
         // si recherche en cours à revoir ici
         this.currentRecipes = recipesData
         this.filterByTag()
-        // console.log('tabRemove:', tabRemove)
       })
     )
   }
@@ -336,32 +318,24 @@ export class TableauRecettes {
 
     // input serachBar
     const inputSearch = document.querySelector('.container input')
-    // console.log('recherche input:', inputSearch.value)
 
     // j'ajoute cette valeur à mon currentTagTab (quand je créé un tag, avec une recherche existante, j'ajoute l'input.value dans mon tableau)
     let currentTagTab = []
     currentTagTab.push(inputSearch.value)
-    // console.log(currentTagTab)
 
     for (let i = 0; i < tagHtmlCollection.length; i++) {
       // si data type de tagHtmlCollection est ingrédient
       if (tagHtmlCollection[i].dataset.type === 'ingredient') {
-        // console.log('ingredient')
         currentTagTab.push(tagHtmlCollection[i].textContent)
         this.filterByIngredients(tagHtmlCollection[i].textContent.toLowerCase())
-        // console.log(this.currentRecipes)
       }
       if (tagHtmlCollection[i].dataset.type === 'appareil') {
-        // console.log('appareil')
         currentTagTab.push(tagHtmlCollection[i].textContent)
         this.filterByAppareil(tagHtmlCollection[i].textContent.toLowerCase())
-        // console.log(this.currentRecipes)
       }
       if (tagHtmlCollection[i].dataset.type === 'ustensil') {
-        // console.log('ustensil')
         currentTagTab.push(tagHtmlCollection[i].textContent)
         this.filterByUstensil(tagHtmlCollection[i].textContent)
-        // console.log(this.currentRecipes)
       }
     }
 
@@ -376,25 +350,18 @@ export class TableauRecettes {
           ingred.ingredient.toLowerCase().includes(inputSearch.value)
         ).length >= 1 //filtre sur ingredient dans ingredients (non vide)
       ) {
-        // console.log('ingredient trouvé')
         return el
       }
     })
-
-    // console.log(currentTagTab)
 
     displayRecipes(this.currentRecipes)
   }
 
   listDropFilter(input, tab, dropdown, color, type) {
     input.addEventListener('keyup', () => {
-      // this.filterList()
       // mon resultat de l'input dans la recherche
       let resultatInput = input.value
-      // console.log(resultatInput)
       resultatInput = tab.filter(function (element) {
-        // je filtre mes recettes suivant le resultat compris dans le tableau d'ingredient
-        // avec mon filtre barre de recherche
         if (element.toLowerCase().includes(String(resultatInput))) {
           return element
         }
@@ -410,13 +377,14 @@ export class TableauRecettes {
       this.removeTag()
     })
   }
-  // closeDropAfterTag() {
-  //   let dropdownIngredients = document.getElementById('dropdownIngredients')
-  //   dropdownIngredients.style.display = 'none'
-
-  //   // pour pouvoir fermer les tags (après la fermeture du drop)
-  //   this.removeTag()
-  // }
+  closeDropAfterTag(drop, input, arrowUp, arrowDown) {
+    drop.classList.add('hidden')
+    input.value = ''
+    arrowUp.style.display = 'none'
+    arrowDown.style.display = 'inline'
+    // pour pouvoir fermer les tags (après la fermeture du drop)
+    this.removeTag()
+  }
 }
 
 // questions
@@ -424,5 +392,70 @@ export class TableauRecettes {
 
 // reste a faire
 //1.placeholder input
-//2. quand tag créé => fermeture filtre
-//3. si on click en dehors du filtre, ferme le filtre
+
+// dropdown
+//allArrow.forEach((arrow) => {
+//   arrow.addEventListener('click', () => {
+//     // j'ajoute style css sur le bouton
+//     liButton.forEach((button) => {
+//       button.classList.add('justify-between')
+//       arrow.classList.toggle('rotate-180')
+//     })
+
+//     if (arrow.id === 'btnMenuIngredients') {
+//       dropdownIngredients.style.display = 'grid'
+//       tabIngredients = this.getIngredients()
+//       displayDropDown(
+//         tabIngredients,
+//         dropdownIngredients,
+//         'blue',
+//         'ingredient'
+//       )
+//       //console.log(this.getIngredients())
+//       //this.filterByIngredients('ail')
+
+//       inputIngredients.addEventListener('click', () => {
+//         this.listDropFilter(
+//           inputIngredients,
+//           tabIngredients,
+//           dropdownIngredients,
+//           'blue',
+//           'ingredient'
+//         )
+//       })
+//     }
+//     if (arrow.id === 'btnMenuAppareils') {
+//       tabAppareils = this.getAppareils()
+//       displayDropDown(tabAppareils, dropdownAppareils, 'green', 'appareil')
+//       // console.log(this.getAppareils())
+//       // this.filterByAppareil('blender')
+
+//       inputAppareils.addEventListener('keyup', () => {
+//         this.listDropFilter(
+//           inputAppareils,
+//           tabAppareils,
+//           dropdownAppareils,
+//           'green',
+//           'appareil'
+//         )
+//       })
+//     }
+//     if (arrow.id === 'btnMenuUstensils') {
+//       tabUstensils = this.getUstensils()
+//       displayDropDown(tabUstensils, dropdownUstensils, 'red', 'ustensil')
+//       // console.log(this.getUstensils())
+//       // this.filterByUstensil('Bol')
+//       inputUstensils.addEventListener('keyup', () => {
+//         this.listDropFilter(
+//           inputUstensils,
+//           tabUstensils,
+//           dropdownUstensils,
+//           'red',
+//           'ustensil'
+//         )
+//       })
+//     }
+//     this.createTag()
+//     this.removeTag()
+//   })
+// })

@@ -91,7 +91,7 @@
       <div class="buttons mt-8 mb-8 flex gap-4">
         <div class="buttonFiltreIngredient">
           <ul class="bg-blue-500 text-white font-bold py-6 px-6 rounded filter">
-            <li class="flex items-center gap-2 button">
+            <li class="flex items-center gap-2" id="liButtonIngredient">
               <input
                 type="text"
                 class="
@@ -105,7 +105,14 @@
                 id="inputIngredients"
                 placeholder="Ingredients"
               />
-              <i class="fas fa-chevron-down arrow" id="btnMenuIngredients"></i>
+              <i
+                class="fas fa-chevron-down arrow"
+                id="btnMenuIngredientsDown"
+              ></i>
+              <i
+                class="fas fa-chevron-up arrow hidden"
+                id="btnMenuIngredientsUp"
+              ></i>
             </li>
           </ul>
           <div
@@ -123,7 +130,7 @@
         </div>
         <div class="">
           <ul class="bg-green-500 text-white font-bold py-6 px-6 rounded">
-            <li class="flex items-center gap-2 button">
+            <li class="flex items-center gap-2" id="liButtonAppareil">
               <input
                 type="text"
                 class="
@@ -137,7 +144,11 @@
                 id="inputAppareils"
                 placeholder="Appareils"
               />
-              <i class="fas fa-chevron-down arrow" id="btnMenuAppareils"></i>
+              <i class="fas fa-chevron-down arrow" id="btnMenuAppareilDown"></i>
+              <i
+                class="fas fa-chevron-up arrow hidden"
+                id="btnMenuAppareilUp"
+              ></i>
             </li>
           </ul>
           <div
@@ -155,7 +166,7 @@
 
         <div class="">
           <ul class="bg-red-500 text-white font-bold py-6 px-6 rounded">
-            <li class="flex items-center gap-2 button">
+            <li class="flex items-center gap-2" id="liButtonUstensil">
               <input
                 type="text"
                 class="
@@ -170,7 +181,11 @@
                 placeholder="Ustensiles"
               />
 
-              <i class="fas fa-chevron-down arrow" id="btnMenuUstensils"></i>
+              <i class="fas fa-chevron-down arrow" id="btnMenuUstensilDown"></i>
+              <i
+                class="fas fa-chevron-up arrow hidden"
+                id="btnMenuUstensilUp"
+              ></i>
             </li>
           </ul>
           <div

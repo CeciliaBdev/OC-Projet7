@@ -82,7 +82,7 @@ export function displayRecipes(allRecipes) {
 }
 
 export function displayDropDown(tabThings, elementCategory, color, type) {
-  if (elementCategory.classList.contains('hidden')) {
+  if (!elementCategory.classList.contains('hidden')) {
     elementCategory.innerHTML = `${tabThings
       .map(
         (element) => `
