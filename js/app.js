@@ -96,6 +96,7 @@ export class TableauRecettes {
 
     allArrow.forEach((arrow) => {
       arrow.addEventListener('click', () => {
+        dropdownIngredients.style.visibility = 'visible'
         // j'ajoute style css sur le bouton
         liButton.forEach((button) => {
           button.classList.add('justify-between')
@@ -103,8 +104,6 @@ export class TableauRecettes {
         })
 
         if (arrow.id === 'btnMenuIngredients') {
-          dropdownIngredients.style.display = 'grid'
-          dropdownIngredients.classList.add('grid', 'grid-cols-3')
           tabIngredients = this.getIngredients()
           displayDropDown(
             tabIngredients,
@@ -129,43 +128,44 @@ export class TableauRecettes {
         }
         this.createTag()
         this.removeTag()
-
-        filterInput.forEach((input) => {
-          let resultatInput = []
-          input.addEventListener('input', () => {
-            // this.filterList()
-            // mon resultat de l'input dans la recherche
-            resultatInput.push(input.value)
-            console.log(resultatInput)
-            // resultatInput = tabIngredients.filter(function (element) {
-            //   // je filtre mes recettes suivant le resultat compris dans le tableau d'ingredient
-            //   // avec mon filtre barre de recherche
-            //   if (element.toLowerCase().includes(String(resultatInput))) {
-            //     return element
-            //   }
-            // })
-            // dropdownIngredients.innerHTML = `${resultatInput
-            //   .map(
-            //     (element) => `
-            //   <li class="list hover:bg-blue-700 p-1 list-none cursor-pointer " data-type="ingredient">${element}</li>`
-            //   )
-            //   .join(' ')}`
-
-            // this.createTag()
-            // this.removeTag()
-          })
-        })
-
-        // window.addEventListener('click', function (e) {
-        //   if (document.querySelector('.buttons').contains(e.target)) {
-        //     console.log('dans le button')
-        //   } else {
-        //     console.log('en dehors du bouton')
-        //     dropdownIngredients.style.display = 'none'
-        //     // arrow.classList.toggle('rotate-180')
-        //   }
-        // })
       })
+
+      inputIngredients.addEventListener('keydown', () => {
+        // this.filterList()
+        // mon resultat de l'input dans la recherche
+        let resultatInput = inputIngredients.value
+        // console.log(resultatInput)
+        resultatInput = tabIngredients.filter(function (element) {
+          // je filtre mes recettes suivant le resultat compris dans le tableau d'ingredient
+          // avec mon filtre barre de recherche
+          if (element.toLowerCase().includes(String(resultatInput))) {
+            return element
+          }
+        })
+        dropdownIngredients.innerHTML = `${resultatInput
+          .map(
+            (element) => `
+              <li class="list hover:bg-blue-700 p-1 list-none cursor-pointer " data-type="ingredient">${element}</li>`
+          )
+          .join(' ')}`
+
+        this.createTag()
+        this.removeTag()
+      })
+
+      // window.addEventListener('click', function (e) {
+      //   if (
+      //     document.querySelector('.buttonFiltreIngredient').contains(e.target)
+      //   ) {
+      //     console.log('dans le button')
+      //   } else {
+      //     console.log('en dehors du bouton')
+      //     // visibility
+      //     dropdownIngredients.style.visibility = 'hidden'
+      //     // document.querySelector('#btnMenuIngredients').style.transform =
+      //     //   'rotate(180deg)'
+      //   }
+      // })
     })
   }
 
@@ -328,12 +328,12 @@ export class TableauRecettes {
 
     // input serachBar
     const inputSearch = document.querySelector('.container input')
-    console.log('recherche input:', inputSearch.value)
+    // console.log('recherche input:', inputSearch.value)
 
     // j'ajoute cette valeur à mon currentTagTab (quand je créé un tag, avec une recherche existante, j'ajoute l'input.value dans mon tableau)
     let currentTagTab = []
     currentTagTab.push(inputSearch.value)
-    console.log(currentTagTab)
+    // console.log(currentTagTab)
 
     for (let i = 0; i < tagHtmlCollection.length; i++) {
       // si data type de tagHtmlCollection est ingrédient
