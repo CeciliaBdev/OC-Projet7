@@ -113,60 +113,66 @@ export class TableauRecettes {
           )
           //console.log(this.getIngredients())
           //this.filterByIngredients('ail')
+
+          inputIngredients.addEventListener('click', () => {
+            this.listDropFilter(
+              inputIngredients,
+              tabIngredients,
+              dropdownIngredients,
+              'blue',
+              'ingredient'
+            )
+          })
         }
         if (arrow.id === 'btnMenuAppareils') {
           tabAppareils = this.getAppareils()
           displayDropDown(tabAppareils, dropdownAppareils, 'green', 'appareil')
           // console.log(this.getAppareils())
           // this.filterByAppareil('blender')
+
+          inputAppareils.addEventListener('keyup', () => {
+            this.listDropFilter(
+              inputAppareils,
+              tabAppareils,
+              dropdownAppareils,
+              'green',
+              'appareil'
+            )
+          })
         }
         if (arrow.id === 'btnMenuUstensils') {
           tabUstensils = this.getUstensils()
           displayDropDown(tabUstensils, dropdownUstensils, 'red', 'ustensil')
           // console.log(this.getUstensils())
           // this.filterByUstensil('Bol')
+          inputUstensils.addEventListener('keyup', () => {
+            this.listDropFilter(
+              inputUstensils,
+              tabUstensils,
+              dropdownUstensils,
+              'red',
+              'ustensil'
+            )
+          })
         }
         this.createTag()
         this.removeTag()
       })
-
-      inputIngredients.addEventListener('keydown', () => {
-        // this.filterList()
-        // mon resultat de l'input dans la recherche
-        let resultatInput = inputIngredients.value
-        // console.log(resultatInput)
-        resultatInput = tabIngredients.filter(function (element) {
-          // je filtre mes recettes suivant le resultat compris dans le tableau d'ingredient
-          // avec mon filtre barre de recherche
-          if (element.toLowerCase().includes(String(resultatInput))) {
-            return element
-          }
-        })
-        dropdownIngredients.innerHTML = `${resultatInput
-          .map(
-            (element) => `
-              <li class="list hover:bg-blue-700 p-1 list-none cursor-pointer " data-type="ingredient">${element}</li>`
-          )
-          .join(' ')}`
-
-        this.createTag()
-        this.removeTag()
-      })
-
-      // window.addEventListener('click', function (e) {
-      //   if (
-      //     document.querySelector('.buttonFiltreIngredient').contains(e.target)
-      //   ) {
-      //     console.log('dans le button')
-      //   } else {
-      //     console.log('en dehors du bouton')
-      //     // visibility
-      //     dropdownIngredients.style.visibility = 'hidden'
-      //     // document.querySelector('#btnMenuIngredients').style.transform =
-      //     //   'rotate(180deg)'
-      //   }
-      // })
     })
+
+    // window.addEventListener('click', function (e) {
+    //   if (
+    //     document.querySelector('.buttonFiltreIngredient').contains(e.target)
+    //   ) {
+    //     console.log('dans le button')
+    //   } else {
+    //     console.log('en dehors du bouton')
+    //     // visibility
+    //     dropdownIngredients.style.visibility = 'hidden'
+    //     // document.querySelector('#btnMenuIngredients').style.transform =
+    //     //   'rotate(180deg)'
+    //   }
+    // })
   }
 
   getIngredients() {
@@ -217,7 +223,7 @@ export class TableauRecettes {
         // console.log('filterByIngredient trouvé')
         return el
       } else {
-        console.log('filterByIngredient rien trouvé')
+        // console.log('filterByIngredient rien trouvé')
       }
     })
   }
@@ -236,7 +242,7 @@ export class TableauRecettes {
         // console.log('filterByUstensil trouvé')
         return el
       } else {
-        console.log('filterByUstensil rien trouvé')
+        // console.log('filterByUstensil rien trouvé')
       }
     })
   }
@@ -378,12 +384,36 @@ export class TableauRecettes {
     displayRecipes(this.currentRecipes)
   }
 
-  // filterList() {}
+  listDropFilter(input, tab, dropdown, color, type) {
+    input.addEventListener('keyup', () => {
+      // this.filterList()
+      // mon resultat de l'input dans la recherche
+      let resultatInput = input.value
+      // console.log(resultatInput)
+      resultatInput = tab.filter(function (element) {
+        // je filtre mes recettes suivant le resultat compris dans le tableau d'ingredient
+        // avec mon filtre barre de recherche
+        if (element.toLowerCase().includes(String(resultatInput))) {
+          return element
+        }
+      })
+      dropdown.innerHTML = `${resultatInput
+        .map(
+          (element) => `
+              <li class="list hover:bg-${color}-700 p-1 list-none cursor-pointer " data-type='${type}'>${element}</li>`
+        )
+        .join(' ')}`
+
+      this.createTag()
+      this.removeTag()
+    })
+  }
 }
 
 // questions
 // dropdown en absolute : le boutton ne s'aggrandit pas
 
 // reste a faire
-//1. recherche combiné input et tag
-//2;  recherche dans la liste drop
+//1.placeholder input
+//2. quand tag créé => fermeture filtre
+//3. si on click en dehors du filtre, ferme le filtre
