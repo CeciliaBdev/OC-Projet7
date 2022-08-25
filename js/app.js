@@ -71,6 +71,11 @@ export class TableauRecettes {
     let liButtonApp = document.querySelector('#liButtonAppareil')
     let liButtonUst = document.querySelector('#liButtonUstensil')
 
+    let inputIngredient = document.querySelector('.inputIngredients')
+    let inputAppareil = document.querySelector('.inputAppareils')
+    let inputUstensil = document.querySelector('.inputUstensils')
+    // deux autres input
+
     // drop Ingredient
     arrowIngredientsDown.addEventListener('click', () => {
       liButtonIng.classList.add('justify-between')
@@ -83,6 +88,18 @@ export class TableauRecettes {
       // partie TAG
       this.createTag()
       this.removeTag()
+
+      inputIngredient.addEventListener('click', () => {
+        this.listDropFilter(
+          inputIngredient,
+          tabIngredients,
+          dropdownIngredients,
+          'blue',
+          'ingredient'
+        )
+        inputIngredient.classList.add('font-light', 'w-48')
+        inputIngredient.placeholder = 'Rechercher un ingredient'
+      })
     })
     arrowIngredientsUp.addEventListener('click', () => {
       arrowIngredientsUp.style.display = 'none'
@@ -102,12 +119,26 @@ export class TableauRecettes {
       // partie TAG
       this.createTag()
       this.removeTag()
+
+      inputAppareil.addEventListener('click', () => {
+        this.listDropFilter(
+          inputAppareil,
+          tabAppareils,
+          dropdownAppareils,
+          'green',
+          'appareil'
+        )
+        inputAppareil.classList.add('font-light', 'w-48')
+        inputAppareil.placeholder = 'Rechercher un appareil'
+      })
     })
     arrowAppareilUp.addEventListener('click', () => {
       arrowAppareilUp.style.display = 'none'
       arrowAppareilDown.style.display = 'inline'
       dropdownAppareils.classList.add('hidden')
     })
+
+    //input placeholder
 
     // drop ustensil
     arrowUstensilDown.addEventListener('click', () => {
@@ -121,6 +152,18 @@ export class TableauRecettes {
       // partie TAG
       this.createTag()
       this.removeTag()
+
+      inputUstensil.addEventListener('click', () => {
+        this.listDropFilter(
+          inputUstensil,
+          tabUstensils,
+          dropdownUstensils,
+          'red',
+          'ustensil'
+        )
+        inputUstensil.classList.add('font-light', 'w-48')
+        inputUstensil.placeholder = 'Rechercher un ustensil'
+      })
     })
     arrowUstensilUp.addEventListener('click', () => {
       arrowUstensilUp.style.display = 'none'
@@ -268,20 +311,29 @@ export class TableauRecettes {
           dropdownIngredients,
           inputIngredients,
           arrowIngredientsUp,
-          arrowIngredientsDown
+          arrowIngredientsDown,
+          'Ingredients'
         )
+        inputIngredients.classList.remove('font-light', 'w-48')
+        inputIngredients.classList.add('font-bold', 'w-24')
         this.closeDropAfterTag(
           dropdownAppareils,
           inputAppareils,
           arrowAppareilUp,
-          arrowAppareilDown
+          arrowAppareilDown,
+          'Appareils'
         )
+        inputAppareils.classList.remove('font-light', 'w-48')
+        inputAppareils.classList.add('font-bold', 'w-24')
         this.closeDropAfterTag(
           dropdownUstensils,
           inputUstensils,
           arrowUstensilUp,
-          arrowUstensilDown
+          arrowUstensilDown,
+          'Ustensils'
         )
+        inputUstensils.classList.remove('font-light', 'w-48')
+        inputUstensils.classList.add('font-bold', 'w-24')
       })
     })
   }
@@ -377,9 +429,10 @@ export class TableauRecettes {
       this.removeTag()
     })
   }
-  closeDropAfterTag(drop, input, arrowUp, arrowDown) {
+  closeDropAfterTag(drop, input, arrowUp, arrowDown, placeholder) {
     drop.classList.add('hidden')
     input.value = ''
+    input.placeholder = placeholder
     arrowUp.style.display = 'none'
     arrowDown.style.display = 'inline'
     // pour pouvoir fermer les tags (après la fermeture du drop)
