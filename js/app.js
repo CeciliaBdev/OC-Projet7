@@ -74,7 +74,6 @@ export class TableauRecettes {
     let inputIngredient = document.querySelector('.inputIngredients')
     let inputAppareil = document.querySelector('.inputAppareils')
     let inputUstensil = document.querySelector('.inputUstensils')
-    // deux autres input
 
     // drop Ingredient
     arrowIngredientsDown.addEventListener('click', () => {
@@ -137,8 +136,6 @@ export class TableauRecettes {
       arrowAppareilDown.style.display = 'inline'
       dropdownAppareils.classList.add('hidden')
     })
-
-    //input placeholder
 
     // drop ustensil
     arrowUstensilDown.addEventListener('click', () => {

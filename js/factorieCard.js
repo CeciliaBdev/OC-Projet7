@@ -62,7 +62,7 @@ export function displayRecipes(allRecipes) {
   sectionRecipe.innerHTML = ''
 
   if (allRecipes.length === 0) {
-    sectionRecipe.classList.remove('grid', 'grid-cols-3')
+    sectionRecipe.classList.remove('grid', 'grid-cols-3', 'pt-40')
     sectionRecipe.innerHTML = `Aucune recette ne correspond à votre critère… Vous pouvez
     chercher « tarte aux pommes », « poisson », etc ...`
     sectionRecipe.classList.add(
@@ -82,6 +82,7 @@ export function displayRecipes(allRecipes) {
 }
 
 export function displayDropDown(tabThings, elementCategory, color, type) {
+  // drop visible
   if (!elementCategory.classList.contains('hidden')) {
     elementCategory.innerHTML = `${tabThings
       .map(
@@ -91,17 +92,12 @@ export function displayDropDown(tabThings, elementCategory, color, type) {
       .join(' ')}`
     elementCategory.classList.remove('hidden')
   } else {
+    // drop hidden
     elementCategory.classList.add('hidden')
     elementCategory.textContent = ''
   }
 }
-export function closeDropOutFilter() {
-  let dropdownIngredients = document.getElementById('dropdownIngredients')
-  let arrowIngredients = document.getElementById('btnMenuIngredients')
 
-  dropdownIngredients.style.display = 'none'
-  arrowIngredients.classList.add('rotate-180')
-}
 // export function createTag() {
 //   // 1. je selectionne un element dans la liste du dropdown
 //   // 2. je crée le tag en css (suivant le data type)
