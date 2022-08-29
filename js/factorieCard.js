@@ -73,7 +73,7 @@ export function displayRecipes(allRecipes) {
       'text-lg'
     )
   } else {
-    sectionRecipe.classList.add('grid', 'grid-cols-3')
+    sectionRecipe.classList.add('grid', 'grid-cols-3', 'pt-40')
   }
 
   allRecipes.forEach((recette) => {
