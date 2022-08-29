@@ -19,9 +19,8 @@ export class TableauRecettes {
     const inputSearch = document.querySelector('.container input')
 
     inputSearch.addEventListener('keyup', () => {
-      let tagHtmlCollection = document.getElementsByClassName('tagCreated')
-
-      const resultatSearchBar = inputSearch.value.toLowerCase()
+      // const resultatSearchBar = inputSearch.value.toLowerCase()
+      const resultatSearchBar = inputSearch.value
 
       // contenu renvoi recherche filtrée si 3 caractères sinon renvoi toutes les recettes
       if (resultatSearchBar.length >= '3') {
@@ -436,76 +435,3 @@ export class TableauRecettes {
     this.removeTag()
   }
 }
-
-// questions
-// dropdown en absolute : le boutton ne s'aggrandit pas
-
-// reste a faire
-//1.placeholder input
-
-// dropdown
-//allArrow.forEach((arrow) => {
-//   arrow.addEventListener('click', () => {
-//     // j'ajoute style css sur le bouton
-//     liButton.forEach((button) => {
-//       button.classList.add('justify-between')
-//       arrow.classList.toggle('rotate-180')
-//     })
-
-//     if (arrow.id === 'btnMenuIngredients') {
-//       dropdownIngredients.style.display = 'grid'
-//       tabIngredients = this.getIngredients()
-//       displayDropDown(
-//         tabIngredients,
-//         dropdownIngredients,
-//         'blue',
-//         'ingredient'
-//       )
-//       //console.log(this.getIngredients())
-//       //this.filterByIngredients('ail')
-
-//       inputIngredients.addEventListener('click', () => {
-//         this.listDropFilter(
-//           inputIngredients,
-//           tabIngredients,
-//           dropdownIngredients,
-//           'blue',
-//           'ingredient'
-//         )
-//       })
-//     }
-//     if (arrow.id === 'btnMenuAppareils') {
-//       tabAppareils = this.getAppareils()
-//       displayDropDown(tabAppareils, dropdownAppareils, 'green', 'appareil')
-//       // console.log(this.getAppareils())
-//       // this.filterByAppareil('blender')
-
-//       inputAppareils.addEventListener('keyup', () => {
-//         this.listDropFilter(
-//           inputAppareils,
-//           tabAppareils,
-//           dropdownAppareils,
-//           'green',
-//           'appareil'
-//         )
-//       })
-//     }
-//     if (arrow.id === 'btnMenuUstensils') {
-//       tabUstensils = this.getUstensils()
-//       displayDropDown(tabUstensils, dropdownUstensils, 'red', 'ustensil')
-//       // console.log(this.getUstensils())
-//       // this.filterByUstensil('Bol')
-//       inputUstensils.addEventListener('keyup', () => {
-//         this.listDropFilter(
-//           inputUstensils,
-//           tabUstensils,
-//           dropdownUstensils,
-//           'red',
-//           'ustensil'
-//         )
-//       })
-//     }
-//     this.createTag()
-//     this.removeTag()
-//   })
-// })
