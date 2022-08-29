@@ -16,11 +16,14 @@ export function searchBar() {
       for (let i = 0; i < this.currentRecipes.length; i++) {
         const recette = this.currentRecipes[i]
         // je boucle dans mon tableau d'ingrédient
+
         for (let j = 0; j < recette.ingredients.length; j++) {
           if (
             recette.ingredients[j].ingredient
               .toLowerCase()
-              .includes(resultatSearchBar.toLowerCase())
+              .includes(resultatSearchBar.toLowerCase()) ||
+            recette.name.toLowerCase().includes(resultatSearchBar) ||
+            recette.description.toLowerCase().includes(resultatSearchBar)
           ) {
             // console.log(recette.name, recette.ingredients[j].ingredient)
             tabFilter.push(recette)
