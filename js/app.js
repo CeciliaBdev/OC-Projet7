@@ -158,7 +158,7 @@ export class TableauRecettes {
           'ustensil'
         )
         inputUstensil.classList.add('font-light', 'w-48')
-        inputUstensil.placeholder = 'Rechercher un ustensil'
+        inputUstensil.placeholder = 'Rechercher un ustensile'
       })
     })
     arrowUstensilUp.addEventListener('click', () => {
@@ -326,7 +326,7 @@ export class TableauRecettes {
           inputUstensils,
           arrowUstensilUp,
           arrowUstensilDown,
-          'Ustensils'
+          'Ustensiles'
         )
         inputUstensils.classList.remove('font-light', 'w-48')
         inputUstensils.classList.add('font-bold', 'w-24')

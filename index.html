@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -20,7 +19,11 @@
     <div class="container mx-auto my-5">
       <header class="flex justify-center mb-4">
         <!-- logo -->
-        <img src="./assets/icons/logo.png" alt="logo, les petits plats" />
+        <img
+          src="./assets/icons/logo.png"
+          alt="logo, les petits plats"
+          class="w-80"
+        />
       </header>
 
       <div class="searchTagAndButtons relative">
@@ -235,7 +238,10 @@
         </div>
       </div>
       <!-- emplacement cartes -->
-      <section id="card_container" class="grid grid-cols-3 pt-40"></section>
+      <section
+        id="card_container"
+        class="grid grid-cols-3 pt-40 gap-5"
+      ></section>
     </div>
 
     <script src="./js/index.js" type="module"></script>

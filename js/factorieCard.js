@@ -7,8 +7,8 @@ function factorieCard(recette) {
     // endroit de mes cartes
     const sectionRecipe = document.getElementById('card_container')
 
-    const cardRecipe = `<div class="rounded-lg shadow-lg bg-white  cardRecipe text-sm cursor-pointer m-2">
-                          <div class="bgImg h-48 rounded-t-lg "></div>
+    const cardRecipe = `<div class="rounded  bg-stone-100  text-sm cursor-pointer m-2">
+                          <div class="bgImg h-48 rounded-t-lg  bg-stone-300"></div>
                           <div class="infos_recette flex justify-between p-5 pb-0 h-14 gap-2" >
                             <div>${recette.name}</div>
                             <div class="flex gap-2 font-bold"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
