@@ -171,6 +171,15 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
+.dropdownAppareils {
+  padding: 20px;
+  background-color: rgb(110, 207, 131);
+  border-radius: 5px;
+  max-height: 200px;
+  overflow: scroll;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
 .noshow {
   display: none;
 }
@@ -186,8 +195,12 @@ body {
   color: grey;
 }
 /* quand on recherche dans le input drop, il s'aggrandit */
-.dropListed {
+.dropListedIngredient {
   width: 700px;
+  color: white;
+}
+.dropListedAppareil {
+  width: 400px;
   color: white;
 }
 .dropNoListed {

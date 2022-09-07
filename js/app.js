@@ -54,6 +54,7 @@ export class TableauRecettes {
     let dropdownUstensils = document.getElementById('dropdownUstensils')
 
     let filter = document.querySelector('.filter')
+    let filterApp = document.querySelector('.filterApp')
 
     //tableau des ingredients - appareils - ustensils - vide au début
     let tabIngredients = []
@@ -78,12 +79,11 @@ export class TableauRecettes {
 
     // drop Ingredient
     arrowIngredientsDown.addEventListener('click', () => {
-      console.log('click down')
       liButtonIng.classList.add('between')
       arrowIngredientsDown.style.display = 'none'
       arrowIngredientsUp.style.display = 'inline'
       dropdownIngredients.classList.remove('noshow')
-      filter.classList.add('dropListed')
+      filter.classList.add('dropListedIngredient')
       tabIngredients = this.getIngredients()
       displayDropDown(tabIngredients, dropdownIngredients, 'blue', 'ingredient')
 
@@ -99,24 +99,25 @@ export class TableauRecettes {
           'blue',
           'ingredient'
         )
-        inputIngredient.classList.add('dropListed')
+        inputIngredient.classList.add('dropListedIngredient')
         inputIngredient.placeholder = 'Rechercher un ingredient'
       })
     })
     arrowIngredientsUp.addEventListener('click', () => {
-      console.log('click up')
       arrowIngredientsUp.style.display = 'none'
       arrowIngredientsDown.style.display = 'inline'
       dropdownIngredients.classList.add('noshow')
-      filter.classList.remove('dropListed')
+      filter.classList.remove('dropListedIngredient')
     })
 
     // drop Appareil
     arrowAppareilDown.addEventListener('click', () => {
-      liButtonApp.classList.add('justify-between')
+      console.log('click down')
+      liButtonApp.classList.add('between')
       arrowAppareilDown.style.display = 'none'
       arrowAppareilUp.style.display = 'inline'
-      dropdownAppareils.classList.remove('hidden')
+      dropdownAppareils.classList.remove('noshow')
+      filterApp.classList.add('dropListedAppareil')
       tabAppareils = this.getAppareils()
       displayDropDown(tabAppareils, dropdownAppareils, 'green', 'appareil')
 
@@ -132,14 +133,16 @@ export class TableauRecettes {
           'green',
           'appareil'
         )
-        inputAppareil.classList.add('font-light', 'w-48')
+        inputAppareil.classList.add('dropListedAppareil')
         inputAppareil.placeholder = 'Rechercher un appareil'
       })
     })
     arrowAppareilUp.addEventListener('click', () => {
+      console.log('click up')
       arrowAppareilUp.style.display = 'none'
       arrowAppareilDown.style.display = 'inline'
-      dropdownAppareils.classList.add('hidden')
+      dropdownAppareils.classList.add('noshow')
+      filterApp.classList.remove('dropListedAppareil')
     })
 
     // drop ustensil
@@ -163,7 +166,7 @@ export class TableauRecettes {
           'red',
           'ustensil'
         )
-        inputUstensil.classList.add('font-light', 'w-48')
+        inputUstensil.classList.add('dropListedAppareil')
         inputUstensil.placeholder = 'Rechercher un ustensile'
       })
     })
@@ -266,7 +269,7 @@ export class TableauRecettes {
           tag.setAttribute('data-type', 'ingredient')
           //li.classList.add('text-slate-400', 'italic')
         } else if (li.dataset.type === 'appareil') {
-          tag.style.backgroundColor = 'green'
+          tag.style.backgroundColor = 'rgb(110, 207, 131)'
           tag.setAttribute('data-type', 'appareil')
           //li.classList.add('text-slate-400', 'italic')
         } else if (li.dataset.type === 'ustensil') {
@@ -422,6 +425,7 @@ export class TableauRecettes {
   }
   closeDropAfterTag(drop, input, arrowUp, arrowDown, placeholder) {
     let filter = document.querySelector('.filter')
+    let filterApp = document.querySelector('.filterApp')
     drop.classList.add('noshow')
     input.value = ''
     input.placeholder = placeholder
@@ -429,6 +433,7 @@ export class TableauRecettes {
     arrowDown.style.display = 'inline'
     // pour pouvoir fermer les tags (après la fermeture du drop)
     this.removeTag()
-    filter.classList.remove('dropListed')
+    filter.classList.remove('dropListedIngredient')
+    filterApp.classList.remove('dropListedAppareil')
   }
 }
