@@ -28,7 +28,7 @@
         <img src="./assets/icons/logo.png" alt="logo, les petits plats" />
       </header>
 
-      <div class="searchTagAndButtons relative">
+      <div class="searchTagAndButtons">
         <div class="searchBar">
           <input
             type="text"
@@ -53,9 +53,9 @@
             ></path>
           </svg>
         </div>
-        <div class="tagAndButtons absolute">
+        <div class="tagAndButtons">
           <!-- emplacement des tags -->
-          <div class="zoneTag flex"></div>
+          <div class="zoneTag"></div>
           <!-- boutons filtres -->
           <div class="buttons">
             <div class="buttonFiltreIngredient">
@@ -72,28 +72,20 @@
                     id="btnMenuIngredientsDown"
                   ></i>
                   <i
-                    class="fas fa-chevron-up arrow hidden"
+                    class="fas fa-chevron-up arrow noshow"
                     id="btnMenuIngredientsUp"
                   ></i>
                 </li>
               </ul>
+              <!-- drop -->
               <div
-                class="
-                  bg-blue-500
-                  grid grid-cols-3
-                  text-sm text-white
-                  rounded-b
-                  hidden
-                  dropdown
-                  max-h-96
-                  overflow-scroll
-                "
+                class="dropdownIngredients noshow"
                 id="dropdownIngredients"
               ></div>
             </div>
-            <div class="">
+            <div>
               <ul class="buttonUl buttonAppareil">
-                <li class="flex items-center gap-2" id="liButtonAppareil">
+                <li class="liButtonAppareil" id="liButtonAppareil">
                   <input
                     type="text"
                     class="inputAppareils"
@@ -105,7 +97,7 @@
                     id="btnMenuAppareilDown"
                   ></i>
                   <i
-                    class="fas fa-chevron-up arrow hidden"
+                    class="fas fa-chevron-up arrow noshow"
                     id="btnMenuAppareilUp"
                   ></i>
                 </li>

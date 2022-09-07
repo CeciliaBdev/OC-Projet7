@@ -55,7 +55,7 @@ body {
   align-items: center;
 }
 .buttons input {
-  width: 100px;
+  width: 100%;
   font-size: 20px;
   border: transparent;
 }
@@ -66,6 +66,7 @@ body {
   border-radius: 5px;
   width: 130px;
   border: transparent;
+  margin-bottom: 0;
 }
 .buttons i {
   color: white;
@@ -101,7 +102,7 @@ body {
 
 /* emplacement cartes */
 .card_container {
-  margin-top: 50px;
+  margin-top: 150px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
@@ -147,5 +148,69 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200px;
+  margin-top: 300px;
+}
+
+/* zone tag */
+.zoneTag {
+  display: flex;
+}
+/* dropdown */
+.searchTagAndButtons {
+  position: relative;
+}
+.tagAndButtons {
+  position: absolute;
+}
+.dropdownIngredients {
+  padding: 20px;
+  background-color: blue;
+  border-radius: 5px;
+  max-height: 200px;
+  overflow: scroll;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.noshow {
+  display: none;
+}
+.buttons li {
+  display: flex;
+  gap: 10px;
+}
+.list {
+  color: white;
+  cursor: pointer;
+}
+.list:hover {
+  color: grey;
+}
+/* quand on recherche dans le input drop, il s'aggrandit */
+.dropListed {
+  width: 700px;
+  color: white;
+}
+.dropNoListed {
+  width: 100px;
+}
+.between {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+/* font light */
+
+/* class tag */
+.tagClass {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  display: inline-block;
+  padding: 15px;
+  color: white;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+#cross {
+  margin-left: 10px;
 }

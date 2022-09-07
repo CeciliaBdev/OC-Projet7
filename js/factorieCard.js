@@ -76,17 +76,17 @@ export function displayRecipes(allRecipes) {
 
 export function displayDropDown(tabThings, elementCategory, color, type) {
   // drop visible
-  if (!elementCategory.classList.contains('hidden')) {
+  if (!elementCategory.classList.contains('noshow')) {
     elementCategory.innerHTML = `${tabThings
       .map(
         (element) => `
-    <li class="list hover:bg-${color}-600 p-1 list-none cursor-pointer" data-type="${type}">${element}</li>`
+    <li class="list" data-type="${type}">${element}</li>`
       )
       .join(' ')}`
-    elementCategory.classList.remove('hidden')
+    elementCategory.classList.remove('noshow')
   } else {
     // drop hidden
-    elementCategory.classList.add('hidden')
+    elementCategory.classList.add('noshow')
     elementCategory.textContent = ''
   }
 }
