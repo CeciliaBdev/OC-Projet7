@@ -71,10 +71,7 @@ body {
 .buttons i {
   color: white;
 }
-.filter {
-  /* à remplir */
-}
-
+/* filtres */
 .buttonIngredient,
 .inputIngredients {
   background-color: blue;
@@ -83,7 +80,6 @@ body {
 .inputAppareils {
   background-color: rgb(110, 207, 131);
 }
-
 .buttonUstensil,
 .inputUstensils {
   background-color: crimson;
@@ -99,7 +95,6 @@ body {
 .inputUstensils:focus {
   outline: none;
 }
-
 /* emplacement cartes */
 .card_container {
   margin-top: 150px;
@@ -150,7 +145,6 @@ body {
   align-items: center;
   margin-top: 300px;
 }
-
 /* zone tag */
 .zoneTag {
   display: flex;
@@ -162,23 +156,23 @@ body {
 .tagAndButtons {
   position: absolute;
 }
-.dropdownIngredients {
+/* drop */
+.dropDown {
   padding: 20px;
-  background-color: blue;
   border-radius: 5px;
   max-height: 200px;
   overflow: scroll;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
+.dropdownIngredients {
+  background-color: blue;
+}
 .dropdownAppareils {
-  padding: 20px;
   background-color: rgb(110, 207, 131);
-  border-radius: 5px;
-  max-height: 200px;
-  overflow: scroll;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+}
+.dropdownUstensils {
+  background-color: crimson;
 }
 .noshow {
   display: none;
@@ -203,15 +197,16 @@ body {
   width: 400px;
   color: white;
 }
-.dropNoListed {
-  width: 100px;
+.dropListedUstensil {
+  width: 500px;
+  color: white;
 }
+
 .between {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-/* font light */
 
 /* class tag */
 .tagClass {

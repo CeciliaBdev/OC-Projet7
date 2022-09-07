@@ -55,6 +55,7 @@ export class TableauRecettes {
 
     let filter = document.querySelector('.filter')
     let filterApp = document.querySelector('.filterApp')
+    let filterUst = document.querySelector('.filterUst')
 
     //tableau des ingredients - appareils - ustensils - vide au début
     let tabIngredients = []
@@ -112,7 +113,6 @@ export class TableauRecettes {
 
     // drop Appareil
     arrowAppareilDown.addEventListener('click', () => {
-      console.log('click down')
       liButtonApp.classList.add('between')
       arrowAppareilDown.style.display = 'none'
       arrowAppareilUp.style.display = 'inline'
@@ -138,7 +138,6 @@ export class TableauRecettes {
       })
     })
     arrowAppareilUp.addEventListener('click', () => {
-      console.log('click up')
       arrowAppareilUp.style.display = 'none'
       arrowAppareilDown.style.display = 'inline'
       dropdownAppareils.classList.add('noshow')
@@ -147,11 +146,13 @@ export class TableauRecettes {
 
     // drop ustensil
     arrowUstensilDown.addEventListener('click', () => {
-      liButtonUst.classList.add('justify-between')
+      console.log('click down')
+      liButtonUst.classList.add('between')
       arrowUstensilDown.style.display = 'none'
       arrowUstensilUp.style.display = 'inline'
-      dropdownUstensils.classList.remove('hidden')
+      dropdownUstensils.classList.remove('noshow')
       tabUstensils = this.getUstensils()
+      filterUst.classList.add('dropListedUstensil')
       displayDropDown(tabUstensils, dropdownUstensils, 'red', 'ustensil')
 
       // partie TAG
@@ -166,14 +167,16 @@ export class TableauRecettes {
           'red',
           'ustensil'
         )
-        inputUstensil.classList.add('dropListedAppareil')
+        inputUstensil.classList.add('dropListedUstensil')
         inputUstensil.placeholder = 'Rechercher un ustensile'
       })
     })
     arrowUstensilUp.addEventListener('click', () => {
+      console.log('click up')
       arrowUstensilUp.style.display = 'none'
       arrowUstensilDown.style.display = 'inline'
-      dropdownUstensils.classList.add('hidden')
+      dropdownUstensils.classList.add('noshow')
+      filterUst.classList.remove('dropListedUstensil')
     })
   }
 
@@ -267,15 +270,12 @@ export class TableauRecettes {
         if (li.dataset.type === 'ingredient') {
           tag.style.backgroundColor = 'blue'
           tag.setAttribute('data-type', 'ingredient')
-          //li.classList.add('text-slate-400', 'italic')
         } else if (li.dataset.type === 'appareil') {
           tag.style.backgroundColor = 'rgb(110, 207, 131)'
           tag.setAttribute('data-type', 'appareil')
-          //li.classList.add('text-slate-400', 'italic')
         } else if (li.dataset.type === 'ustensil') {
-          tag.style.backgroundColor = 'red'
+          tag.style.backgroundColor = 'crimson'
           tag.setAttribute('data-type', 'ustensil')
-          //li.classList.add('text-slate-400', 'italic')
         }
         // j'ajoute mon tag dans ma zoneTag
         zoneTag.appendChild(tag)
@@ -308,8 +308,6 @@ export class TableauRecettes {
           arrowIngredientsDown,
           'Ingredients'
         )
-        inputIngredients.classList.remove('font-light', 'w-48')
-        inputIngredients.classList.add('font-bold', 'w-24')
         this.closeDropAfterTag(
           dropdownAppareils,
           inputAppareils,
@@ -317,8 +315,6 @@ export class TableauRecettes {
           arrowAppareilDown,
           'Appareils'
         )
-        inputAppareils.classList.remove('font-light', 'w-48')
-        inputAppareils.classList.add('font-bold', 'w-24')
         this.closeDropAfterTag(
           dropdownUstensils,
           inputUstensils,
@@ -326,8 +322,6 @@ export class TableauRecettes {
           arrowUstensilDown,
           'Ustensiles'
         )
-        inputUstensils.classList.remove('font-light', 'w-48')
-        inputUstensils.classList.add('font-bold', 'w-24')
       })
     })
   }
@@ -426,6 +420,7 @@ export class TableauRecettes {
   closeDropAfterTag(drop, input, arrowUp, arrowDown, placeholder) {
     let filter = document.querySelector('.filter')
     let filterApp = document.querySelector('.filterApp')
+    let filterUst = document.querySelector('.filterUst')
     drop.classList.add('noshow')
     input.value = ''
     input.placeholder = placeholder
@@ -435,5 +430,6 @@ export class TableauRecettes {
     this.removeTag()
     filter.classList.remove('dropListedIngredient')
     filterApp.classList.remove('dropListedAppareil')
+    filterUst.classList.remove('dropListedUstensil')
   }
 }

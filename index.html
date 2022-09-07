@@ -79,7 +79,7 @@
               </ul>
               <!-- drop -->
               <div
-                class="dropdownIngredients noshow"
+                class="dropDown dropdownIngredients noshow"
                 id="dropdownIngredients"
               ></div>
             </div>
@@ -104,14 +104,14 @@
               </ul>
               <!-- drop -->
               <div
-                class="dropdownAppareils noshow"
+                class="dropDown dropdownAppareils noshow"
                 id="dropdownAppareils"
               ></div>
             </div>
 
             <div class="">
-              <ul class="buttonUl buttonUstensil">
-                <li class="flex items-center gap-2" id="liButtonUstensil">
+              <ul class="buttonUl buttonUstensil filterUst">
+                <li class="liButtonUstensil" id="liButtonUstensil">
                   <input
                     type="text"
                     class="inputUstensils"
@@ -124,22 +124,14 @@
                     id="btnMenuUstensilDown"
                   ></i>
                   <i
-                    class="fas fa-chevron-up arrow hidden"
+                    class="fas fa-chevron-up arrow noshow"
                     id="btnMenuUstensilUp"
                   ></i>
                 </li>
               </ul>
+              <!-- drop -->
               <div
-                class="
-                  bg-red-500
-                  grid grid-cols-3
-                  text-sm text-white
-                  rounded-b
-                  hidden
-                  dropdown
-                  max-h-96
-                  overflow-scroll
-                "
+                class="dropDown dropdownUstensils noshow"
                 id="dropdownUstensils"
               ></div>
             </div>
