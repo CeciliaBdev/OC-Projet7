@@ -146,7 +146,6 @@ export class TableauRecettes {
 
     // drop ustensil
     arrowUstensilDown.addEventListener('click', () => {
-      console.log('click down')
       liButtonUst.classList.add('between')
       arrowUstensilDown.style.display = 'none'
       arrowUstensilUp.style.display = 'inline'
@@ -172,7 +171,6 @@ export class TableauRecettes {
       })
     })
     arrowUstensilUp.addEventListener('click', () => {
-      console.log('click up')
       arrowUstensilUp.style.display = 'none'
       arrowUstensilDown.style.display = 'inline'
       dropdownUstensils.classList.add('noshow')
