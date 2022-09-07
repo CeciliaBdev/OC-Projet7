@@ -60,18 +60,13 @@ export function displayRecipes(allRecipes) {
   sectionRecipe.innerHTML = ''
 
   if (allRecipes.length === 0) {
-    sectionRecipe.classList.remove('grid', 'grid-cols-3', 'pt-40')
+    sectionRecipe.classList.remove('card_container')
     sectionRecipe.innerHTML = `Aucune recette ne correspond à votre critère… Vous pouvez
     chercher « tarte aux pommes », « poisson », etc ...`
-    sectionRecipe.classList.add(
-      'flex',
-      'justify-center',
-      'h-80',
-      'items-center',
-      'text-lg'
-    )
+    sectionRecipe.classList.add('errorMessage')
   } else {
-    // sectionRecipe.classList.add('grid', 'grid-cols-3', 'pt-40')
+    sectionRecipe.classList.add('card_container')
+    sectionRecipe.classList.remove('errorMessage')
   }
 
   allRecipes.forEach((recette) => {

@@ -28,12 +28,13 @@ body {
   border: 1px solid rgb(240, 236, 236);
 }
 .input::placeholder {
-  padding-left: 20px;
   font-size: 20px;
   color: rgb(139, 137, 137);
 }
 .input:focus {
   outline: none;
+  padding-left: 30px;
+  font-size: 24px;
 }
 .loupe {
   width: 30px;
@@ -99,7 +100,7 @@ body {
 }
 
 /* emplacement cartes */
-#card_container {
+.card_container {
   margin-top: 50px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -140,5 +141,11 @@ body {
   width: 48%;
   text-align: justify;
 }
-
-/* class="grid grid-cols-3 pt-40 gap-5" */
+/* message d'erreur */
+.errorMessage {
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
