@@ -7,20 +7,18 @@ function factorieCard(recette) {
     // endroit de mes cartes
     const sectionRecipe = document.getElementById('card_container')
 
-    const cardRecipe = `<div class="rounded  bg-stone-100  text-sm cursor-pointer m-2">
-                          <div class="bgImg h-48 rounded-t-lg  bg-stone-300"></div>
-                          <div class="infos_recette flex justify-between p-5 pb-0 h-14 gap-2" >
+    const cardRecipe = `<div class="card">
+                          <div class="bgImg "></div>
+                          <div class="infos_recette" >
                             <div>${recette.name}</div>
-                            <div class="flex gap-2 font-bold"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <div><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18ZM10.5 5H9V11L14.2 14.2L15 12.9L10.5 10.2V5Z" fill="black"/>
                             </svg>
                             ${recette.time}min</div>
                           </div>
-                          <div class="description_recette flex justify-between p-5 pt-1 text-sm ">
-                          <ul class='list-none w-40' id="ingredients-${
-                            recette.id
-                          }"></ul>
-                          <div class='w-40 text-justify'>${
+                          <div class="description_recette">
+                          <ul id="ingredients-${recette.id}"></ul>
+                          <div class="descriptif">${
                             recette.description.substring(0, 150) + '...'
                           }</div>
                           </div>
@@ -73,7 +71,7 @@ export function displayRecipes(allRecipes) {
       'text-lg'
     )
   } else {
-    sectionRecipe.classList.add('grid', 'grid-cols-3', 'pt-40')
+    // sectionRecipe.classList.add('grid', 'grid-cols-3', 'pt-40')
   }
 
   allRecipes.forEach((recette) => {

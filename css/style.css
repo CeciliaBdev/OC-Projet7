@@ -1,0 +1,144 @@
+body {
+  font-family: 'Lato';
+}
+.container {
+  max-width: 1300px;
+  margin: 50px;
+}
+.header {
+  display: flex;
+  justify-content: center;
+}
+.header img {
+  width: 320px;
+  margin: 50px auto;
+}
+/* search bar input */
+.searchBar {
+  display: flex;
+  position: relative;
+}
+.input {
+  margin: 30px auto;
+  width: 100%;
+  height: 50px;
+  background-color: rgb(240, 236, 236);
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid rgb(240, 236, 236);
+}
+.input::placeholder {
+  padding-left: 20px;
+  font-size: 20px;
+  color: rgb(139, 137, 137);
+}
+.input:focus {
+  outline: none;
+}
+.loupe {
+  width: 30px;
+  position: absolute;
+  right: 20px;
+  top: 50px;
+}
+/* bouton filtres */
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+.buttons ul {
+  list-style-type: none;
+}
+.buttons li {
+  display: flex;
+  align-items: center;
+}
+.buttons input {
+  width: 100px;
+  font-size: 20px;
+  border: transparent;
+}
+.buttonUl {
+  display: flex;
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 5px;
+  width: 130px;
+  border: transparent;
+}
+.buttons i {
+  color: white;
+}
+.filter {
+  /* à remplir */
+}
+
+.buttonIngredient,
+.inputIngredients {
+  background-color: blue;
+}
+.buttonAppareil,
+.inputAppareils {
+  background-color: rgb(110, 207, 131);
+}
+
+.buttonUstensil,
+.inputUstensils {
+  background-color: crimson;
+}
+
+.inputIngredients::placeholder,
+.inputAppareils::placeholder,
+.inputUstensils::placeholder {
+  color: white;
+}
+.inputIngredients:focus,
+.inputAppareils:focus,
+.inputUstensils:focus {
+  outline: none;
+}
+
+/* emplacement cartes */
+#card_container {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+/* 1 carte */
+.card {
+  width: 400px;
+  height: 500px;
+  border-radius: 5px;
+  font-size: 20px;
+  padding-bottom: 20px;
+  background-color: rgb(250, 246, 246);
+}
+.bgImg {
+  background-color: rgb(180, 176, 176);
+  border-radius: 5px 5px 0 0;
+  height: 192px;
+}
+.infos_recette {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  padding-bottom: 0;
+}
+.description_recette {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+.description_recette ul {
+  list-style-type: none;
+  margin-top: 0;
+  padding-left: 0;
+  width: 48%;
+}
+.descriptif {
+  width: 48%;
+  text-align: justify;
+}
+
+/* class="grid grid-cols-3 pt-40 gap-5" */
