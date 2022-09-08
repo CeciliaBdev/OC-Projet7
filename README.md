@@ -4,6 +4,6 @@
 
 - Algo filter
 
-## algo_for branch
+## algorithme_for branch
 
-- Algo for
+- Algo boucle for
