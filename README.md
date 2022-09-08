@@ -7,7 +7,3 @@
 ## algo_for branch
 
 - Algo for
-
-## thirdbranch
-
-- project with css (no Framework)
