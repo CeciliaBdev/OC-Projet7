@@ -19,29 +19,45 @@ export class TableauRecettes {
     const inputSearch = document.querySelector('.container input')
 
     inputSearch.addEventListener('keyup', () => {
-      // const resultatSearchBar = inputSearch.value.toLowerCase()
-      const resultatSearchBar = inputSearch.value
+      // contenu de la recherche en minuscule
+      const resultatSearchBar = inputSearch.value.toLowerCase()
 
-      // contenu renvoi recherche filtrée si 3 caractères sinon renvoi toutes les recettes
+      // essai 2e algo
+      let tabFilter = []
+      // contenu contient min3 caractères
       if (resultatSearchBar.length >= '3') {
-        this.filterByTag()
-        this.currentRecipes = this.currentRecipes.filter((el) => {
-          // je filtre mes recettes suivant le resultat compris dans le titre (name), la description, ou l'ingrédient
-          // si existantes
+        // console.log('algo for')
+        // je boucle sur mon tableau currentRecipes
+        for (let i = 0; i < this.currentRecipes.length; i++) {
+          const recette = this.currentRecipes[i]
+          // je boucle dans mon tableau d'ingrédient
+
           if (
-            el.name.toLowerCase().includes(resultatSearchBar) || // titre
-            el.description.toLowerCase().includes(resultatSearchBar) || // description
-            el.ingredients.filter((ingred) =>
-              ingred.ingredient.toLowerCase().includes(resultatSearchBar)
-            ).length >= 1 //filtre sur ingredient dans ingredients (non vide)
+            recette.name.toLowerCase().includes(resultatSearchBar) ||
+            recette.description.toLowerCase().includes(resultatSearchBar)
           ) {
-            // console.log('ingredient trouvé')
-            return el
+            tabFilter.push(recette)
+          } else {
+            for (let j = 0; j < recette.ingredients.length; j++) {
+              if (
+                recette.ingredients[j].ingredient
+                  .toLowerCase()
+                  .includes(resultatSearchBar.toLowerCase())
+              ) {
+                // console.log(recette.name, recette.ingredients[j].ingredient)
+                tabFilter.push(recette)
+              }
+            }
           }
-        })
-      } else {
+        }
+      }
+
+      // si pas de resultat
+      if (tabFilter.length == 0) {
         this.currentRecipes = recipesData
         this.filterByTag()
+      } else {
+        this.currentRecipes = tabFilter
       }
       displayRecipes(this.currentRecipes)
     })
