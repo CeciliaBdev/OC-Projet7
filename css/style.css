@@ -47,6 +47,7 @@ body {
 .buttons {
   display: flex;
   gap: 20px;
+  opacity: 1;
 }
 .buttons ul {
   list-style-type: none;
@@ -97,6 +98,7 @@ body {
 .inputUstensils:focus {
   outline: none;
 }
+
 /* emplacement cartes */
 .card_container {
   margin-top: 170px;
@@ -115,14 +117,13 @@ body {
 }
 .bgImg {
   background-color: #c7bebe;
-
   border-radius: 5px 5px 0 0;
   height: 192px;
 }
 .infos_recette {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 16px 20px;
   padding-bottom: 0;
 }
 .time {
@@ -134,7 +135,7 @@ body {
 .description_recette {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 15px 20px;
 }
 .description_recette ul {
   list-style-type: none;
@@ -204,6 +205,9 @@ body {
   width: 700px;
   color: white;
 }
+/* .dropListedIngredient::placeholder {
+  opacity: 0.5;
+} */
 .dropListedAppareil {
   width: 400px;
   color: white;

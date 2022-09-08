@@ -92,6 +92,7 @@ export class TableauRecettes {
       this.createTag()
       this.removeTag()
 
+      // recherche drop
       inputIngredient.addEventListener('click', () => {
         this.listDropFilter(
           inputIngredient,
@@ -102,6 +103,7 @@ export class TableauRecettes {
         )
         inputIngredient.classList.add('dropListedIngredient')
         inputIngredient.placeholder = 'Rechercher un ingredient'
+        inputIngredient.style.opacity = '0.5'
       })
     })
     arrowIngredientsUp.addEventListener('click', () => {
@@ -135,6 +137,7 @@ export class TableauRecettes {
         )
         inputAppareil.classList.add('dropListedAppareil')
         inputAppareil.placeholder = 'Rechercher un appareil'
+        inputAppareil.style.opacity = '0.5'
       })
     })
     arrowAppareilUp.addEventListener('click', () => {
@@ -168,6 +171,7 @@ export class TableauRecettes {
         )
         inputUstensil.classList.add('dropListedUstensil')
         inputUstensil.placeholder = 'Rechercher un ustensile'
+        inputUstensil.style.opacity = '0.5'
       })
     })
     arrowUstensilUp.addEventListener('click', () => {
@@ -419,6 +423,10 @@ export class TableauRecettes {
     let filter = document.querySelector('.filter')
     let filterApp = document.querySelector('.filterApp')
     let filterUst = document.querySelector('.filterUst')
+    let inputIngredient = document.querySelector('.inputIngredients')
+    let inputAppareil = document.querySelector('.inputAppareils')
+    let inputUstensil = document.querySelector('.inputUstensils')
+    let li = document.querySelector('#liButtonIngredient')
     drop.classList.add('noshow')
     input.value = ''
     input.placeholder = placeholder
@@ -429,5 +437,8 @@ export class TableauRecettes {
     filter.classList.remove('dropListedIngredient')
     filterApp.classList.remove('dropListedAppareil')
     filterUst.classList.remove('dropListedUstensil')
+    inputIngredient.style.opacity = '1'
+    inputAppareil.style.opacity = '1'
+    inputUstensil.style.opacity = '1'
   }
 }
