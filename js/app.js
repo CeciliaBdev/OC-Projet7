@@ -53,6 +53,10 @@ export class TableauRecettes {
     let dropdownAppareils = document.getElementById('dropdownAppareils')
     let dropdownUstensils = document.getElementById('dropdownUstensils')
 
+    let filter = document.querySelector('.filter')
+    let filterApp = document.querySelector('.filterApp')
+    let filterUst = document.querySelector('.filterUst')
+
     //tableau des ingredients - appareils - ustensils - vide au début
     let tabIngredients = []
     let tabAppareils = []
@@ -76,10 +80,11 @@ export class TableauRecettes {
 
     // drop Ingredient
     arrowIngredientsDown.addEventListener('click', () => {
-      liButtonIng.classList.add('justify-between')
+      liButtonIng.classList.add('between')
       arrowIngredientsDown.style.display = 'none'
       arrowIngredientsUp.style.display = 'inline'
-      dropdownIngredients.classList.remove('hidden')
+      dropdownIngredients.classList.remove('noshow')
+      filter.classList.add('dropListedIngredient')
       tabIngredients = this.getIngredients()
       displayDropDown(tabIngredients, dropdownIngredients, 'blue', 'ingredient')
 
@@ -87,6 +92,7 @@ export class TableauRecettes {
       this.createTag()
       this.removeTag()
 
+      // recherche drop
       inputIngredient.addEventListener('click', () => {
         this.listDropFilter(
           inputIngredient,
@@ -95,22 +101,25 @@ export class TableauRecettes {
           'blue',
           'ingredient'
         )
-        inputIngredient.classList.add('font-light', 'w-48')
+        inputIngredient.classList.add('dropListedIngredient')
         inputIngredient.placeholder = 'Rechercher un ingredient'
+        inputIngredient.style.opacity = '0.5'
       })
     })
     arrowIngredientsUp.addEventListener('click', () => {
       arrowIngredientsUp.style.display = 'none'
       arrowIngredientsDown.style.display = 'inline'
-      dropdownIngredients.classList.add('hidden')
+      dropdownIngredients.classList.add('noshow')
+      filter.classList.remove('dropListedIngredient')
     })
 
     // drop Appareil
     arrowAppareilDown.addEventListener('click', () => {
-      liButtonApp.classList.add('justify-between')
+      liButtonApp.classList.add('between')
       arrowAppareilDown.style.display = 'none'
       arrowAppareilUp.style.display = 'inline'
-      dropdownAppareils.classList.remove('hidden')
+      dropdownAppareils.classList.remove('noshow')
+      filterApp.classList.add('dropListedAppareil')
       tabAppareils = this.getAppareils()
       displayDropDown(tabAppareils, dropdownAppareils, 'green', 'appareil')
 
@@ -126,23 +135,26 @@ export class TableauRecettes {
           'green',
           'appareil'
         )
-        inputAppareil.classList.add('font-light', 'w-48')
+        inputAppareil.classList.add('dropListedAppareil')
         inputAppareil.placeholder = 'Rechercher un appareil'
+        inputAppareil.style.opacity = '0.5'
       })
     })
     arrowAppareilUp.addEventListener('click', () => {
       arrowAppareilUp.style.display = 'none'
       arrowAppareilDown.style.display = 'inline'
-      dropdownAppareils.classList.add('hidden')
+      dropdownAppareils.classList.add('noshow')
+      filterApp.classList.remove('dropListedAppareil')
     })
 
     // drop ustensil
     arrowUstensilDown.addEventListener('click', () => {
-      liButtonUst.classList.add('justify-between')
+      liButtonUst.classList.add('between')
       arrowUstensilDown.style.display = 'none'
       arrowUstensilUp.style.display = 'inline'
-      dropdownUstensils.classList.remove('hidden')
+      dropdownUstensils.classList.remove('noshow')
       tabUstensils = this.getUstensils()
+      filterUst.classList.add('dropListedUstensil')
       displayDropDown(tabUstensils, dropdownUstensils, 'red', 'ustensil')
 
       // partie TAG
@@ -157,14 +169,16 @@ export class TableauRecettes {
           'red',
           'ustensil'
         )
-        inputUstensil.classList.add('font-light', 'w-48')
+        inputUstensil.classList.add('dropListedUstensil')
         inputUstensil.placeholder = 'Rechercher un ustensile'
+        inputUstensil.style.opacity = '0.5'
       })
     })
     arrowUstensilUp.addEventListener('click', () => {
       arrowUstensilUp.style.display = 'none'
       arrowUstensilDown.style.display = 'inline'
-      dropdownUstensils.classList.add('hidden')
+      dropdownUstensils.classList.add('noshow')
+      filterUst.classList.remove('dropListedUstensil')
     })
   }
 
@@ -251,33 +265,19 @@ export class TableauRecettes {
       li.addEventListener('click', () => {
         const tag = document.createElement('div')
         // au click sur un li je crée un tag avec les propriétés suivantes
-        tag.classList.add(
-          'flex',
-          'gap-3',
-          'items-center',
-          'tagCreated',
-          'inline-block',
-          'px-5',
-          'py-2',
-          'text-white',
-          'rounded',
-          'mr-2'
-        )
+        tag.classList.add('tagClass', 'tagCreated')
         tag.textContent = li.textContent
         tag.innerHTML += '<i class="far fa-times-circle" id="cross"></i>'
         // différences de tag suivant le data-type
         if (li.dataset.type === 'ingredient') {
-          tag.classList.add('bg-blue-500')
+          tag.style.backgroundColor = '#3282f7'
           tag.setAttribute('data-type', 'ingredient')
-          //li.classList.add('text-slate-400', 'italic')
         } else if (li.dataset.type === 'appareil') {
-          tag.classList.add('bg-green-500')
+          tag.style.backgroundColor = '#68d9a4'
           tag.setAttribute('data-type', 'appareil')
-          //li.classList.add('text-slate-400', 'italic')
         } else if (li.dataset.type === 'ustensil') {
-          tag.classList.add('bg-red-500')
+          tag.style.backgroundColor = '#ed6454'
           tag.setAttribute('data-type', 'ustensil')
-          //li.classList.add('text-slate-400', 'italic')
         }
         // j'ajoute mon tag dans ma zoneTag
         zoneTag.appendChild(tag)
@@ -310,8 +310,6 @@ export class TableauRecettes {
           arrowIngredientsDown,
           'Ingredients'
         )
-        inputIngredients.classList.remove('font-light', 'w-48')
-        inputIngredients.classList.add('font-bold', 'w-24')
         this.closeDropAfterTag(
           dropdownAppareils,
           inputAppareils,
@@ -319,8 +317,6 @@ export class TableauRecettes {
           arrowAppareilDown,
           'Appareils'
         )
-        inputAppareils.classList.remove('font-light', 'w-48')
-        inputAppareils.classList.add('font-bold', 'w-24')
         this.closeDropAfterTag(
           dropdownUstensils,
           inputUstensils,
@@ -328,8 +324,6 @@ export class TableauRecettes {
           arrowUstensilDown,
           'Ustensiles'
         )
-        inputUstensils.classList.remove('font-light', 'w-48')
-        inputUstensils.classList.add('font-bold', 'w-24')
       })
     })
   }
@@ -417,7 +411,7 @@ export class TableauRecettes {
       dropdown.innerHTML = `${resultatInput
         .map(
           (element) => `
-              <li class="list hover:bg-${color}-700 p-1 list-none cursor-pointer " data-type='${type}'>${element}</li>`
+              <li class="list" data-type='${type}'>${element}</li>`
         )
         .join(' ')}`
 
@@ -426,12 +420,25 @@ export class TableauRecettes {
     })
   }
   closeDropAfterTag(drop, input, arrowUp, arrowDown, placeholder) {
-    drop.classList.add('hidden')
+    let filter = document.querySelector('.filter')
+    let filterApp = document.querySelector('.filterApp')
+    let filterUst = document.querySelector('.filterUst')
+    let inputIngredient = document.querySelector('.inputIngredients')
+    let inputAppareil = document.querySelector('.inputAppareils')
+    let inputUstensil = document.querySelector('.inputUstensils')
+    let li = document.querySelector('#liButtonIngredient')
+    drop.classList.add('noshow')
     input.value = ''
     input.placeholder = placeholder
     arrowUp.style.display = 'none'
     arrowDown.style.display = 'inline'
     // pour pouvoir fermer les tags (après la fermeture du drop)
     this.removeTag()
+    filter.classList.remove('dropListedIngredient')
+    filterApp.classList.remove('dropListedAppareil')
+    filterUst.classList.remove('dropListedUstensil')
+    inputIngredient.style.opacity = '1'
+    inputAppareil.style.opacity = '1'
+    inputUstensil.style.opacity = '1'
   }
 }

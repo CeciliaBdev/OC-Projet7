@@ -1,0 +1,240 @@
+body {
+  font-family: 'Lato';
+}
+.container {
+  max-width: 1300px;
+  margin: 0 50px;
+}
+.header {
+  display: flex;
+  justify-content: center;
+}
+.header img {
+  width: 268px;
+  height: 94px;
+  margin: 10px auto;
+}
+/* search bar input */
+.searchBar {
+  display: flex;
+  position: relative;
+}
+.input {
+  margin: 30px auto;
+  width: 1240px;
+  height: 69px;
+  background-color: #e7e7e7;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #e7e7e7;
+}
+.input::placeholder {
+  font-size: 18px;
+  color: rgb(139, 137, 137);
+}
+.input:focus {
+  outline: none;
+  /* padding-left: 30px; */
+  font-size: 18px;
+}
+.loupe {
+  width: 32px;
+  position: absolute;
+  right: 20px;
+  top: 60px;
+}
+/* bouton filtres */
+.buttons {
+  display: flex;
+  gap: 20px;
+  opacity: 1;
+}
+.buttons ul {
+  list-style-type: none;
+}
+.buttons li {
+  display: flex;
+  align-items: center;
+}
+.buttons input {
+  width: 100%;
+  font-size: 18px;
+  border: transparent;
+}
+.buttonUl {
+  display: flex;
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 5px;
+  width: 170px;
+  height: 40px;
+  border: transparent;
+  margin-bottom: 0;
+}
+.buttons i {
+  color: white;
+}
+/* filtres */
+.buttonIngredient,
+.inputIngredients {
+  background-color: #3282f7;
+}
+.buttonAppareil,
+.inputAppareils {
+  background-color: #68d9a4;
+}
+.buttonUstensil,
+.inputUstensils {
+  background-color: #ed6454;
+}
+
+.inputIngredients::placeholder,
+.inputAppareils::placeholder,
+.inputUstensils::placeholder {
+  color: white;
+}
+.inputIngredients:focus,
+.inputAppareils:focus,
+.inputUstensils:focus {
+  outline: none;
+}
+
+/* emplacement cartes */
+.card_container {
+  margin-top: 170px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+/* 1 carte */
+.card {
+  width: 380px;
+  height: 364px;
+  border-radius: 5px;
+  font-size: 18px;
+  padding-bottom: 20px;
+  background-color: #e7e7e7;
+}
+.bgImg {
+  background-color: #c7bebe;
+  border-radius: 5px 5px 0 0;
+  height: 192px;
+}
+.infos_recette {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 20px;
+  padding-bottom: 0;
+}
+.time {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  align-items: center;
+}
+.description_recette {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+}
+.description_recette ul {
+  list-style-type: none;
+  margin-top: 0;
+  padding-left: 0;
+  width: 48%;
+  font-size: 12px;
+}
+.descriptif {
+  width: 48%;
+  text-align: justify;
+  font-size: 12px;
+}
+/* message d'erreur */
+.errorMessage {
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 300px;
+}
+/* zone tag */
+.zoneTag {
+  display: flex;
+}
+/* dropdown */
+.searchTagAndButtons {
+  position: relative;
+}
+.tagAndButtons {
+  position: absolute;
+}
+/* drop */
+.dropDown {
+  padding: 20px;
+  border-radius: 5px;
+  max-height: 200px;
+  overflow: scroll;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.dropdownIngredients {
+  background-color: #3282f7;
+}
+.dropdownAppareils {
+  background-color: #68d9a4;
+}
+.dropdownUstensils {
+  background-color: #ed6454;
+}
+.noshow {
+  display: none;
+}
+.buttons li {
+  display: flex;
+  gap: 10px;
+}
+.list {
+  color: white;
+  cursor: pointer;
+}
+.list:hover {
+  color: grey;
+}
+/* quand on recherche dans le input drop, il s'aggrandit */
+.dropListedIngredient {
+  width: 700px;
+  color: white;
+}
+/* .dropListedIngredient::placeholder {
+  opacity: 0.5;
+} */
+.dropListedAppareil {
+  width: 400px;
+  color: white;
+}
+.dropListedUstensil {
+  width: 500px;
+  color: white;
+}
+
+.between {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* class tag */
+.tagClass {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  display: inline-block;
+  padding: 15px;
+  color: white;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+#cross {
+  margin-left: 10px;
+  font-size: 20px;
+}

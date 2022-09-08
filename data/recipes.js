@@ -484,7 +484,7 @@ export const recipesData = [
   },
   {
     id: 14,
-    name: 'Galette Bretonne Saucisse et Fromage à raclette',
+    name: 'Galette Bretonne Saucisse',
     servings: 2,
     ingredients: [
       {
