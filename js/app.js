@@ -266,13 +266,13 @@ export class TableauRecettes {
         tag.innerHTML += '<i class="far fa-times-circle" id="cross"></i>'
         // différences de tag suivant le data-type
         if (li.dataset.type === 'ingredient') {
-          tag.style.backgroundColor = 'blue'
+          tag.style.backgroundColor = '#3282f7'
           tag.setAttribute('data-type', 'ingredient')
         } else if (li.dataset.type === 'appareil') {
-          tag.style.backgroundColor = 'rgb(110, 207, 131)'
+          tag.style.backgroundColor = '#68d9a4'
           tag.setAttribute('data-type', 'appareil')
         } else if (li.dataset.type === 'ustensil') {
-          tag.style.backgroundColor = 'crimson'
+          tag.style.backgroundColor = '#ed6454'
           tag.setAttribute('data-type', 'ustensil')
         }
         // j'ajoute mon tag dans ma zoneTag

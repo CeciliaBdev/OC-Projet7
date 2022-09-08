@@ -3,15 +3,16 @@ body {
 }
 .container {
   max-width: 1300px;
-  margin: 50px;
+  margin: 0 50px;
 }
 .header {
   display: flex;
   justify-content: center;
 }
 .header img {
-  width: 320px;
-  margin: 50px auto;
+  width: 268px;
+  height: 94px;
+  margin: 10px auto;
 }
 /* search bar input */
 .searchBar {
@@ -20,27 +21,27 @@ body {
 }
 .input {
   margin: 30px auto;
-  width: 100%;
-  height: 50px;
-  background-color: rgb(240, 236, 236);
+  width: 1240px;
+  height: 69px;
+  background-color: #e7e7e7;
   border-radius: 5px;
   padding: 10px;
-  border: 1px solid rgb(240, 236, 236);
+  border: 1px solid #e7e7e7;
 }
 .input::placeholder {
-  font-size: 20px;
+  font-size: 18px;
   color: rgb(139, 137, 137);
 }
 .input:focus {
   outline: none;
   /* padding-left: 30px; */
-  font-size: 24px;
+  font-size: 18px;
 }
 .loupe {
-  width: 30px;
+  width: 32px;
   position: absolute;
   right: 20px;
-  top: 50px;
+  top: 60px;
 }
 /* bouton filtres */
 .buttons {
@@ -56,7 +57,7 @@ body {
 }
 .buttons input {
   width: 100%;
-  font-size: 20px;
+  font-size: 18px;
   border: transparent;
 }
 .buttonUl {
@@ -64,7 +65,8 @@ body {
   border: 1px solid black;
   padding: 20px;
   border-radius: 5px;
-  width: 130px;
+  width: 170px;
+  height: 40px;
   border: transparent;
   margin-bottom: 0;
 }
@@ -74,15 +76,15 @@ body {
 /* filtres */
 .buttonIngredient,
 .inputIngredients {
-  background-color: blue;
+  background-color: #3282f7;
 }
 .buttonAppareil,
 .inputAppareils {
-  background-color: rgb(110, 207, 131);
+  background-color: #68d9a4;
 }
 .buttonUstensil,
 .inputUstensils {
-  background-color: crimson;
+  background-color: #ed6454;
 }
 
 .inputIngredients::placeholder,
@@ -97,22 +99,23 @@ body {
 }
 /* emplacement cartes */
 .card_container {
-  margin-top: 150px;
+  margin-top: 170px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
 }
 /* 1 carte */
 .card {
-  width: 400px;
-  height: 500px;
+  width: 380px;
+  height: 364px;
   border-radius: 5px;
-  font-size: 20px;
+  font-size: 18px;
   padding-bottom: 20px;
-  background-color: rgb(250, 246, 246);
+  background-color: #e7e7e7;
 }
 .bgImg {
-  background-color: rgb(180, 176, 176);
+  background-color: #c7bebe;
+
   border-radius: 5px 5px 0 0;
   height: 192px;
 }
@@ -121,6 +124,12 @@ body {
   justify-content: space-between;
   padding: 20px;
   padding-bottom: 0;
+}
+.time {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  align-items: center;
 }
 .description_recette {
   display: flex;
@@ -132,10 +141,12 @@ body {
   margin-top: 0;
   padding-left: 0;
   width: 48%;
+  font-size: 12px;
 }
 .descriptif {
   width: 48%;
   text-align: justify;
+  font-size: 12px;
 }
 /* message d'erreur */
 .errorMessage {
@@ -166,13 +177,13 @@ body {
   grid-template-columns: repeat(3, 1fr);
 }
 .dropdownIngredients {
-  background-color: blue;
+  background-color: #3282f7;
 }
 .dropdownAppareils {
-  background-color: rgb(110, 207, 131);
+  background-color: #68d9a4;
 }
 .dropdownUstensils {
-  background-color: crimson;
+  background-color: #ed6454;
 }
 .noshow {
   display: none;
@@ -221,4 +232,5 @@ body {
 }
 #cross {
   margin-left: 10px;
+  font-size: 20px;
 }
